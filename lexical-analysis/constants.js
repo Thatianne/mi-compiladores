@@ -21,6 +21,9 @@ const STRING_END_DOUBLE_QUOTES = 'stringEndDoubleQuotes';
 const CHARACTER_START_SINGLE_QUOTES = 'characterStartSingleQuotes';
 const CHARACTER_MIDDLE = 'characterMiddle';
 const CHARACTER_END_SINGLE_QUOTES = 'characterEndSingleQuotes';
+const LINE_COMMENT_PERCENT = 'lineCommentPercent';
+const LINE_COMMENT_MIDDLE = 'lineCommentMiddle';
+const LINE_COMMENT_LINE_BREAK = 'lineCommentLineBreak';
 
 module.exports = {
   INITIAL,
@@ -46,4 +49,7 @@ module.exports = {
   CHARACTER_START_SINGLE_QUOTES,
   CHARACTER_MIDDLE,
   CHARACTER_END_SINGLE_QUOTES,
+  LINE_COMMENT_PERCENT,
+  LINE_COMMENT_MIDDLE,
+  LINE_COMMENT_LINE_BREAK
 }

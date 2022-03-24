@@ -22,6 +22,9 @@ const StringMiddle = require('./string/stringMiddle');
 const CharacterStartSingleQuotes = require('./character/characterStartSingleQuotes');
 const CharacterMiddle = require('./character/characterMiddle');
 const CharacterEndSingleQuotes = require('./character/characterEndSingleQuotes');
+const LineCommentPercent = require('./lineComment/lineCommentPercent');
+const LineCommentMiddle = require('./lineComment/lineCommentMiddle');
+const LineCommentLineBreak = require('./lineComment/lineCommentLineBreak');
 
 const constants = require('./constants');
 
@@ -51,6 +54,9 @@ const states = {
   [constants.CHARACTER_START_SINGLE_QUOTES]: CharacterStartSingleQuotes,
   [constants.CHARACTER_MIDDLE]: CharacterMiddle,
   [constants.CHARACTER_END_SINGLE_QUOTES]: CharacterEndSingleQuotes,
+  [constants.LINE_COMMENT_PERCENT]: LineCommentPercent,
+  [constants.LINE_COMMENT_MIDDLE]: LineCommentMiddle,
+  [constants.LINE_COMMENT_LINE_BREAK]: LineCommentLineBreak,
 }
 
 const code = fs.readFileSync(fileName, {encoding:'utf8', flag:'r'});
@@ -67,10 +73,6 @@ for (let codeIndex = 0; codeIndex < codeLength; codeIndex++) {
   stateName = state.exec(character);
   state = states[stateName];
 
-  if (character === '\n') {
-    lineCounter++
-  }
-
   const characterLookup = code.charAt(codeIndex + 1);
 
   if (state.isFinalState() && !state.willStay(characterLookup) && !state.willHaveBetterMatch(characterLookup)) {
@@ -84,5 +86,9 @@ for (let codeIndex = 0; codeIndex < codeLength; codeIndex++) {
 
     lexemeArray = []
     state = Initial
+  }
+
+  if (character === '\n') {
+    lineCounter++
   }
 }

@@ -28,6 +28,8 @@ class Initial {
       return constants.STRING_START_DOUBLE_QUOTES;
     } else if (character === "'") {
       return constants.CHARACTER_START_SINGLE_QUOTES;
+    } else if (character === '%') {
+      return constants.LINE_COMMENT_PERCENT;
     }
 
     return constants.INITIAL;
