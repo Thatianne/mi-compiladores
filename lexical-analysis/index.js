@@ -16,6 +16,9 @@ const ArithmeticOperatorsDoublePlus = require('./arithmeticOperators/arithmeticO
 const Numbers = require('./numbers/numbers');
 const NumbersPoint = require('./numbers/numbersPoint');
 const NumbersFloat = require('./numbers/numbersFloat');
+const StringStartDoubleQuotes = require('./string/stringStartDoubleQuotes');
+const StringEndDoubleQuotes = require('./string/stringEndDoubleQuotes');
+const StringMiddle = require('./string/stringMiddle');
 
 const constants = require('./constants');
 
@@ -39,6 +42,9 @@ const states = {
   [constants.NUMBERS]: Numbers,
   [constants.NUMBERS_POINT]: NumbersPoint,
   [constants.NUMBERS_FLOAT]: NumbersFloat,
+  [constants.STRING_START_DOUBLE_QUOTES]: StringStartDoubleQuotes,
+  [constants.STRING_MIDDLE]: StringMiddle,
+  [constants.STRING_END_DOUBLE_QUOTES]: StringEndDoubleQuotes,
 }
 
 const code = fs.readFileSync(fileName, {encoding:'utf8', flag:'r'});
@@ -54,7 +60,6 @@ for (let codeIndex = 0; codeIndex < codeLength; codeIndex++) {
   lexemeArray.push(character);
   stateName = state.exec(character);
   state = states[stateName];
-
 
   if (character === '\n') {
     lineCounter++

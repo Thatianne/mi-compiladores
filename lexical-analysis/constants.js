@@ -15,6 +15,9 @@ const ARITHMETIC_OPERATORS_DOUBLE_MINUS = 'arithmeticOperatorsDoubleMinus';
 const NUMBERS = 'numbers';
 const NUMBERS_POINT = 'numbersPoint';
 const NUMBERS_FLOAT = 'numbersFloat';
+const STRING_START_DOUBLE_QUOTES = 'stringStartDoubleQuotes';
+const STRING_MIDDLE = 'stringMiddle';
+const STRING_END_DOUBLE_QUOTES = 'stringEndDoubleQuotes';
 
 module.exports = {
   INITIAL,
@@ -34,4 +37,7 @@ module.exports = {
   NUMBERS,
   NUMBERS_POINT,
   NUMBERS_FLOAT,
+  STRING_START_DOUBLE_QUOTES,
+  STRING_MIDDLE,
+  STRING_END_DOUBLE_QUOTES,
 }

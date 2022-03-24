@@ -24,6 +24,8 @@ class Initial {
       return constants.ARITHMETIC_OPERATORS;
     } else if (regexNumber.test(character)) {
       return constants.NUMBERS;
+    } else if (character === '"') {
+      return constants.STRING_START_DOUBLE_QUOTES;
     }
 
     return constants.INITIAL;
