@@ -8,6 +8,12 @@ const LogicalOperatorsPartial = require('./logicalOperators/logicalOperatorsPart
 const LogicalOperators = require('./logicalOperators/logicalOperators');
 const RelationalOperatorsSimple = require('./relationalOperators/relationalOperatorsSimple');
 const RelationalOperators = require('./relationalOperators/relationalOperators');
+const ArithmeticOperators = require('./arithmeticOperators/arithmeticOperations');
+const ArithmeticOperatorsMinus = require('./arithmeticOperators/arithmeticOperationsMinus');
+const ArithmeticOperatorsDoubleMinus = require('./arithmeticOperators/arithmeticOperationsDoubleMinus');
+const ArithmeticOperatorsPlus = require('./arithmeticOperators/arithmeticOperationsPlus');
+const ArithmeticOperatorsDoublePlus = require('./arithmeticOperators/arithmeticOperationsDoublePlus ');
+
 const constants = require('./constants');
 
 const fileName = 'input/input1.txt';
@@ -22,6 +28,11 @@ const states = {
   [constants.LOGICAL_OPERATORS]: LogicalOperators,
   [constants.RELATIONAL_OPERATORS_SIMPLE]: RelationalOperatorsSimple,
   [constants.RELATIONAL_OPERATORS]: RelationalOperators,
+  [constants.ARITHMETIC_OPERATORS]: ArithmeticOperators,
+  [constants.ARITHMETIC_OPERATORS_MINUS]: ArithmeticOperatorsMinus,
+  [constants.ARITHMETIC_OPERATORS_DOUBLE_MINUS]: ArithmeticOperatorsDoubleMinus,
+  [constants.ARITHMETIC_OPERATORS_PLUS]: ArithmeticOperatorsPlus,
+  [constants.ARITHMETIC_OPERATORS_DOUBLE_PLUS]: ArithmeticOperatorsDoublePlus,
 }
 
 const code = fs.readFileSync(fileName, {encoding:'utf8', flag:'r'});

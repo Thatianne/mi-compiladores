@@ -15,6 +15,12 @@ class Initial {
       return constants.LOGICAL_OPERATORS_PARTIAL;
     } else if (['=', '>', '<'].includes(character)) {
       return constants.RELATIONAL_OPERATORS_SIMPLE;
+    } else if (character === '+') {
+      return constants.ARITHMETIC_OPERATORS_PLUS;
+    } else if (character === '-') {
+      return constants.ARITHMETIC_OPERATORS_MINUS;
+    } else if (['*', '/'].includes(character)) {
+      return constants.ARITHMETIC_OPERATORS;
     }
 
     return constants.INITIAL;
