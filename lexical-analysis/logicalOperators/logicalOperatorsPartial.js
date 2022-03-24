@@ -1,18 +1,22 @@
 const constants = require('../constants');
 
-class Delimiters {
-
+class LogicalOperatorsPartial {
   static exec(character) {
+    if (['&', '|'].includes(character)) {
+      return constants.LOGICAL_OPERATORS;
+    }
+
     return constants.INITIAL;
   }
 
   static isFinalState() {
-    return true;
+    return false;
   }
 
   static willStay(character) {
     return false;
   }
+
 }
 
-module.exports = Delimiters;
+module.exports = LogicalOperatorsPartial;

@@ -9,6 +9,10 @@ class Initial {
       return constants.IDENTIFIERS;
     } else if (regexDelimiters.test(character)) {
       return constants.DELIMITERS;
+    } else if (character === '!') {
+      return constants.LOGICAL_OPERATORS_NOT;
+    } else if (['&', '|'].includes(character)) {
+      return constants.LOGICAL_OPERATORS_PARTIAL;
     }
 
     return constants.INITIAL;

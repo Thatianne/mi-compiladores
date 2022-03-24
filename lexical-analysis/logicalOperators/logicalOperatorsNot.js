@@ -1,7 +1,6 @@
 const constants = require('../constants');
 
-class Delimiters {
-
+class LogicalOperatorsNot {
   static exec(character) {
     return constants.INITIAL;
   }
@@ -13,6 +12,7 @@ class Delimiters {
   static willStay(character) {
     return false;
   }
+
 }
 
-module.exports = Delimiters;
+module.exports = LogicalOperatorsNot;
