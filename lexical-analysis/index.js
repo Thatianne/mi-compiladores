@@ -13,6 +13,9 @@ const ArithmeticOperatorsMinus = require('./arithmeticOperators/arithmeticOperat
 const ArithmeticOperatorsDoubleMinus = require('./arithmeticOperators/arithmeticOperationsDoubleMinus');
 const ArithmeticOperatorsPlus = require('./arithmeticOperators/arithmeticOperationsPlus');
 const ArithmeticOperatorsDoublePlus = require('./arithmeticOperators/arithmeticOperationsDoublePlus ');
+const Numbers = require('./numbers/numbers');
+const NumbersPoint = require('./numbers/numbersPoint');
+const NumbersFloat = require('./numbers/numbersFloat');
 
 const constants = require('./constants');
 
@@ -33,6 +36,9 @@ const states = {
   [constants.ARITHMETIC_OPERATORS_DOUBLE_MINUS]: ArithmeticOperatorsDoubleMinus,
   [constants.ARITHMETIC_OPERATORS_PLUS]: ArithmeticOperatorsPlus,
   [constants.ARITHMETIC_OPERATORS_DOUBLE_PLUS]: ArithmeticOperatorsDoublePlus,
+  [constants.NUMBERS]: Numbers,
+  [constants.NUMBERS_POINT]: NumbersPoint,
+  [constants.NUMBERS_FLOAT]: NumbersFloat,
 }
 
 const code = fs.readFileSync(fileName, {encoding:'utf8', flag:'r'});

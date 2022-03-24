@@ -12,6 +12,9 @@ const ARITHMETIC_OPERATORS_PLUS = 'arithmeticOperatorsPlus';
 const ARITHMETIC_OPERATORS_DOUBLE_PLUS = 'arithmeticOperatorsDoublePlus';
 const ARITHMETIC_OPERATORS_MINUS = 'arithmeticOperatorsMinus';
 const ARITHMETIC_OPERATORS_DOUBLE_MINUS = 'arithmeticOperatorsDoubleMinus';
+const NUMBERS = 'numbers';
+const NUMBERS_POINT = 'numbersPoint';
+const NUMBERS_FLOAT = 'numbersFloat';
 
 module.exports = {
   INITIAL,
@@ -28,4 +31,7 @@ module.exports = {
   ARITHMETIC_OPERATORS_DOUBLE_PLUS,
   ARITHMETIC_OPERATORS_MINUS,
   ARITHMETIC_OPERATORS_DOUBLE_MINUS,
+  NUMBERS,
+  NUMBERS_POINT,
+  NUMBERS_FLOAT,
 }

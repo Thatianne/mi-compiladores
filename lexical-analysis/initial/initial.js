@@ -4,6 +4,7 @@ class Initial {
   static exec(character) {
     const regexIdentifier = /[a-zA-Z]/;
     const regexDelimiters = /[;,(){}[\]\.:]/
+    const regexNumber = /[0-9]/;
 
     if (regexIdentifier.test(character)) {
       return constants.IDENTIFIERS;
@@ -21,6 +22,8 @@ class Initial {
       return constants.ARITHMETIC_OPERATORS_MINUS;
     } else if (['*', '/'].includes(character)) {
       return constants.ARITHMETIC_OPERATORS;
+    } else if (regexNumber.test(character)) {
+      return constants.NUMBERS;
     }
 
     return constants.INITIAL;
