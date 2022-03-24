@@ -20,8 +20,10 @@ class Initial {
       return constants.ARITHMETIC_OPERATORS_PLUS;
     } else if (character === '-') {
       return constants.ARITHMETIC_OPERATORS_MINUS;
-    } else if (['*', '/'].includes(character)) {
+    } else if (character === '*') {
       return constants.ARITHMETIC_OPERATORS;
+    } else if (character === '/') {
+      return constants.ARITHMETIC_OPERATORS_SLASH;
     } else if (regexNumber.test(character)) {
       return constants.NUMBERS;
     } else if (character === '"') {

@@ -9,6 +9,7 @@ const LogicalOperators = require('./logicalOperators/logicalOperators');
 const RelationalOperatorsSimple = require('./relationalOperators/relationalOperatorsSimple');
 const RelationalOperators = require('./relationalOperators/relationalOperators');
 const ArithmeticOperators = require('./arithmeticOperators/arithmeticOperations');
+const ArithmeticOperatorsSlash = require('./arithmeticOperators/arithmeticOperationsSlash');
 const ArithmeticOperatorsMinus = require('./arithmeticOperators/arithmeticOperationsMinus');
 const ArithmeticOperatorsDoubleMinus = require('./arithmeticOperators/arithmeticOperationsDoubleMinus');
 const ArithmeticOperatorsPlus = require('./arithmeticOperators/arithmeticOperationsPlus');
@@ -25,6 +26,10 @@ const CharacterEndSingleQuotes = require('./character/characterEndSingleQuotes')
 const LineCommentPercent = require('./lineComment/lineCommentPercent');
 const LineCommentMiddle = require('./lineComment/lineCommentMiddle');
 const LineCommentLineBreak = require('./lineComment/lineCommentLineBreak');
+const BlockCommentStartHash = require('./blockComment/blockCommentStartHash');
+const BlockCommentMiddle = require('./blockComment/blockCommentMiddle');
+const BlockCommentEndHash = require('./blockComment/blockCommentEndHash');
+const BlockCommentEndSlash = require('./blockComment/blockCommentEndSlash');
 
 const constants = require('./constants');
 
@@ -41,6 +46,7 @@ const states = {
   [constants.RELATIONAL_OPERATORS_SIMPLE]: RelationalOperatorsSimple,
   [constants.RELATIONAL_OPERATORS]: RelationalOperators,
   [constants.ARITHMETIC_OPERATORS]: ArithmeticOperators,
+  [constants.ARITHMETIC_OPERATORS_SLASH]: ArithmeticOperatorsSlash,
   [constants.ARITHMETIC_OPERATORS_MINUS]: ArithmeticOperatorsMinus,
   [constants.ARITHMETIC_OPERATORS_DOUBLE_MINUS]: ArithmeticOperatorsDoubleMinus,
   [constants.ARITHMETIC_OPERATORS_PLUS]: ArithmeticOperatorsPlus,
@@ -57,6 +63,10 @@ const states = {
   [constants.LINE_COMMENT_PERCENT]: LineCommentPercent,
   [constants.LINE_COMMENT_MIDDLE]: LineCommentMiddle,
   [constants.LINE_COMMENT_LINE_BREAK]: LineCommentLineBreak,
+  [constants.BLOCK_COMMENT_START_HASH]: BlockCommentStartHash,
+  [constants.BLOCK_COMMENT_MIDDLE]: BlockCommentMiddle,
+  [constants.BLOCK_COMMENT_END_HASH]: BlockCommentEndHash,
+  [constants.BLOCK_COMMENT_END_SLASH]: BlockCommentEndSlash,
 }
 
 const code = fs.readFileSync(fileName, {encoding:'utf8', flag:'r'});
@@ -75,7 +85,7 @@ for (let codeIndex = 0; codeIndex < codeLength; codeIndex++) {
 
   const characterLookup = code.charAt(codeIndex + 1);
 
-  if (state.isFinalState() && !state.willStay(characterLookup) && !state.willHaveBetterMatch(characterLookup)) {
+  if (state.isFinalState() && !state.willStay(characterLookup) && (!state.willHaveBetterMatch(characterLookup) || codeIndex === codeLength - 1)) {
     lexeme = lexemeArray.join('').trim();
 
     if (stateName === constants.IDENTIFIERS && ReservedWords.includes(lexeme)) {

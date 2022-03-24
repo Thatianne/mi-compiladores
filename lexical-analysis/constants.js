@@ -8,6 +8,7 @@ const LOGICAL_OPERATORS = 'logicalOperators';
 const RELATIONAL_OPERATORS_SIMPLE = 'relationalOperatorsSimple';
 const RELATIONAL_OPERATORS = 'relationalOperators';
 const ARITHMETIC_OPERATORS = 'arithmeticOperators';
+const ARITHMETIC_OPERATORS_SLASH = 'arithmeticOperatorsSlash';
 const ARITHMETIC_OPERATORS_PLUS = 'arithmeticOperatorsPlus';
 const ARITHMETIC_OPERATORS_DOUBLE_PLUS = 'arithmeticOperatorsDoublePlus';
 const ARITHMETIC_OPERATORS_MINUS = 'arithmeticOperatorsMinus';
@@ -24,6 +25,10 @@ const CHARACTER_END_SINGLE_QUOTES = 'characterEndSingleQuotes';
 const LINE_COMMENT_PERCENT = 'lineCommentPercent';
 const LINE_COMMENT_MIDDLE = 'lineCommentMiddle';
 const LINE_COMMENT_LINE_BREAK = 'lineCommentLineBreak';
+const BLOCK_COMMENT_START_HASH = 'blockCommentStartHash';
+const BLOCK_COMMENT_MIDDLE = 'blockCommentMiddle';
+const BLOCK_COMMENT_END_HASH = 'blockCommentEndHash';
+const BLOCK_COMMENT_END_SLASH = 'blockCommentEndSlash';
 
 module.exports = {
   INITIAL,
@@ -36,6 +41,7 @@ module.exports = {
   RELATIONAL_OPERATORS_SIMPLE,
   RELATIONAL_OPERATORS,
   ARITHMETIC_OPERATORS,
+  ARITHMETIC_OPERATORS_SLASH,
   ARITHMETIC_OPERATORS_PLUS,
   ARITHMETIC_OPERATORS_DOUBLE_PLUS,
   ARITHMETIC_OPERATORS_MINUS,
@@ -51,5 +57,9 @@ module.exports = {
   CHARACTER_END_SINGLE_QUOTES,
   LINE_COMMENT_PERCENT,
   LINE_COMMENT_MIDDLE,
-  LINE_COMMENT_LINE_BREAK
+  LINE_COMMENT_LINE_BREAK,
+  BLOCK_COMMENT_START_HASH,
+  BLOCK_COMMENT_MIDDLE,
+  BLOCK_COMMENT_END_HASH,
+  BLOCK_COMMENT_END_SLASH,
 }
