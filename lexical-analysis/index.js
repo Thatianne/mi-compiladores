@@ -2,6 +2,7 @@ const fs = require('fs');
 const Initial = require('./initial/initial');
 const Identifiers = require('./identifiers/identifiers');
 const ReservedWords = require('./reservedWords/reservedWords');
+const Delimiters = require('./delimiters/delimiters');
 const constants = require('./constants');
 
 const fileName = 'input/input1.txt';
@@ -9,7 +10,8 @@ const fileName = 'input/input1.txt';
 const states = {
   [constants.INITIAL]: Initial,
   [constants.IDENTIFIERS]: Identifiers,
-  [constants.RESERVED_WORDS]: ReservedWords
+  [constants.RESERVED_WORDS]: ReservedWords,
+  [constants.DELIMITERS]: Delimiters
 }
 
 const code = fs.readFileSync(fileName, {encoding:'utf8', flag:'r'});

@@ -3,9 +3,12 @@ class Initial {
 
   static exec(character) {
     const regexIdentifier = /[a-zA-Z]/;
+    const regexDelimiters = /[;,(){}[\]\.:]/
 
     if (regexIdentifier.test(character)) {
       return constants.IDENTIFIERS;
+    } else if (regexDelimiters.test(character)) {
+      return constants.DELIMITERS;
     }
 
     return constants.INITIAL;

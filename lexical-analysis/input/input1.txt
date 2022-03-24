@@ -1,5 +1,6 @@
-program abc
-xxz char
-var const
-ewew
-
+program abc;
+xxz (char);
+var{[}] const
+ewew(
+  ; , ( ) { } [ ] . :
+;,(){}[].:
