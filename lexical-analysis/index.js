@@ -19,6 +19,9 @@ const NumbersFloat = require('./numbers/numbersFloat');
 const StringStartDoubleQuotes = require('./string/stringStartDoubleQuotes');
 const StringEndDoubleQuotes = require('./string/stringEndDoubleQuotes');
 const StringMiddle = require('./string/stringMiddle');
+const CharacterStartSingleQuotes = require('./character/characterStartSingleQuotes');
+const CharacterMiddle = require('./character/characterMiddle');
+const CharacterEndSingleQuotes = require('./character/characterEndSingleQuotes');
 
 const constants = require('./constants');
 
@@ -45,6 +48,9 @@ const states = {
   [constants.STRING_START_DOUBLE_QUOTES]: StringStartDoubleQuotes,
   [constants.STRING_MIDDLE]: StringMiddle,
   [constants.STRING_END_DOUBLE_QUOTES]: StringEndDoubleQuotes,
+  [constants.CHARACTER_START_SINGLE_QUOTES]: CharacterStartSingleQuotes,
+  [constants.CHARACTER_MIDDLE]: CharacterMiddle,
+  [constants.CHARACTER_END_SINGLE_QUOTES]: CharacterEndSingleQuotes,
 }
 
 const code = fs.readFileSync(fileName, {encoding:'utf8', flag:'r'});

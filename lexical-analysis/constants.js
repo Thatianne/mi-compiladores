@@ -18,6 +18,9 @@ const NUMBERS_FLOAT = 'numbersFloat';
 const STRING_START_DOUBLE_QUOTES = 'stringStartDoubleQuotes';
 const STRING_MIDDLE = 'stringMiddle';
 const STRING_END_DOUBLE_QUOTES = 'stringEndDoubleQuotes';
+const CHARACTER_START_SINGLE_QUOTES = 'characterStartSingleQuotes';
+const CHARACTER_MIDDLE = 'characterMiddle';
+const CHARACTER_END_SINGLE_QUOTES = 'characterEndSingleQuotes';
 
 module.exports = {
   INITIAL,
@@ -40,4 +43,7 @@ module.exports = {
   STRING_START_DOUBLE_QUOTES,
   STRING_MIDDLE,
   STRING_END_DOUBLE_QUOTES,
+  CHARACTER_START_SINGLE_QUOTES,
+  CHARACTER_MIDDLE,
+  CHARACTER_END_SINGLE_QUOTES,
 }

@@ -26,6 +26,8 @@ class Initial {
       return constants.NUMBERS;
     } else if (character === '"') {
       return constants.STRING_START_DOUBLE_QUOTES;
+    } else if (character === "'") {
+      return constants.CHARACTER_START_SINGLE_QUOTES;
     }
 
     return constants.INITIAL;
