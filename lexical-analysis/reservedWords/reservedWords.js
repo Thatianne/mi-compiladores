@@ -1,4 +1,10 @@
+const constants = require('../constants');
+
 class ReservedWords {
+
+  static exec(character) {
+    return constants.INITIAL;
+  }
 
   static includes(lexeme) {
     const words = [
@@ -25,6 +31,16 @@ class ReservedWords {
     ]
 
     return words.includes(lexeme);
+  }
+
+  static willStay(character) {
+    const regex = /[a-zA-Z0-9_]/;
+
+    return regex.test(character);
+  }
+
+  static isFinalState() {
+    return false;
   }
 }
 

@@ -1,10 +1,11 @@
 const constants = require('../constants');
-class Initial {
+
+class Identifier {
 
   static exec(character) {
-    const regexIdentifier = /[a-zA-Z]/;
+    const regex = /[a-zA-Z0-9_]/;
 
-    if (regexIdentifier.test(character)) {
+    if (regex.test(character)) {
       return constants.IDENTIFIERS;
     }
 
@@ -12,15 +13,15 @@ class Initial {
   }
 
   static willStay(character) {
-    const regex = /s/;
+    const regex = /[a-zA-Z0-9_]/;
 
     return regex.test(character);
   }
 
   static isFinalState() {
-    return false;
+    return true;
   }
 
 }
 
-module.exports = Initial
+module.exports = Identifier;
