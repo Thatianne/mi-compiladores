@@ -1,0 +1,9 @@
+1 program ReservedWords
+1 abc Identifier
+1 ; Delimiters
+2 xxz Identifier
+2 char ReservedWords
+2 ; Delimiters
+3 var ReservedWords
+3 const ReservedWords
+4 ewew Identifier

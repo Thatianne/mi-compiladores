@@ -3,8 +3,9 @@ const constants = require('./constants');
 const states = require('./states');
 
 class Process {
-  static init(filename) {
-    const code = fs.readFileSync(filename, {encoding:'utf8', flag:'r'});
+  static init(inputFile, outputFile) {
+    const outputArray = []
+    const code = fs.readFileSync(inputFile, {encoding:'utf8', flag:'r'});
     const codeLength = code.length;
     const reservedWordsState = states.states[constants.RESERVED_WORDS];
     let lexemeArray = [];
@@ -29,6 +30,7 @@ class Process {
           state = reservedWordsState;
         }
         console.log(lineCounter, lexeme, state.name);
+        outputArray.push(`${lineCounter} ${lexeme} ${state.name}`);
 
         lexemeArray = [];
         state = states.states[constants.INITIAL];
@@ -38,6 +40,8 @@ class Process {
         lineCounter++;
       }
     }
+
+    fs.writeFileSync(outputFile, outputArray.join('\n'), { flag: 'w+' });
   }
 }
 

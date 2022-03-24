@@ -1,4 +1,3 @@
 const Process = require('./process');
 
-const fileName = 'input/input1.txt';
-Process.init(fileName);
+Process.init('input/input1.txt', 'output/output1.txt');
