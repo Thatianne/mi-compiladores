@@ -1,7 +1,10 @@
 const constants = require('../constants');
 
-class LogicalOperators {
+class RelationalOperatorsSimple {
   static exec(character) {
+    if (character === '=') {
+      return constants.RELATIONAL_OPERATORS;
+    }
     return constants.INITIAL;
   }
 
@@ -14,9 +17,9 @@ class LogicalOperators {
   }
 
   static willHaveBetterMatch(character) {
-    return false;
+    return character === '=';
   }
 
 }
 
-module.exports = LogicalOperators;
+module.exports = RelationalOperatorsSimple;

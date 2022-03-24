@@ -13,6 +13,10 @@ class Delimiters {
   static willStay(character) {
     return false;
   }
+
+  static willHaveBetterMatch(character) {
+    return false;
+  }
 }
 
 module.exports = Delimiters;

@@ -22,6 +22,10 @@ class Identifier {
     return true;
   }
 
+  static willHaveBetterMatch(character) {
+    return false;
+  }
+
 }
 
 module.exports = Identifier;

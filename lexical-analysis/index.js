@@ -6,6 +6,8 @@ const Delimiters = require('./delimiters/delimiters');
 const LogicalOperatorsNot = require('./logicalOperators/logicalOperatorsNot');
 const LogicalOperatorsPartial = require('./logicalOperators/logicalOperatorsPartial');
 const LogicalOperators = require('./logicalOperators/logicalOperators');
+const RelationalOperatorsSimple = require('./relationalOperators/relationalOperatorsSimple');
+const RelationalOperators = require('./relationalOperators/relationalOperators');
 const constants = require('./constants');
 
 const fileName = 'input/input1.txt';
@@ -18,6 +20,8 @@ const states = {
   [constants.LOGICAL_OPERATORS_NOT]: LogicalOperatorsNot,
   [constants.LOGICAL_OPERATORS_PARTIAL]: LogicalOperatorsPartial,
   [constants.LOGICAL_OPERATORS]: LogicalOperators,
+  [constants.RELATIONAL_OPERATORS_SIMPLE]: RelationalOperatorsSimple,
+  [constants.RELATIONAL_OPERATORS]: RelationalOperators,
 }
 
 const code = fs.readFileSync(fileName, {encoding:'utf8', flag:'r'});
@@ -34,13 +38,14 @@ for (let codeIndex = 0; codeIndex < codeLength; codeIndex++) {
   stateName = state.exec(character);
   state = states[stateName];
 
+
   if (character === '\n') {
     lineCounter++
   }
 
   const characterLookup = code.charAt(codeIndex + 1);
 
-  if (state.isFinalState() && !state.willStay(characterLookup)) {
+  if (state.isFinalState() && !state.willStay(characterLookup) && !state.willHaveBetterMatch(characterLookup)) {
     lexeme = lexemeArray.join('').trim();
 
     if (stateName === constants.IDENTIFIERS && ReservedWords.includes(lexeme)) {

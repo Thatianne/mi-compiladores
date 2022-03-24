@@ -17,6 +17,10 @@ class LogicalOperatorsPartial {
     return false;
   }
 
+  static willHaveBetterMatch(character) {
+    return false;
+  }
+
 }
 
 module.exports = LogicalOperatorsPartial;

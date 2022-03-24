@@ -13,6 +13,8 @@ class Initial {
       return constants.LOGICAL_OPERATORS_NOT;
     } else if (['&', '|'].includes(character)) {
       return constants.LOGICAL_OPERATORS_PARTIAL;
+    } else if (['=', '>', '<'].includes(character)) {
+      return constants.RELATIONAL_OPERATORS_SIMPLE;
     }
 
     return constants.INITIAL;
@@ -25,6 +27,10 @@ class Initial {
   }
 
   static isFinalState() {
+    return false;
+  }
+
+  static willHaveBetterMatch(character) {
     return false;
   }
 

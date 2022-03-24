@@ -1,6 +1,6 @@
 const constants = require('../constants');
 
-class LogicalOperators {
+class RelationalOperators {
   static exec(character) {
     return constants.INITIAL;
   }
@@ -19,4 +19,4 @@ class LogicalOperators {
 
 }
 
-module.exports = LogicalOperators;
+module.exports = RelationalOperators;

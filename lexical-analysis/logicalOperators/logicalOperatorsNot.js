@@ -2,6 +2,9 @@ const constants = require('../constants');
 
 class LogicalOperatorsNot {
   static exec(character) {
+    if (character === '=') {
+      return constants.RELATIONAL_OPERATORS;
+    }
     return constants.INITIAL;
   }
 
@@ -11,6 +14,10 @@ class LogicalOperatorsNot {
 
   static willStay(character) {
     return false;
+  }
+
+  static willHaveBetterMatch(character) {
+    return character === '=';
   }
 
 }

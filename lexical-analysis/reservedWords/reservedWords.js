@@ -42,6 +42,10 @@ class ReservedWords {
   static isFinalState() {
     return false;
   }
+
+  static willHaveBetterMatch(character) {
+    return false;
+  }
 }
 
 module.exports = ReservedWords
