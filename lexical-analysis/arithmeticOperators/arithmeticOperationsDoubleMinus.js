@@ -15,7 +15,7 @@ class ArithmeticOperatorsDoubleMinus extends BaseClass {
   }
 
   static willHaveBetterMatch(character) {
-    return character === '-';
+    return false;
   }
 
 }

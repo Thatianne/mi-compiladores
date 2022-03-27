@@ -8,11 +8,10 @@ class Identifier extends BaseClass {
 
     if (regex.test(character)) {
       return constants.IDENTIFIERS;
-    } else if (!/[\x20-\x7E]/.test(character)) {
-      return constants.INVALID_CHARACTER;
+    } if (/\s/.test(character)) {
+      return constants.INITIAL;
     }
-
-    return constants.INITIAL;
+    return constants.INVALID_CHARACTER;
   }
 
   static willStay(character) {
@@ -26,7 +25,11 @@ class Identifier extends BaseClass {
   }
 
   static willHaveBetterMatch(character) {
-    return false;
+
+    return true;
+    const regex = /[a-zA-Z0-9_]/;
+
+    return regex.test(character);
   }
 
 }

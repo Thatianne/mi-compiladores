@@ -16,26 +16,34 @@ class Process {
 
     for (let codeIndex = 0; codeIndex < codeLength; codeIndex++) {
       const character = code.charAt(codeIndex);
-      lexemeArray.push(character);
       stateName = state.exec(character);
-      // console.log(state, character, states.states[stateName])
-      state = states.states[stateName];
+      lexemeArray.push(character);
 
-      const characterLookup = code.charAt(codeIndex + 1);
+      // console.log(state, character, states.states[stateName])
+
+      state = states.states[stateName];
 
       if (codeIndex === codeLength - 1 && !state.isFinalState()) {
         stateName = state.exec('');
         state = states.states[stateName];
       }
 
-      if (state.isFinalState() && !state.willStay(characterLookup) && (!state.willHaveBetterMatch(characterLookup) || codeIndex === codeLength - 1)) {
+      const characterLookup = code.charAt(codeIndex + 1);
+      if (
+        state.isFinalState() &&
+        (
+          (!state.willStay(characterLookup) && (!state.willHaveBetterMatch(characterLookup)) ||
+          codeIndex === codeLength - 1
+          )
+        )
+      ) {
         lexeme = lexemeArray.join('').trim();
 
         if (stateName === constants.IDENTIFIERS && reservedWordsState.includes(lexeme)) {
           stateName = constants.RESERVED_WORDS;
           state = reservedWordsState;
         }
-        console.log(lineCounter, lexeme, state.name);
+        console.log(`${lineCounter} ${lexeme} ${state.name}`);
         outputArray.push(`${lineCounter} ${lexeme} ${state.name}`);
 
         lexemeArray = [];

@@ -33,11 +33,9 @@ class Initial extends BaseClass {
       return constants.CHARACTER_START_SINGLE_QUOTES;
     } else if (character === '%') {
       return constants.LINE_COMMENT_PERCENT;
-    } else if (/\s/.test(character)) {
-      return constants.INITIAL;
     }
 
-    return constants.INVALID_CHARACTER;
+    return constants.INITIAL;
   }
 
   static willStay(character) {

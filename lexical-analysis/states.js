@@ -35,6 +35,7 @@ const InvalidCharacter = require('./errors/invalidCharacter');
 const ErrorNumbersPoint = require('./errors/errorNumbersPoint');
 const ErrorBlockCommentNotClosed = require('./errors/errorBlockCommentNotClosed');
 const ErrorStringNotClosed = require('./errors/errorStringNotClosed');
+const ErrorCharacterNotClosed = require('./errors/errorCharacterNotClosed');
 
 const states = {
   [constants.INITIAL]: Initial,
@@ -72,6 +73,7 @@ const states = {
   [constants.ERROR_NUMBERS_POINT]: ErrorNumbersPoint,
   [constants.ERROR_BLOCK_COMMENT_NOT_CLOSED]: ErrorBlockCommentNotClosed,
   [constants.ERROR_STRING_NOT_CLOSED]: ErrorStringNotClosed,
+  [constants.ERROR_CHARACTER_NOT_CLOSED]: ErrorCharacterNotClosed,
 }
 
 module.exports = {

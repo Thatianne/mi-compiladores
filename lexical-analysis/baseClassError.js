@@ -17,7 +17,7 @@ class BaseClassError {
     return false;
   }
 
-  static isError(character) {
+  static isError() {
     return true;
   }
 

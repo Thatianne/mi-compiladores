@@ -6,6 +6,8 @@ class BlockCommentStartHash extends BaseClass {
   static exec(character) {
     if (character === '#') {
       return constants.BLOCK_COMMENT_END_HASH;
+    } else if (character === '') {
+      return constants.ERROR_BLOCK_COMMENT_NOT_CLOSED;
     }
     return constants.BLOCK_COMMENT_MIDDLE
   }

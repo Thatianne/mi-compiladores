@@ -1,1 +1,6 @@
-1 "dsdsd ErrorStringNotClosed
+1 1.. ErrorNumbersPoint
+1 2 Numbers
+2 "dsdsd" StringEndDoubleQuotes
+2 2 Numbers
+2 3.4 NumbersFloat
+3 /#sdsd#/ BlockCommentSlash

@@ -7,8 +7,7 @@ class CharacterMiddle extends BaseClass {
       return constants.CHARACTER_END_SINGLE_QUOTES;
     }
 
-    // TODO tratar erros
-    return constants.INITIAL;
+    return constants.ERROR_CHARACTER_NOT_CLOSED;
   }
 
   static isFinalState() {

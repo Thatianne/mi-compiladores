@@ -33,6 +33,7 @@ const INVALID_CHARACTER = 'invalidCharacter';
 const ERROR_NUMBERS_POINT = 'errorNumbersPoint';
 const ERROR_BLOCK_COMMENT_NOT_CLOSED = 'errorBlockCommentNotClosed';
 const ERROR_STRING_NOT_CLOSED = 'errorStringNotClosed';
+const ERROR_CHARACTER_NOT_CLOSED = 'errorCharacterNotClosed';
 
 module.exports = {
   INITIAL,
@@ -69,5 +70,6 @@ module.exports = {
   INVALID_CHARACTER,
   ERROR_NUMBERS_POINT,
   ERROR_BLOCK_COMMENT_NOT_CLOSED,
-  ERROR_STRING_NOT_CLOSED
+  ERROR_STRING_NOT_CLOSED,
+  ERROR_CHARACTER_NOT_CLOSED,
 }
