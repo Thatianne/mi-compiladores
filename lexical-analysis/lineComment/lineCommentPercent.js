@@ -8,7 +8,6 @@ class LineCommentPercent extends BaseClass {
       return constants.LINE_COMMENT;
     }
 
-    // TODO tratar erros
     return constants.LINE_COMMENT_MIDDLE;
   }
 
