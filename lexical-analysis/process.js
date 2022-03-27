@@ -23,6 +23,11 @@ class Process {
 
       const characterLookup = code.charAt(codeIndex + 1);
 
+      if (codeIndex === codeLength - 1 && !state.isFinalState()) {
+        stateName = state.exec('');
+        state = states.states[stateName];
+      }
+
       if (state.isFinalState() && !state.willStay(characterLookup) && (!state.willHaveBetterMatch(characterLookup) || codeIndex === codeLength - 1)) {
         lexeme = lexemeArray.join('').trim();
 

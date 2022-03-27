@@ -1,7 +1,7 @@
 const constants = require('../constants');
 const BaseClassError = require('../baseClassError');
 
-class ErrorNumbersPoint extends BaseClassError {
+class ErrorBlockCommentNotClosed extends BaseClassError {
 
   static exec(character) {
     return constants.INITIAL;
@@ -21,4 +21,4 @@ class ErrorNumbersPoint extends BaseClassError {
 
 }
 
-module.exports = ErrorNumbersPoint;
+module.exports = ErrorBlockCommentNotClosed;

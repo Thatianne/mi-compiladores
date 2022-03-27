@@ -31,6 +31,7 @@ const BLOCK_COMMENT_END_HASH = 'blockCommentEndHash';
 const BLOCK_COMMENT_END_SLASH = 'blockCommentEndSlash';
 const INVALID_CHARACTER = 'invalidCharacter';
 const ERROR_NUMBERS_POINT = 'errorNumbersPoint';
+const ERROR_BLOCK_COMMENT_NOT_CLOSED = 'errorBlockCommentNotClosed';
 
 module.exports = {
   INITIAL,
@@ -65,5 +66,6 @@ module.exports = {
   BLOCK_COMMENT_END_HASH,
   BLOCK_COMMENT_END_SLASH,
   INVALID_CHARACTER,
-  ERROR_NUMBERS_POINT
+  ERROR_NUMBERS_POINT,
+  ERROR_BLOCK_COMMENT_NOT_CLOSED
 }

@@ -5,9 +5,9 @@ class BlockCommentEndHash extends BaseClass {
 
   static exec(character) {
     if (character === '/') {
-      return constants.BLOCK_COMMENT_END_SLASH
+      return constants.BLOCK_COMMENT_END_SLASH;
     }
-    //TODO colocar para erro
+    return constants.ERROR_BLOCK_COMMENT_NOT_CLOSED;
   }
 
   static isFinalState() {
