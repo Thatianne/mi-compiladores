@@ -80,6 +80,9 @@ b -> identificador
 
 ## Separação de estados para estados específicos
 
-Foi feita a separação dos estados para os operadores lógicos.
+Foi feita a separação dos estados para:
 
-Será necessário fazer a separação dos operadores aritméticos, operadores relacionais e dos delimitadores (?)
+- operadores lógicos
+- operadores aritméticos
+
+Será necessário fazer a separação dos operadores relacionais e dos delimitadores (?)
