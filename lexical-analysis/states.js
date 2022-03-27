@@ -40,6 +40,7 @@ const ErrorBlockCommentNotClosed = require('./error/errorBlockCommentNotClosed')
 const ErrorStringNotClosed = require('./error/errorStringNotClosed');
 const ErrorCharacterNotClosed = require('./error/errorCharacterNotClosed');
 const ErrorLogicalOperatorAndIncompleted = require('./error/errorLogicalOperatorAndIncompleted');
+const ErrorLogicalOperatorOrIncompleted = require('./error/errorLogicalOperatorOrIncompleted');
 
 const states = {
   [constants.INITIAL]: Initial,
@@ -82,6 +83,7 @@ const states = {
   [constants.ERROR_STRING_NOT_CLOSED]: ErrorStringNotClosed,
   [constants.ERROR_CHARACTER_NOT_CLOSED]: ErrorCharacterNotClosed,
   [constants.ERROR_LOGICAL_OPERATOR_AND_INCOMPLETED]: ErrorLogicalOperatorAndIncompleted,
+  [constants.ERROR_LOGICAL_OPERATOR_OR_INCOMPLETED]: ErrorLogicalOperatorOrIncompleted,
 }
 
 module.exports = {

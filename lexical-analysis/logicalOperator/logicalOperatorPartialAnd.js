@@ -5,7 +5,7 @@ class LogicalOperatorPartialAnd extends BaseClass {
   static exec(character) {
     if (character === '&') {
       return constants.LOGICAL_OPERATOR_AND;
-    } else if (/\s/.test(character)) {
+    } else if (/\s/.test(character) || character === '') {
       return constants.ERROR_LOGICAL_OPERATOR_AND_INCOMPLETED;
     }
 

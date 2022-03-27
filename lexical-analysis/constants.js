@@ -39,6 +39,7 @@ const ERROR_BLOCK_COMMENT_NOT_CLOSED = 'errorBlockCommentNotClosed';
 const ERROR_STRING_NOT_CLOSED = 'errorStringNotClosed';
 const ERROR_CHARACTER_NOT_CLOSED = 'errorCharacterNotClosed';
 const ERROR_LOGICAL_OPERATOR_AND_INCOMPLETED = 'errorLogicalOperatorAndIncompleted';
+const ERROR_LOGICAL_OPERATOR_OR_INCOMPLETED = 'errorLogicalOperatorOrIncompleted';
 
 module.exports = {
   INITIAL,
@@ -82,4 +83,5 @@ module.exports = {
   ERROR_STRING_NOT_CLOSED,
   ERROR_CHARACTER_NOT_CLOSED,
   ERROR_LOGICAL_OPERATOR_AND_INCOMPLETED,
+  ERROR_LOGICAL_OPERATOR_OR_INCOMPLETED,
 }

@@ -1,3 +1,4 @@
 1 && LogicalOperatorAnd
-1 && LogicalOperatorAnd
+1 & ErrorLogicalOperatorAndIncompleted
 1 || LogicalOperatorOr
+1 | ErrorLogicalOperatorOrIncompleted
