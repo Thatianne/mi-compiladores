@@ -28,7 +28,7 @@ const CharacterMiddle = require('./character/characterMiddle');
 const CharacterEndSingleQuotes = require('./character/characterEndSingleQuotes');
 const LineCommentPercent = require('./lineComment/lineCommentPercent');
 const LineCommentMiddle = require('./lineComment/lineCommentMiddle');
-const LineCommentLineBreak = require('./lineComment/lineCommentLineBreak');
+const LineComment = require('./lineComment/lineComment');
 const BlockCommentStartHash = require('./blockComment/blockCommentStartHash');
 const BlockCommentMiddle = require('./blockComment/blockCommentMiddle');
 const BlockCommentEndHash = require('./blockComment/blockCommentEndHash');
@@ -70,7 +70,7 @@ const states = {
   [constants.CHARACTER_END_SINGLE_QUOTES]: CharacterEndSingleQuotes,
   [constants.LINE_COMMENT_PERCENT]: LineCommentPercent,
   [constants.LINE_COMMENT_MIDDLE]: LineCommentMiddle,
-  [constants.LINE_COMMENT_LINE_BREAK]: LineCommentLineBreak,
+  [constants.LINE_COMMENT]: LineComment,
   [constants.BLOCK_COMMENT_START_HASH]: BlockCommentStartHash,
   [constants.BLOCK_COMMENT_MIDDLE]: BlockCommentMiddle,
   [constants.BLOCK_COMMENT_END_HASH]: BlockCommentEndHash,

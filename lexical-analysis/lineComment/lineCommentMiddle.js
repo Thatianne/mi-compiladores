@@ -4,9 +4,8 @@ const BaseClass = require('../baseClass');
 class LineCommentMiddle extends BaseClass {
 
   static exec(character) {
-    // TODO tratar quando o comentário está na última linha do arquivo
-    if (character === "\n") {
-      return constants.LINE_COMMENT_LINE_BREAK;
+    if (character === "\n" || character === '') {
+      return constants.LINE_COMMENT;
     } else {
       return constants.LINE_COMMENT_MIDDLE;
     }

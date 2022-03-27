@@ -1,7 +1,7 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class LineCommentLineBreak extends BaseClass {
+class LineComment extends BaseClass {
 
   static exec(character) {
     return constants.INITIAL;
@@ -20,4 +20,4 @@ class LineCommentLineBreak extends BaseClass {
   }
 }
 
-module.exports = LineCommentLineBreak
+module.exports = LineComment

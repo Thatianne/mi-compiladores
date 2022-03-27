@@ -27,7 +27,7 @@ const CHARACTER_MIDDLE = 'characterMiddle';
 const CHARACTER_END_SINGLE_QUOTES = 'characterEndSingleQuotes';
 const LINE_COMMENT_PERCENT = 'lineCommentPercent';
 const LINE_COMMENT_MIDDLE = 'lineCommentMiddle';
-const LINE_COMMENT_LINE_BREAK = 'lineCommentLineBreak';
+const LINE_COMMENT = 'lineComment';
 const BLOCK_COMMENT_START_HASH = 'blockCommentStartHash';
 const BLOCK_COMMENT_MIDDLE = 'blockCommentMiddle';
 const BLOCK_COMMENT_END_HASH = 'blockCommentEndHash';
@@ -70,7 +70,7 @@ module.exports = {
   CHARACTER_END_SINGLE_QUOTES,
   LINE_COMMENT_PERCENT,
   LINE_COMMENT_MIDDLE,
-  LINE_COMMENT_LINE_BREAK,
+  LINE_COMMENT,
   BLOCK_COMMENT_START_HASH,
   BLOCK_COMMENT_MIDDLE,
   BLOCK_COMMENT_END_HASH,

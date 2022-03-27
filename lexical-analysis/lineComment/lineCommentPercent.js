@@ -4,8 +4,8 @@ const BaseClass = require('../baseClass');
 class LineCommentPercent extends BaseClass {
 
   static exec(character) {
-    if (character === "\n") {
-      return constants.LINE_COMMENT_PERCENT;
+    if (character === "\n" || character === '') {
+      return constants.LINE_COMMENT;
     }
 
     // TODO tratar erros
