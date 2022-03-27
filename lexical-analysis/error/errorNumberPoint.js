@@ -1,17 +1,18 @@
 const constants = require('../constants');
-const BaseClass = require('../baseClass');
+const BaseClassError = require('../baseClassError');
 
-class LogicalOperators extends BaseClass {
+class ErrorNumberPoint extends BaseClassError {
+
   static exec(character) {
     return constants.INITIAL;
   }
 
-  static isFinalState() {
-    return true;
-  }
-
   static willStay(character) {
     return false;
+  }
+
+  static isFinalState() {
+    return true;
   }
 
   static willHaveBetterMatch(character) {
@@ -20,4 +21,4 @@ class LogicalOperators extends BaseClass {
 
 }
 
-module.exports = LogicalOperators;
+module.exports = ErrorNumberPoint;

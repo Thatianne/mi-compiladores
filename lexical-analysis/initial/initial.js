@@ -8,25 +8,25 @@ class Initial extends BaseClass {
     const regexNumber = /[0-9]/;
 
     if (regexIdentifier.test(character)) {
-      return constants.IDENTIFIERS;
+      return constants.IDENTIFIER;
     } else if (regexDelimiters.test(character)) {
-      return constants.DELIMITERS;
+      return constants.DELIMITER;
     } else if (character === '!') {
-      return constants.LOGICAL_OPERATORS_NOT;
+      return constants.LOGICAL_OPERATOR_NOT;
     } else if (['&', '|'].includes(character)) {
-      return constants.LOGICAL_OPERATORS_PARTIAL;
+      return constants.LOGICAL_OPERATOR_PARTIAL;
     } else if (['=', '>', '<'].includes(character)) {
-      return constants.RELATIONAL_OPERATORS_SIMPLE;
+      return constants.RELATIONAL_OPERATOR_SIMPLE;
     } else if (character === '+') {
-      return constants.ARITHMETIC_OPERATORS_PLUS;
+      return constants.ARITHMETIC_OPERATOR_PLUS;
     } else if (character === '-') {
-      return constants.ARITHMETIC_OPERATORS_MINUS;
+      return constants.ARITHMETIC_OPERATOR_MINUS;
     } else if (character === '*') {
-      return constants.ARITHMETIC_OPERATORS;
+      return constants.ARITHMETIC_OPERATOR;
     } else if (character === '/') {
-      return constants.ARITHMETIC_OPERATORS_SLASH;
+      return constants.ARITHMETIC_OPERATOR_SLASH;
     } else if (regexNumber.test(character)) {
-      return constants.NUMBERS;
+      return constants.NUMBER;
     } else if (character === '"') {
       return constants.STRING_START_DOUBLE_QUOTES;
     } else if (character === "'") {

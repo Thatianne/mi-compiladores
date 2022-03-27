@@ -7,7 +7,7 @@ class Process {
     const outputArray = []
     const code = fs.readFileSync(inputFile, {encoding:'utf8', flag:'r'});
     const codeLength = code.length;
-    const reservedWordsState = states.states[constants.RESERVED_WORDS];
+    const reservedWordsState = states.states[constants.RESERVED_WORD];
     let lexemeArray = [];
     let lexeme = '';
     let stateName = constants.INITIAL
@@ -39,8 +39,8 @@ class Process {
       ) {
         lexeme = lexemeArray.join('').trim();
 
-        if (stateName === constants.IDENTIFIERS && reservedWordsState.includes(lexeme)) {
-          stateName = constants.RESERVED_WORDS;
+        if (stateName === constants.IDENTIFIER && reservedWordsState.includes(lexeme)) {
+          stateName = constants.RESERVED_WORD;
           state = states.states[stateName];
         }
         console.log(`${lineCounter} ${lexeme} ${state.name}`);

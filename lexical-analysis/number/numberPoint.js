@@ -1,13 +1,16 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class ArithmeticOperators extends BaseClass {
+class NumbersPoint extends BaseClass {
   static exec(character) {
-    return constants.INITIAL;
+    if (/[0-9]/.test(character)) {
+      return constants.NUMBER_FLOAT;
+    }
+    return constants.ERROR_NUMBERS_POINT;
   }
 
   static isFinalState() {
-    return true;
+    return false;
   }
 
   static willStay(character) {
@@ -15,9 +18,9 @@ class ArithmeticOperators extends BaseClass {
   }
 
   static willHaveBetterMatch(character) {
-    return false;
+    return /[0-9]/.test(character);
   }
 
 }
 
-module.exports = ArithmeticOperators;
+module.exports = NumbersPoint;

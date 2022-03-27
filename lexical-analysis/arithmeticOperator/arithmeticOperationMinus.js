@@ -1,10 +1,10 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class ArithmeticOperatorsMinus extends BaseClass {
+class ArithmeticOperatorMinus extends BaseClass {
   static exec(character) {
     if (character === '-') {
-      return constants.ARITHMETIC_OPERATORS_DOUBLE_MINUS;
+      return constants.ARITHMETIC_OPERATOR_DOUBLE_MINUS;
     }
     return constants.INITIAL;
   }
@@ -23,4 +23,4 @@ class ArithmeticOperatorsMinus extends BaseClass {
 
 }
 
-module.exports = ArithmeticOperatorsMinus;
+module.exports = ArithmeticOperatorMinus;

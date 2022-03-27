@@ -1,21 +1,21 @@
 const INITIAL = 'initial';
-const IDENTIFIERS = 'identifiers';
-const RESERVED_WORDS = 'reservedWords';
-const DELIMITERS = 'delimiters';
-const LOGICAL_OPERATORS_NOT = 'logicalOperatorsNot';
-const LOGICAL_OPERATORS_PARTIAL = 'logicalOperatorsPartial';
-const LOGICAL_OPERATORS = 'logicalOperators';
-const RELATIONAL_OPERATORS_SIMPLE = 'relationalOperatorsSimple';
-const RELATIONAL_OPERATORS = 'relationalOperators';
-const ARITHMETIC_OPERATORS = 'arithmeticOperators';
-const ARITHMETIC_OPERATORS_SLASH = 'arithmeticOperatorsSlash';
-const ARITHMETIC_OPERATORS_PLUS = 'arithmeticOperatorsPlus';
-const ARITHMETIC_OPERATORS_DOUBLE_PLUS = 'arithmeticOperatorsDoublePlus';
-const ARITHMETIC_OPERATORS_MINUS = 'arithmeticOperatorsMinus';
-const ARITHMETIC_OPERATORS_DOUBLE_MINUS = 'arithmeticOperatorsDoubleMinus';
-const NUMBERS = 'numbers';
-const NUMBERS_POINT = 'numbersPoint';
-const NUMBERS_FLOAT = 'numbersFloat';
+const IDENTIFIER = 'identifier';
+const RESERVED_WORD = 'reservedWord';
+const DELIMITER = 'delimiter';
+const LOGICAL_OPERATOR_NOT = 'logicalOperatorNot';
+const LOGICAL_OPERATOR_PARTIAL = 'logicalOperatorPartial';
+const LOGICAL_OPERATOR = 'logicalOperator';
+const RELATIONAL_OPERATOR_SIMPLE = 'relationalOperatorSimple';
+const RELATIONAL_OPERATOR = 'relationalOperator';
+const ARITHMETIC_OPERATOR = 'arithmeticOperator';
+const ARITHMETIC_OPERATOR_SLASH = 'arithmeticOperatorSlash';
+const ARITHMETIC_OPERATOR_PLUS = 'arithmeticOperatorPlus';
+const ARITHMETIC_OPERATOR_DOUBLE_PLUS = 'arithmeticOperatorDoublePlus';
+const ARITHMETIC_OPERATOR_MINUS = 'arithmeticOperatorMinus';
+const ARITHMETIC_OPERATOR_DOUBLE_MINUS = 'arithmeticOperatorDoubleMinus';
+const NUMBER = 'number';
+const NUMBER_POINT = 'numberPoint';
+const NUMBER_FLOAT = 'numberFloat';
 const STRING_START_DOUBLE_QUOTES = 'stringStartDoubleQuotes';
 const STRING_MIDDLE = 'stringMiddle';
 const STRING_END_DOUBLE_QUOTES = 'stringEndDoubleQuotes';
@@ -37,23 +37,23 @@ const ERROR_CHARACTER_NOT_CLOSED = 'errorCharacterNotClosed';
 
 module.exports = {
   INITIAL,
-  IDENTIFIERS,
-  RESERVED_WORDS,
-  DELIMITERS,
-  LOGICAL_OPERATORS_NOT,
-  LOGICAL_OPERATORS_PARTIAL,
-  LOGICAL_OPERATORS,
-  RELATIONAL_OPERATORS_SIMPLE,
-  RELATIONAL_OPERATORS,
-  ARITHMETIC_OPERATORS,
-  ARITHMETIC_OPERATORS_SLASH,
-  ARITHMETIC_OPERATORS_PLUS,
-  ARITHMETIC_OPERATORS_DOUBLE_PLUS,
-  ARITHMETIC_OPERATORS_MINUS,
-  ARITHMETIC_OPERATORS_DOUBLE_MINUS,
-  NUMBERS,
-  NUMBERS_POINT,
-  NUMBERS_FLOAT,
+  IDENTIFIER,
+  RESERVED_WORD,
+  DELIMITER,
+  LOGICAL_OPERATOR_NOT,
+  LOGICAL_OPERATOR_PARTIAL,
+  LOGICAL_OPERATOR,
+  RELATIONAL_OPERATOR_SIMPLE,
+  RELATIONAL_OPERATOR,
+  ARITHMETIC_OPERATOR,
+  ARITHMETIC_OPERATOR_SLASH,
+  ARITHMETIC_OPERATOR_PLUS,
+  ARITHMETIC_OPERATOR_DOUBLE_PLUS,
+  ARITHMETIC_OPERATOR_MINUS,
+  ARITHMETIC_OPERATOR_DOUBLE_MINUS,
+  NUMBER,
+  NUMBER_POINT,
+  NUMBER_FLOAT,
   STRING_START_DOUBLE_QUOTES,
   STRING_MIDDLE,
   STRING_END_DOUBLE_QUOTES,

@@ -1,20 +1,20 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class NumbersPoint extends BaseClass {
+class NumberFloat extends BaseClass {
   static exec(character) {
     if (/[0-9]/.test(character)) {
-      return constants.NUMBERS_FLOAT;
+      return constants.NUMBER_FLOAT;
     }
-    return constants.ERROR_NUMBERS_POINT;
+    return constants.INITIAL;
   }
 
   static isFinalState() {
-    return false;
+    return true;
   }
 
   static willStay(character) {
-    return false;
+    return /[0-9]/.test(character);
   }
 
   static willHaveBetterMatch(character) {
@@ -23,4 +23,4 @@ class NumbersPoint extends BaseClass {
 
 }
 
-module.exports = NumbersPoint;
+module.exports = NumberFloat;

@@ -1,5 +1,5 @@
-1 1.. ErrorNumbersPoint
-1 2 Numbers
+1 1.. ErrorNumberPoint
+1 2 Number
 2 juli Identifier
 2 @ ErrorInvalidCharacter
 2 na Identifier

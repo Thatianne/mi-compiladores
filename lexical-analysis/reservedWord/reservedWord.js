@@ -1,7 +1,7 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class ReservedWords extends BaseClass {
+class ReservedWord extends BaseClass {
 
   static exec(character) {
     return constants.INITIAL;
@@ -49,4 +49,4 @@ class ReservedWords extends BaseClass {
   }
 }
 
-module.exports = ReservedWords
+module.exports = ReservedWord

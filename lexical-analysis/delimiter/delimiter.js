@@ -1,7 +1,7 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class Delimiters extends BaseClass {
+class Delimiter extends BaseClass {
 
   static exec(character) {
     return constants.INITIAL;
@@ -20,4 +20,4 @@ class Delimiters extends BaseClass {
   }
 }
 
-module.exports = Delimiters;
+module.exports = Delimiter;

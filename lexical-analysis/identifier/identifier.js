@@ -7,7 +7,7 @@ class Identifier extends BaseClass {
     const regex = /[a-zA-Z0-9_]/;
 
     if (regex.test(character)) {
-      return constants.IDENTIFIERS;
+      return constants.IDENTIFIER;
     } if (/\s/.test(character)) {
       return constants.INITIAL;
     }

@@ -1,10 +1,12 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class LogicalOperatorsNot extends BaseClass {
+class Number extends BaseClass {
   static exec(character) {
-    if (character === '=') {
-      return constants.RELATIONAL_OPERATORS;
+    if (/[0-9]/.test(character)) {
+      return constants.NUMBER;
+    } else if (character === '.') {
+      return constants.NUMBER_POINT;
     }
     return constants.INITIAL;
   }
@@ -14,13 +16,13 @@ class LogicalOperatorsNot extends BaseClass {
   }
 
   static willStay(character) {
-    return false;
+    return /[0-9]/.test(character);
   }
 
   static willHaveBetterMatch(character) {
-    return character === '=';
+    return character === '.';
   }
 
 }
 
-module.exports = LogicalOperatorsNot;
+module.exports = Number;

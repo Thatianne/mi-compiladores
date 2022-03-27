@@ -1,12 +1,10 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class Numbers extends BaseClass {
+class ArithmeticOperatorSlash extends BaseClass {
   static exec(character) {
-    if (/[0-9]/.test(character)) {
-      return constants.NUMBERS;
-    } else if (character === '.') {
-      return constants.NUMBERS_POINT;
+    if (character === '#') {
+      return constants.BLOCK_COMMENT_START_HASH;
     }
     return constants.INITIAL;
   }
@@ -16,13 +14,13 @@ class Numbers extends BaseClass {
   }
 
   static willStay(character) {
-    return /[0-9]/.test(character);
+    return false;
   }
 
   static willHaveBetterMatch(character) {
-    return character === '.';
+    return character === '#';
   }
 
 }
 
-module.exports = Numbers;
+module.exports = ArithmeticOperatorSlash;

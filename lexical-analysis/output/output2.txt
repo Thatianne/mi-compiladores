@@ -1,5 +1,5 @@
 1 var ReservedWords
-1 { Delimiters
-1 [ Delimiters
+1 { Delimiter
+1 [ Delimiter
 2 ewew Identifier
-2 ( Delimiters
+2 ( Delimiter
