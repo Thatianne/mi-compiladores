@@ -2,9 +2,13 @@ const INITIAL = 'initial';
 const IDENTIFIER = 'identifier';
 const RESERVED_WORD = 'reservedWord';
 const DELIMITER = 'delimiter';
-const LOGICAL_OPERATOR_NOT = 'logicalOperatorNot';
-const LOGICAL_OPERATOR_PARTIAL = 'logicalOperatorPartial';
 const LOGICAL_OPERATOR = 'logicalOperator';
+const LOGICAL_OPERATOR_NOT = 'logicalOperatorNot';
+const LOGICAL_OPERATOR_PARTIAL_AND = 'logicalOperatorPartialAnd';
+const LOGICAL_OPERATOR_AND = 'logicalOperatorAnd';
+const LOGICAL_OPERATOR_PARTIAL_OR = 'logicalOperatorPartialOr';
+const LOGICAL_OPERATOR_OR = 'logicalOperatorOr';
+const LOGICAL_OPERATOR_PARTIAL = 'logicalOperatorPartial';
 const RELATIONAL_OPERATOR_SIMPLE = 'relationalOperatorSimple';
 const RELATIONAL_OPERATOR = 'relationalOperator';
 const ARITHMETIC_OPERATOR = 'arithmeticOperator';
@@ -34,15 +38,20 @@ const ERROR_NUMBERS_POINT = 'errorNumbersPoint';
 const ERROR_BLOCK_COMMENT_NOT_CLOSED = 'errorBlockCommentNotClosed';
 const ERROR_STRING_NOT_CLOSED = 'errorStringNotClosed';
 const ERROR_CHARACTER_NOT_CLOSED = 'errorCharacterNotClosed';
+const ERROR_LOGICAL_OPERATOR_AND_INCOMPLETED = 'errorLogicalOperatorAndIncompleted';
 
 module.exports = {
   INITIAL,
   IDENTIFIER,
   RESERVED_WORD,
   DELIMITER,
-  LOGICAL_OPERATOR_NOT,
-  LOGICAL_OPERATOR_PARTIAL,
   LOGICAL_OPERATOR,
+  LOGICAL_OPERATOR_NOT,
+  LOGICAL_OPERATOR_PARTIAL_AND,
+  LOGICAL_OPERATOR_AND,
+  LOGICAL_OPERATOR_PARTIAL_OR,
+  LOGICAL_OPERATOR_OR,
+  LOGICAL_OPERATOR_PARTIAL,
   RELATIONAL_OPERATOR_SIMPLE,
   RELATIONAL_OPERATOR,
   ARITHMETIC_OPERATOR,
@@ -72,4 +81,5 @@ module.exports = {
   ERROR_BLOCK_COMMENT_NOT_CLOSED,
   ERROR_STRING_NOT_CLOSED,
   ERROR_CHARACTER_NOT_CLOSED,
+  ERROR_LOGICAL_OPERATOR_AND_INCOMPLETED,
 }

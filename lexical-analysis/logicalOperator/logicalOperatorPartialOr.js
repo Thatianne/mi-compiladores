@@ -1,10 +1,10 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class LogicalOperatorPartial extends BaseClass {
+class LogicalOperatorPartialOr extends BaseClass {
   static exec(character) {
-    if (['&', '|'].includes(character)) {
-      return constants.LOGICAL_OPERATOR;
+    if (character === '|') {
+      return constants.LOGICAL_OPERATOR_OR;
     }
 
     return constants.INITIAL;
@@ -24,4 +24,4 @@ class LogicalOperatorPartial extends BaseClass {
 
 }
 
-module.exports = LogicalOperatorPartial;
+module.exports = LogicalOperatorPartialOr;

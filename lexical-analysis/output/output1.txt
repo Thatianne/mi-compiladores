@@ -1,10 +1,3 @@
-1 1.. ErrorNumberPoint
-1 2 Number
-2 juli Identifier
-2 @ ErrorInvalidCharacter
-2 na Identifier
-4 "dsds
-d" StringEndDoubleQuotes
-5 'dd ErrorCharacterNotClosed
-5 sss Identifier
-6 /#dsdsd ErrorBlockCommentNotClosed
+1 && LogicalOperatorAnd
+1 && LogicalOperatorAnd
+1 || LogicalOperatorOr

@@ -4,9 +4,12 @@ const Initial = require('./initial/initial');
 const Identifier = require('./identifier/identifier');
 const ReservedWord = require('./reservedWord/reservedWord');
 const Delimiter = require('./delimiter/delimiter');
-const LogicalOperatorNot = require('./logicalOperator/logicalOperatorNot');
-const LogicalOperatorPartial = require('./logicalOperator/logicalOperatorPartial');
 const LogicalOperator = require('./logicalOperator/logicalOperator');
+const LogicalOperatorNot = require('./logicalOperator/logicalOperatorNot');
+const LogicalOperatorPartialAnd = require('./logicalOperator/logicalOperatorPartialAnd');
+const LogicalOperatorAnd = require('./logicalOperator/logicalOperatorAnd');
+const LogicalOperatorPartialOr = require('./logicalOperator/logicalOperatorPartialOr');
+const LogicalOperatorOr = require('./logicalOperator/logicalOperatorOr');
 const RelationalOperatorSimple = require('./relationalOperator/relationalOperatorSimple');
 const RelationalOperator = require('./relationalOperator/relationalOperator');
 const ArithmeticOperator = require('./arithmeticOperator/arithmeticOperation');
@@ -36,15 +39,19 @@ const ErrorNumberPoint = require('./error/errorNumberPoint');
 const ErrorBlockCommentNotClosed = require('./error/errorBlockCommentNotClosed');
 const ErrorStringNotClosed = require('./error/errorStringNotClosed');
 const ErrorCharacterNotClosed = require('./error/errorCharacterNotClosed');
+const ErrorLogicalOperatorAndIncompleted = require('./error/errorLogicalOperatorAndIncompleted');
 
 const states = {
   [constants.INITIAL]: Initial,
   [constants.IDENTIFIER]: Identifier,
   [constants.RESERVED_WORD]: ReservedWord,
   [constants.DELIMITER]: Delimiter,
-  [constants.LOGICAL_OPERATOR_NOT]: LogicalOperatorNot,
-  [constants.LOGICAL_OPERATOR_PARTIAL]: LogicalOperatorPartial,
   [constants.LOGICAL_OPERATOR]: LogicalOperator,
+  [constants.LOGICAL_OPERATOR_NOT]: LogicalOperatorNot,
+  [constants.LOGICAL_OPERATOR_PARTIAL_AND]: LogicalOperatorPartialAnd,
+  [constants.LOGICAL_OPERATOR_AND]: LogicalOperatorAnd,
+  [constants.LOGICAL_OPERATOR_PARTIAL_OR]: LogicalOperatorPartialOr,
+  [constants.LOGICAL_OPERATOR_OR]: LogicalOperatorOr,
   [constants.RELATIONAL_OPERATOR_SIMPLE]: RelationalOperatorSimple,
   [constants.RELATIONAL_OPERATOR]: RelationalOperator,
   [constants.ARITHMETIC_OPERATOR]: ArithmeticOperator,
@@ -74,6 +81,7 @@ const states = {
   [constants.ERROR_BLOCK_COMMENT_NOT_CLOSED]: ErrorBlockCommentNotClosed,
   [constants.ERROR_STRING_NOT_CLOSED]: ErrorStringNotClosed,
   [constants.ERROR_CHARACTER_NOT_CLOSED]: ErrorCharacterNotClosed,
+  [constants.ERROR_LOGICAL_OPERATOR_AND_INCOMPLETED]: ErrorLogicalOperatorAndIncompleted,
 }
 
 module.exports = {
