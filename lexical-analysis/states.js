@@ -11,12 +11,12 @@ const LogicalOperatorPartialOr = require('./logicalOperator/logicalOperatorParti
 const LogicalOperatorOr = require('./logicalOperator/logicalOperatorOr');
 const RelationalOperatorSimple = require('./relationalOperator/relationalOperatorSimple');
 const RelationalOperator = require('./relationalOperator/relationalOperator');
-const ArithmeticOperator = require('./arithmeticOperator/arithmeticOperation');
-const ArithmeticOperatorSlash = require('./arithmeticOperator/arithmeticOperationSlash');
-const ArithmeticOperatorMinus = require('./arithmeticOperator/arithmeticOperationMinus');
-const ArithmeticOperatorDoubleMinus = require('./arithmeticOperator/arithmeticOperationDoubleMinus');
-const ArithmeticOperatorPlus = require('./arithmeticOperator/arithmeticOperationPlus');
-const ArithmeticOperatorDoublePlus = require('./arithmeticOperator/arithmeticOperationDoublePlus ');
+const ArithmeticOperatorMultiplication = require('./arithmeticOperator/arithmeticOperatorMultiplication');
+const ArithmeticOperatorDivision = require('./arithmeticOperator/arithmeticOperatorDivision');
+const ArithmeticOperatorMinus = require('./arithmeticOperator/arithmeticOperatorMinus');
+const ArithmeticOperatorDecrement = require('./arithmeticOperator/arithmeticOperatorDecrement');
+const ArithmeticOperatorSum = require('./arithmeticOperator/arithmeticOperatorSum');
+const ArithmeticOperatorIncrement = require('./arithmeticOperator/arithmeticOperatorIncrement');
 const Number = require('./number/number');
 const NumberPoint = require('./number/numberPoint');
 const NumberFloat = require('./number/numberFloat');
@@ -53,12 +53,12 @@ const states = {
   [constants.LOGICAL_OPERATOR_OR]: LogicalOperatorOr,
   [constants.RELATIONAL_OPERATOR_SIMPLE]: RelationalOperatorSimple,
   [constants.RELATIONAL_OPERATOR]: RelationalOperator,
-  [constants.ARITHMETIC_OPERATOR]: ArithmeticOperator,
-  [constants.ARITHMETIC_OPERATOR_SLASH]: ArithmeticOperatorSlash,
+  [constants.ARITHMETIC_OPERATOR_DIVISION]: ArithmeticOperatorDivision,
+  [constants.ARITHMETIC_OPERATOR_MULTIPLICATION]: ArithmeticOperatorMultiplication,
   [constants.ARITHMETIC_OPERATOR_MINUS]: ArithmeticOperatorMinus,
-  [constants.ARITHMETIC_OPERATOR_DOUBLE_MINUS]: ArithmeticOperatorDoubleMinus,
-  [constants.ARITHMETIC_OPERATOR_PLUS]: ArithmeticOperatorPlus,
-  [constants.ARITHMETIC_OPERATOR_DOUBLE_PLUS]: ArithmeticOperatorDoublePlus,
+  [constants.ARITHMETIC_OPERATOR_DECREMENT]: ArithmeticOperatorDecrement,
+  [constants.ARITHMETIC_OPERATOR_SUM]: ArithmeticOperatorSum,
+  [constants.ARITHMETIC_OPERATOR_INCREMENT]: ArithmeticOperatorIncrement,
   [constants.NUMBER]: Number,
   [constants.NUMBER_POINT]: NumberPoint,
   [constants.NUMBER_FLOAT]: NumberFloat,

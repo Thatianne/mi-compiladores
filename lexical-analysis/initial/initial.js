@@ -20,13 +20,13 @@ class Initial extends BaseClass {
     } else if (['=', '>', '<'].includes(character)) {
       return constants.RELATIONAL_OPERATOR_SIMPLE;
     } else if (character === '+') {
-      return constants.ARITHMETIC_OPERATOR_PLUS;
+      return constants.ARITHMETIC_OPERATOR_SUM;
     } else if (character === '-') {
       return constants.ARITHMETIC_OPERATOR_MINUS;
     } else if (character === '*') {
-      return constants.ARITHMETIC_OPERATOR;
+      return constants.ARITHMETIC_OPERATOR_MULTIPLICATION;
     } else if (character === '/') {
-      return constants.ARITHMETIC_OPERATOR_SLASH;
+      return constants.ARITHMETIC_OPERATOR_DIVISION;
     } else if (regexNumber.test(character)) {
       return constants.NUMBER;
     } else if (character === '"') {

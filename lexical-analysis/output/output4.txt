@@ -196,7 +196,7 @@
 68 qtd Identifier
 68 = RelationalOperatorSimple
 68 qtd Identifier
-68 + ArithmeticOperatorPlus
+68 + ArithmeticOperatorSum
 68 1 Number
 68 ; Delimiter
 69 } Delimiter
@@ -209,7 +209,7 @@
 72 ; Delimiter
 73 } Delimiter
 74 cont Identifier
-74 ++ ArithmeticOperatorDoublePlus
+74 ++ ArithmeticOperatorIncrement
 74 ; Delimiter
 75 } Delimiter
 77 write ReservedWord

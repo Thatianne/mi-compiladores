@@ -4,7 +4,7 @@ const BaseClass = require('../baseClass');
 class ArithmeticOperatorMinus extends BaseClass {
   static exec(character) {
     if (character === '-') {
-      return constants.ARITHMETIC_OPERATOR_DOUBLE_MINUS;
+      return constants.ARITHMETIC_OPERATOR_DECREMENT;
     }
     return constants.INITIAL;
   }

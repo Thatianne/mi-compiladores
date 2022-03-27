@@ -1,8 +1,11 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class ArithmeticOperatorDoublePlus extends BaseClass {
+class ArithmeticOperatorSum extends BaseClass {
   static exec(character) {
+    if (character === '+') {
+      return constants.ARITHMETIC_OPERATOR_INCREMENT;
+    }
     return constants.INITIAL;
   }
 
@@ -15,9 +18,9 @@ class ArithmeticOperatorDoublePlus extends BaseClass {
   }
 
   static willHaveBetterMatch(character) {
-    return false;
+    return character === '+';
   }
 
 }
 
-module.exports = ArithmeticOperatorDoublePlus;
+module.exports = ArithmeticOperatorSum;

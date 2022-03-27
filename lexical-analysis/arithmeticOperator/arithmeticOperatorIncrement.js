@@ -1,11 +1,8 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class ArithmeticOperatorSlash extends BaseClass {
+class ArithmeticOperatorIncrement extends BaseClass {
   static exec(character) {
-    if (character === '#') {
-      return constants.BLOCK_COMMENT_START_HASH;
-    }
     return constants.INITIAL;
   }
 
@@ -18,9 +15,9 @@ class ArithmeticOperatorSlash extends BaseClass {
   }
 
   static willHaveBetterMatch(character) {
-    return character === '#';
+    return false;
   }
 
 }
 
-module.exports = ArithmeticOperatorSlash;
+module.exports = ArithmeticOperatorIncrement;

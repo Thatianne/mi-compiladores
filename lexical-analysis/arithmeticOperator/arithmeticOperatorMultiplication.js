@@ -1,7 +1,7 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class ArithmeticOperator extends BaseClass {
+class ArithmeticOperatorMultiplication extends BaseClass {
   static exec(character) {
     return constants.INITIAL;
   }
@@ -20,4 +20,4 @@ class ArithmeticOperator extends BaseClass {
 
 }
 
-module.exports = ArithmeticOperator;
+module.exports = ArithmeticOperatorMultiplication;

@@ -19,7 +19,7 @@ class Process {
       stateName = state.exec(character);
       lexemeArray.push(character);
 
-      console.log(state, character, states.states[stateName])
+      // console.log(state, character, states.states[stateName])
 
       state = states.states[stateName];
 
