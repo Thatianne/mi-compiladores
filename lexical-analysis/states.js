@@ -4,7 +4,6 @@ const Initial = require('./initial/initial');
 const Identifier = require('./identifier/identifier');
 const ReservedWord = require('./reservedWord/reservedWord');
 const Delimiter = require('./delimiter/delimiter');
-const LogicalOperator = require('./logicalOperator/logicalOperator');
 const LogicalOperatorNot = require('./logicalOperator/logicalOperatorNot');
 const LogicalOperatorPartialAnd = require('./logicalOperator/logicalOperatorPartialAnd');
 const LogicalOperatorAnd = require('./logicalOperator/logicalOperatorAnd');
@@ -47,7 +46,6 @@ const states = {
   [constants.IDENTIFIER]: Identifier,
   [constants.RESERVED_WORD]: ReservedWord,
   [constants.DELIMITER]: Delimiter,
-  [constants.LOGICAL_OPERATOR]: LogicalOperator,
   [constants.LOGICAL_OPERATOR_NOT]: LogicalOperatorNot,
   [constants.LOGICAL_OPERATOR_PARTIAL_AND]: LogicalOperatorPartialAnd,
   [constants.LOGICAL_OPERATOR_AND]: LogicalOperatorAnd,

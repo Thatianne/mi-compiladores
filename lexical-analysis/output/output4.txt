@@ -57,7 +57,7 @@
 24 idade Identifier
 24 >= RelationalOperator
 24 MINIDADE Identifier
-24 && LogicalOperator
+24 && LogicalOperatorAnd
 24 idade Identifier
 24 <= RelationalOperator
 24 MAXIDADE Identifier

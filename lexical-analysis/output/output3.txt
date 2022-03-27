@@ -34,8 +34,8 @@
 6 ] Delimiter
 6 . Delimiter
 6 : Delimiter
-7 && LogicalOperator
-7 || LogicalOperator
+7 && LogicalOperatorAnd
+7 || LogicalOperatorOr
 7 ! LogicalOperatorNot
 8 == RelationalOperator
 8 != RelationalOperator

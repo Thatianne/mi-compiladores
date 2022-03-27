@@ -2,7 +2,6 @@ const INITIAL = 'initial';
 const IDENTIFIER = 'identifier';
 const RESERVED_WORD = 'reservedWord';
 const DELIMITER = 'delimiter';
-const LOGICAL_OPERATOR = 'logicalOperator';
 const LOGICAL_OPERATOR_NOT = 'logicalOperatorNot';
 const LOGICAL_OPERATOR_PARTIAL_AND = 'logicalOperatorPartialAnd';
 const LOGICAL_OPERATOR_AND = 'logicalOperatorAnd';
@@ -46,7 +45,6 @@ module.exports = {
   IDENTIFIER,
   RESERVED_WORD,
   DELIMITER,
-  LOGICAL_OPERATOR,
   LOGICAL_OPERATOR_NOT,
   LOGICAL_OPERATOR_PARTIAL_AND,
   LOGICAL_OPERATOR_AND,
