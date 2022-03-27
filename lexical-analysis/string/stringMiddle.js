@@ -5,11 +5,12 @@ class StringMiddle extends BaseClass {
   static exec(character) {
     if (character === '"') {
       return constants.STRING_END_DOUBLE_QUOTES;
+    } else if (character === "") {
+      return constants.ERROR_STRING_NOT_CLOSED;
     } else if (/\x20-\x7E/) {
       return constants.STRING_MIDDLE;
     }
 
-    // TODO tratar erros
     return constants.INITIAL;
   }
 
