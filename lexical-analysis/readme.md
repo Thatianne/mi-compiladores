@@ -1,16 +1,3 @@
-string -> aceita quebra de linha
-
-ERROS
-x string -> tem erro quando não fecha a string e acaba o arquivo
-
-X identificador -> ex: Juli@a. Considerar Juli@a um único lexema inválido ou considerar Juli @(erro) a, tres tokens. Segunda abordagem acredito que vai ser mais fácil
-
-X numero -> ex: 9..4 Considerar que é 9. (erro) . (delimitador) 4 (numero)
-
-x comentario de bloco -> não fechar o bloco e o arquivo ter acabado
-
-operador logico -> ex: & Operador lógico mal formado
-
 # Decisões de projeto
 
 ## String
@@ -35,3 +22,58 @@ Ex.: 1..3
 "1.." é um erro
 
 "3" é um número inteiro
+
+# Executar projeto
+
+Node v12.18.4
+
+O projeto foi desenvolvido em sistema linux e os arquivos de teste que se encontram no diretório `input` foram criados no mesmo SO.
+
+No arquivo `index.js`, adicionar o arquivo de entrada que deve ser testado e o nome do arquivo de saída. Exemplo:
+
+```
+Process.init('input/input1.txt', 'output/output1.txt');
+```
+
+Para executar, execute o comando
+
+```
+node index.js
+```
+
+# TODO
+
+Ver os casos
+
+## Ex.: &a
+
+Estaria certo considerar sendo um lexema apenas com erro (&a)? Ou deveria ser considerado dois lexemas, um com erro (& -> operador lógico incompleto) e um lexema certo (a -> identificador).
+
+&a -> erro
+
+ou
+
+& -> erro
+
+a -> identificador
+
+## Ex.: |b
+
+Considerar
+
+|b -> erro
+
+ou
+
+| -> erro
+
+b -> identificador
+
+## Ex.: 'bb
+
+'bb -> caracter não fechado
+
+ou
+
+'b -> caracter não fechado
+b -> identificador

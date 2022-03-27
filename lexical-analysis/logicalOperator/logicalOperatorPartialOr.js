@@ -5,11 +5,9 @@ class LogicalOperatorPartialOr extends BaseClass {
   static exec(character) {
     if (character === '|') {
       return constants.LOGICAL_OPERATOR_OR;
-    } else if (/\s/.test(character) || character === '') {
-      return constants.ERROR_LOGICAL_OPERATOR_OR_INCOMPLETED;
     }
 
-    return constants.INITIAL;
+    return constants.ERROR_LOGICAL_OPERATOR_OR_INCOMPLETED;
   }
 
   static isFinalState() {

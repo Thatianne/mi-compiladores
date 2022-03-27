@@ -2,3 +2,5 @@
 1 & ErrorLogicalOperatorAndIncompleted
 1 || LogicalOperatorOr
 1 | ErrorLogicalOperatorOrIncompleted
+2 &a ErrorLogicalOperatorAndIncompleted
+2 |b ErrorLogicalOperatorOrIncompleted
