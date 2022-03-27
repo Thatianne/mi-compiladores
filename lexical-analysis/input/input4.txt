@@ -77,6 +77,3 @@ main
 	write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
 	Finalizar();
 }
-
-
-
