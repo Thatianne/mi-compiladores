@@ -29,6 +29,7 @@ const BLOCK_COMMENT_START_HASH = 'blockCommentStartHash';
 const BLOCK_COMMENT_MIDDLE = 'blockCommentMiddle';
 const BLOCK_COMMENT_END_HASH = 'blockCommentEndHash';
 const BLOCK_COMMENT_END_SLASH = 'blockCommentEndSlash';
+const INVALID_CHARACTER = 'invalidCharacter';
 
 module.exports = {
   INITIAL,
@@ -62,4 +63,5 @@ module.exports = {
   BLOCK_COMMENT_MIDDLE,
   BLOCK_COMMENT_END_HASH,
   BLOCK_COMMENT_END_SLASH,
+  INVALID_CHARACTER
 }

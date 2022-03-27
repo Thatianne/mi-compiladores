@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class LineCommentMiddle {
+class LineCommentMiddle extends BaseClass {
 
   static exec(character) {
     // TODO tratar quando o comentário está na última linha do arquivo

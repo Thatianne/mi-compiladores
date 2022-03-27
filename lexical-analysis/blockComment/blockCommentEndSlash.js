@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class BlockCommentSlash {
+class BlockCommentSlash extends BaseClass {
 
   static exec(character) {
     return constants.INITIAL;

@@ -1,9 +1,17 @@
-1 program ReservedWords
-1 abc Identifier
-1 ; Delimiters
-2 xxz Identifier
-2 char ReservedWords
-2 ; Delimiters
-3 var ReservedWords
-3 const ReservedWords
-4 ewew Identifier
+1 var ReservedWords
+1 { Delimiters
+1 [ Delimiters
+1 } Delimiters
+1 ] Delimiters
+1 const ReservedWords
+2 ewew Identifier
+2 ( Delimiters
+5 /#ds
+fdf
+dsds#/ BlockCommentSlash
+6 1 Numbers
+6 12 Numbers
+6 3243434 Numbers
+6 43.43 NumbersFloat
+7 "dsdsdsd" StringEndDoubleQuotes
+7 "{-/<^}" StringEndDoubleQuotes

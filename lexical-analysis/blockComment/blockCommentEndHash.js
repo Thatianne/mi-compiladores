@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class BlockCommentEndHash {
+class BlockCommentEndHash extends BaseClass {
 
   static exec(character) {
     if (character === '/') {

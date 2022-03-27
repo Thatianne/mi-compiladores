@@ -1,5 +1,7 @@
-program abc;
-xxz char;
-var const
-ewew
-
+var{[}] const
+ewew(
+/#ds
+fdf
+dsds#/
+1 12 3243434 43.43
+"dsdsdsd" "{-/<^}"

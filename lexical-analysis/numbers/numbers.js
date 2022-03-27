@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class Numbers {
+class Numbers extends BaseClass {
   static exec(character) {
     if (/[0-9]/.test(character)) {
       return constants.NUMBERS;

@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class ArithmeticOperatorsSlash {
+class ArithmeticOperatorsSlash extends BaseClass {
   static exec(character) {
     if (character === '#') {
       return constants.BLOCK_COMMENT_START_HASH;

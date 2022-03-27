@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class NumbersPoint {
+class NumbersPoint extends BaseClass {
   static exec(character) {
     if (/[0-9]/.test(character)) {
       return constants.NUMBERS_FLOAT;

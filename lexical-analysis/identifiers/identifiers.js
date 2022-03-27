@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class Identifier {
+class Identifier extends BaseClass {
 
   static exec(character) {
     const regex = /[a-zA-Z0-9_]/;

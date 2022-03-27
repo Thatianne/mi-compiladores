@@ -1,13 +1,12 @@
-const constants = require('../constants');
-const BaseClass = require('../baseClass');
+const constants = require('./constants');
 
-class ArithmeticOperatorsDoublePlus extends BaseClass {
+class BaseClass {
   static exec(character) {
     return constants.INITIAL;
   }
 
   static isFinalState() {
-    return true;
+    return false;
   }
 
   static willStay(character) {
@@ -18,6 +17,10 @@ class ArithmeticOperatorsDoublePlus extends BaseClass {
     return false;
   }
 
+  static isError(character) {
+    return false;
+  }
+
 }
 
-module.exports = ArithmeticOperatorsDoublePlus;
+module.exports = BaseClass;

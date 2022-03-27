@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class LogicalOperators {
+class LogicalOperators extends BaseClass {
   static exec(character) {
     return constants.INITIAL;
   }

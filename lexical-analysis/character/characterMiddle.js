@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class CharacterMiddle {
+class CharacterMiddle extends BaseClass {
   static exec(character) {
     if (character === "'") {
       return constants.CHARACTER_END_SINGLE_QUOTES;

@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class BlockCommentMiddle {
+class BlockCommentMiddle extends BaseClass {
 
   static exec(character) {
     if (character === '#') {

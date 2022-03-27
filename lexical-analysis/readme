@@ -1,0 +1,12 @@
+string -> aceita quebra de linha
+
+ERROS
+string -> tem erro quando não fecha a string e acaba o arquivo
+
+identificador -> ex: Juli@a. Considerar Juli@a um único lexema inválido ou considerar Juli @(erro) a, tres tokens. Segunda abordagem acredito que vai ser mais fácil
+
+numero -> ex: 9..4 Considerar que é 9. (erro) . (delimitador) 4 (numero)
+
+comentario de bloco -> não fechar o bloco e o arquivo ter acabado
+
+operador logico -> ex: & Operador lógico mal formado

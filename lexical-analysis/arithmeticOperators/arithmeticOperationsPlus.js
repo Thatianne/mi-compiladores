@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class ArithmeticOperatorsPlus {
+class ArithmeticOperatorsPlus extends BaseClass {
   static exec(character) {
     if (character === '+') {
       return constants.ARITHMETIC_OPERATORS_DOUBLE_PLUS;

@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class LogicalOperatorsPartial {
+class LogicalOperatorsPartial extends BaseClass {
   static exec(character) {
     if (['&', '|'].includes(character)) {
       return constants.LOGICAL_OPERATORS;

@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class LogicalOperatorsNot {
+class LogicalOperatorsNot extends BaseClass {
   static exec(character) {
     if (character === '=') {
       return constants.RELATIONAL_OPERATORS;

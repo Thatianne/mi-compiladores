@@ -18,6 +18,7 @@ class Process {
       const character = code.charAt(codeIndex);
       lexemeArray.push(character);
       stateName = state.exec(character);
+      // console.log(state, character, states.states[stateName])
       state = states.states[stateName];
 
       const characterLookup = code.charAt(codeIndex + 1);

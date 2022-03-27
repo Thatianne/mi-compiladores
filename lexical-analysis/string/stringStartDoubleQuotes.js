@@ -1,6 +1,7 @@
 const constants = require('../constants');
+const BaseClass = require('../baseClass');
 
-class StringStartDoubleQuotes {
+class StringStartDoubleQuotes extends BaseClass {
   static exec(character) {
     if (character === '"') {
       return constants.STRING_END_DOUBLE_QUOTES;

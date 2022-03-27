@@ -31,6 +31,7 @@ const BlockCommentStartHash = require('./blockComment/blockCommentStartHash');
 const BlockCommentMiddle = require('./blockComment/blockCommentMiddle');
 const BlockCommentEndHash = require('./blockComment/blockCommentEndHash');
 const BlockCommentEndSlash = require('./blockComment/blockCommentEndSlash');
+const InvalidCharacter = require('./errors/invalidCharacter');
 
 const states = {
   [constants.INITIAL]: Initial,
@@ -64,6 +65,7 @@ const states = {
   [constants.BLOCK_COMMENT_MIDDLE]: BlockCommentMiddle,
   [constants.BLOCK_COMMENT_END_HASH]: BlockCommentEndHash,
   [constants.BLOCK_COMMENT_END_SLASH]: BlockCommentEndSlash,
+  [constants.INVALID_CHARACTER]: InvalidCharacter,
 }
 
 module.exports = {
