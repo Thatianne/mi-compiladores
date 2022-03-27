@@ -22,7 +22,8 @@ A string poderá ocupar mais de uma linha.
 Para o caso em que se tem um caracter inválido ao formar um identificador
 
 Ex.: Juli@na
-"juli@" é um erro de identificador
+"juli" identificador
+"@" erro
 "na" é um identificador
 
 ## Número

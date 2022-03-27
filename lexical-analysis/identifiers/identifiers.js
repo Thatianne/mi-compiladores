@@ -25,8 +25,6 @@ class Identifier extends BaseClass {
   }
 
   static willHaveBetterMatch(character) {
-
-    return true;
     const regex = /[a-zA-Z0-9_]/;
 
     return regex.test(character);

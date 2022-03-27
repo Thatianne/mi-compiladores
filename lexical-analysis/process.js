@@ -41,7 +41,7 @@ class Process {
 
         if (stateName === constants.IDENTIFIERS && reservedWordsState.includes(lexeme)) {
           stateName = constants.RESERVED_WORDS;
-          state = reservedWordsState;
+          state = states.states[stateName];
         }
         console.log(`${lineCounter} ${lexeme} ${state.name}`);
         outputArray.push(`${lineCounter} ${lexeme} ${state.name}`);

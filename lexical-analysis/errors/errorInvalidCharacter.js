@@ -1,7 +1,7 @@
 const constants = require('../constants');
 const BaseClassError = require('../baseClassError');
 
-class InvalidCharacter extends BaseClassError {
+class ErrorInvalidCharacter extends BaseClassError {
 
   static exec(character) {
     return constants.INITIAL;
@@ -21,4 +21,4 @@ class InvalidCharacter extends BaseClassError {
 
 }
 
-module.exports = InvalidCharacter;
+module.exports = ErrorInvalidCharacter;

@@ -230,3 +230,4 @@
 78 ) Delimiters
 78 ; Delimiters
 79 } Delimiters
+82  ErrorInvalidCharacter

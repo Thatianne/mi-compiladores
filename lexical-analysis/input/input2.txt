@@ -1,7 +1,2 @@
-var{[}] const
+var{[
 ewew(
-/#ds
-fdf
-dsds#/
-1 12 3243434 43.43
-"dsdsdsd" "{-/<^}"

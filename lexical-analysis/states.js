@@ -31,7 +31,7 @@ const BlockCommentStartHash = require('./blockComment/blockCommentStartHash');
 const BlockCommentMiddle = require('./blockComment/blockCommentMiddle');
 const BlockCommentEndHash = require('./blockComment/blockCommentEndHash');
 const BlockCommentEndSlash = require('./blockComment/blockCommentEndSlash');
-const InvalidCharacter = require('./errors/invalidCharacter');
+const ErrorInvalidCharacter = require('./errors/errorInvalidCharacter');
 const ErrorNumbersPoint = require('./errors/errorNumbersPoint');
 const ErrorBlockCommentNotClosed = require('./errors/errorBlockCommentNotClosed');
 const ErrorStringNotClosed = require('./errors/errorStringNotClosed');
@@ -69,7 +69,7 @@ const states = {
   [constants.BLOCK_COMMENT_MIDDLE]: BlockCommentMiddle,
   [constants.BLOCK_COMMENT_END_HASH]: BlockCommentEndHash,
   [constants.BLOCK_COMMENT_END_SLASH]: BlockCommentEndSlash,
-  [constants.INVALID_CHARACTER]: InvalidCharacter,
+  [constants.ERROR_INVALID_CHARACTER]: ErrorInvalidCharacter,
   [constants.ERROR_NUMBERS_POINT]: ErrorNumbersPoint,
   [constants.ERROR_BLOCK_COMMENT_NOT_CLOSED]: ErrorBlockCommentNotClosed,
   [constants.ERROR_STRING_NOT_CLOSED]: ErrorStringNotClosed,

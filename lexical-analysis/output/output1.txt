@@ -1,6 +1,10 @@
 1 1.. ErrorNumbersPoint
 1 2 Numbers
-2 "dsdsd" StringEndDoubleQuotes
-2 2 Numbers
-2 3.4 NumbersFloat
-3 /#sdsd#/ BlockCommentSlash
+2 juli Identifier
+2 @ ErrorInvalidCharacter
+2 na Identifier
+4 "dsds
+d" StringEndDoubleQuotes
+5 'dd ErrorCharacterNotClosed
+5 sss Identifier
+6 /#dsdsd ErrorBlockCommentNotClosed
