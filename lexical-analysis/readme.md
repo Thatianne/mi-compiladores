@@ -43,9 +43,9 @@ node index.js
 
 # TODO
 
-Ver os casos
+## Ver os casos
 
-## Ex.: &a
+### Ex.: &a
 
 Estaria certo considerar sendo um lexema apenas com erro (&a)? Ou deveria ser considerado dois lexemas, um com erro (& -> operador lógico incompleto) e um lexema certo (a -> identificador).
 
@@ -57,7 +57,7 @@ ou
 
 a -> identificador
 
-## Ex.: |b
+### Ex.: |b
 
 Considerar
 
@@ -69,7 +69,7 @@ ou
 
 b -> identificador
 
-## Ex.: 'bb
+### Ex.: 'bb
 
 'bb -> caracter não fechado
 
@@ -77,3 +77,9 @@ ou
 
 'b -> caracter não fechado
 b -> identificador
+
+## Separação de estados para estados específicos
+
+Foi feita a separação dos estados para os operadores lógicos.
+
+Será necessário fazer a separação dos operadores aritméticos, operadores relacionais e dos delimitadores (?)
