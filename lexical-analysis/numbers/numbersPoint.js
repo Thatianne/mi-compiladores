@@ -6,8 +6,7 @@ class NumbersPoint extends BaseClass {
     if (/[0-9]/.test(character)) {
       return constants.NUMBERS_FLOAT;
     }
-    // TODO tratar erro (ex: 0..7)
-    return constants.INITIAL;
+    return constants.ERROR_NUMBERS_POINT;
   }
 
   static isFinalState() {

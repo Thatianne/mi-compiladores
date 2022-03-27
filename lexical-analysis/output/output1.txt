@@ -1,17 +1,2 @@
-1 var ReservedWords
-1 { Delimiters
-1 [ Delimiters
-1 } Delimiters
-1 ] Delimiters
-1 const ReservedWords
-2 ewew Identifier
-2 ( Delimiters
-5 /#ds
-fdf
-dsds#/ BlockCommentSlash
-6 1 Numbers
-6 12 Numbers
-6 3243434 Numbers
-6 43.43 NumbersFloat
-7 "dsdsdsd" StringEndDoubleQuotes
-7 "{-/<^}" StringEndDoubleQuotes
+1 1.. ErrorsNumbersPoint
+1 7 Numbers

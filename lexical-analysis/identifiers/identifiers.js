@@ -8,6 +8,8 @@ class Identifier extends BaseClass {
 
     if (regex.test(character)) {
       return constants.IDENTIFIERS;
+    } else if (!/[\x20-\x7E]/.test(character)) {
+      return constants.INVALID_CHARACTER;
     }
 
     return constants.INITIAL;
