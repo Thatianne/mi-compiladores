@@ -4,7 +4,7 @@ class StringStartDoubleQuotes {
   static exec(character) {
     if (character === '"') {
       return constants.STRING_END_DOUBLE_QUOTES;
-    } else if (/\x20-\x7E/) {
+    } else if (/[\x20-\x7E]/.test(character)) {
       return constants.STRING_MIDDLE;
     }
 
