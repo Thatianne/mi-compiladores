@@ -1,7 +1,7 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class RelationalOperator extends BaseClass {
+class RelationalOperatorEquals extends BaseClass {
   static exec(character) {
     return constants.INITIAL;
   }
@@ -20,4 +20,4 @@ class RelationalOperator extends BaseClass {
 
 }
 
-module.exports = RelationalOperator;
+module.exports = RelationalOperatorEquals;

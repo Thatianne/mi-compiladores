@@ -9,8 +9,13 @@ const LogicalOperatorPartialAnd = require('./logicalOperator/logicalOperatorPart
 const LogicalOperatorAnd = require('./logicalOperator/logicalOperatorAnd');
 const LogicalOperatorPartialOr = require('./logicalOperator/logicalOperatorPartialOr');
 const LogicalOperatorOr = require('./logicalOperator/logicalOperatorOr');
-const RelationalOperatorSimple = require('./relationalOperator/relationalOperatorSimple');
-const RelationalOperator = require('./relationalOperator/relationalOperator');
+const RelationalOperatorAssignment = require('./relationalOperator/relationalOperatorAssignment');
+const RelationalOperatorBigger = require('./relationalOperator/relationalOperatorBigger');
+const RelationalOperatorBiggerOrEquals = require('./relationalOperator/relationalOperatorBiggerOrEquals');
+const RelationalOperatorEquals = require('./relationalOperator/relationalOperatorEquals');
+const RelationalOperatorNotEquals = require('./relationalOperator/relationalOperatorNotEquals');
+const RelationalOperatorSmaller = require('./relationalOperator/relationalOperatorSmaller');
+const RelationalOperatorSmallerOrEquals = require('./relationalOperator/relationalOperatorSmallerOrEquals');
 const ArithmeticOperatorMultiplication = require('./arithmeticOperator/arithmeticOperatorMultiplication');
 const ArithmeticOperatorDivision = require('./arithmeticOperator/arithmeticOperatorDivision');
 const ArithmeticOperatorMinus = require('./arithmeticOperator/arithmeticOperatorMinus');
@@ -51,8 +56,13 @@ const states = {
   [constants.LOGICAL_OPERATOR_AND]: LogicalOperatorAnd,
   [constants.LOGICAL_OPERATOR_PARTIAL_OR]: LogicalOperatorPartialOr,
   [constants.LOGICAL_OPERATOR_OR]: LogicalOperatorOr,
-  [constants.RELATIONAL_OPERATOR_SIMPLE]: RelationalOperatorSimple,
-  [constants.RELATIONAL_OPERATOR]: RelationalOperator,
+  [constants.RELATIONAL_OPERATOR_ASSIGNMENT]: RelationalOperatorAssignment,
+  [constants.RELATIONAL_OPERATOR_BIGGER]:RelationalOperatorBigger,
+  [constants.RELATIONAL_OPERATOR_BIGGER_OR_EQUALS]:RelationalOperatorBiggerOrEquals,
+  [constants.RELATIONAL_OPERATOR_EQUALS]:RelationalOperatorEquals,
+  [constants.RELATIONAL_OPERATOR_NOT_EQUALS]:RelationalOperatorNotEquals,
+  [constants.RELATIONAL_OPERATOR_SMALLER]:RelationalOperatorSmaller,
+  [constants.RELATIONAL_OPERATOR_SMALLER_OR_EQUALS]:RelationalOperatorSmallerOrEquals,
   [constants.ARITHMETIC_OPERATOR_DIVISION]: ArithmeticOperatorDivision,
   [constants.ARITHMETIC_OPERATOR_MULTIPLICATION]: ArithmeticOperatorMultiplication,
   [constants.ARITHMETIC_OPERATOR_MINUS]: ArithmeticOperatorMinus,

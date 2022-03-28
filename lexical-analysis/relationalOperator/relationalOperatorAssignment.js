@@ -1,10 +1,10 @@
 const constants = require('../constants');
 const BaseClass = require('../baseClass');
 
-class LogicalOperatorNot extends BaseClass {
+class RelationalOperatorAssignment extends BaseClass {
   static exec(character) {
     if (character === '=') {
-      return constants.RELATIONAL_OPERATOR_NOT_EQUALS;
+      return constants.RELATIONAL_OPERATOR_EQUALS;
     }
     return constants.INITIAL;
   }
@@ -23,4 +23,4 @@ class LogicalOperatorNot extends BaseClass {
 
 }
 
-module.exports = LogicalOperatorNot;
+module.exports = RelationalOperatorAssignment;

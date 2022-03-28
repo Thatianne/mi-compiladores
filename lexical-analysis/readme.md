@@ -84,5 +84,6 @@ Foi feita a separação dos estados para:
 
 - operadores lógicos
 - operadores aritméticos
+- operadores relacionais
 
-Será necessário fazer a separação dos operadores relacionais e dos delimitadores (?)
+Será necessário fazer a separação dos delimitadores

@@ -17,8 +17,12 @@ class Initial extends BaseClass {
       return constants.LOGICAL_OPERATOR_PARTIAL_AND;
     }else if (character === '|') {
       return constants.LOGICAL_OPERATOR_PARTIAL_OR;
-    } else if (['=', '>', '<'].includes(character)) {
-      return constants.RELATIONAL_OPERATOR_SIMPLE;
+    } else if (character === '=') {
+      return constants.RELATIONAL_OPERATOR_ASSIGNMENT;
+    } else if (character === '>') {
+      return constants.RELATIONAL_OPERATOR_BIGGER;
+    } else if (character === '<') {
+      return constants.RELATIONAL_OPERATOR_SMALLER;
     } else if (character === '+') {
       return constants.ARITHMETIC_OPERATOR_SUM;
     } else if (character === '-') {

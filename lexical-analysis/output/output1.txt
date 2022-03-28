@@ -1,3 +1,7 @@
-1 %dsdsd LineComment
-2 abc Identifier
-3 % q? LineComment
+1 == RelationalOperatorEquals
+1 != RelationalOperatorNotEquals
+1 > RelationalOperatorBigger
+1 >= RelationalOperatorBiggerOrEquals
+1 < RelationalOperatorSmaller
+1 <= RelationalOperatorSmallerOrEquals
+1 = RelationalOperatorAssignment
