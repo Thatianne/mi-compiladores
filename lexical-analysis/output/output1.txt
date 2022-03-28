@@ -1,7 +1,8 @@
-1 == RelationalOperatorEquals
-1 != RelationalOperatorNotEquals
-1 > RelationalOperatorBigger
-1 >= RelationalOperatorBiggerOrEquals
-1 < RelationalOperatorSmaller
-1 <= RelationalOperatorSmallerOrEquals
-1 = RelationalOperatorAssignment
+1 1.. ErrorNumberPoint
+1 6 Number
+2 teste Identifier
+2 @ ErrorInvalidCharacter
+2 dsds Identifier
+2 5.2 NumberFloat
+3 "sasas" StringEndDoubleQuotes
+4 /# ErrorBlockCommentNotClosed

@@ -86,4 +86,4 @@ Foi feita a separação dos estados para:
 - operadores aritméticos
 - operadores relacionais
 
-Será necessário fazer a separação dos delimitadores
+Será necessário fazer a separação dos delimitadores?
