@@ -1,0 +1,16 @@
+1 &a ErrorLogicalOperatorAndIncompleted
+1 b Identifier
+2 |a ErrorLogicalOperatorOrIncompleted
+2 b Identifier
+3 'ab ErrorCharacterNotClosed
+3 'c' CharacterEndSingleQuotes
+4 abc Identifier
+4 def Identifier
+7 "asdbvc
+kkks
+fdfdf" StringEndDoubleQuotes
+8 algum Identifier
+8 identificador Identifier
+9 2 Number
+9 + ArithmeticOperatorSum
+9 3 Number

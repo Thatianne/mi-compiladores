@@ -1,0 +1,9 @@
+&ab
+|ab
+'ab'c'
+abc def
+"asdbvc
+kkks
+fdfdf"
+algum identificador
+2+3

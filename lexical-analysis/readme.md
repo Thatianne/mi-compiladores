@@ -4,14 +4,25 @@
 
 A string poderá ocupar mais de uma linha.
 
+## Caracter
+
+Ex.: 'ab'c'
+
+'ab é um erro
+
+'c' é um caracter
+
 ## Identificador
 
 Para o caso em que se tem um caracter inválido ao formar um identificador
 
 Ex.: Juli@na
-"juli" identificador
-"@" erro
-"na" é um identificador
+
+juli identificador
+
+@ erro
+
+na é um identificador
 
 ## Número
 
@@ -19,9 +30,32 @@ Para tratar erro em número de ponto flutuante, foi decidido a seguinte abordage
 
 Ex.: 1..3
 
-"1.." é um erro
+1.. é um erro
 
-"3" é um número inteiro
+3 é um número inteiro
+
+## Operadores lógicos
+
+Ex.: &ba
+
+&b é um erro
+
+a é um identificador
+
+Ex.: |ba
+
+|b é um erro
+
+a é um identificador
+
+# Separação das classes em estados específicos
+
+Foi feita a separação para:
+
+- Operadores lógicos
+- Operadores aritméticos
+- Operadores relacionais
+- Delimitadores (TODO)
 
 # Executar projeto
 
@@ -40,50 +74,3 @@ Para executar, execute o comando
 ```
 node index.js
 ```
-
-# TODO
-
-## Ver os casos
-
-### Ex.: &a
-
-Estaria certo considerar sendo um lexema apenas com erro (&a)? Ou deveria ser considerado dois lexemas, um com erro (& -> operador lógico incompleto) e um lexema certo (a -> identificador).
-
-&a -> erro
-
-ou
-
-& -> erro
-
-a -> identificador
-
-### Ex.: |b
-
-Considerar
-
-|b -> erro
-
-ou
-
-| -> erro
-
-b -> identificador
-
-### Ex.: 'bb
-
-'bb -> caracter não fechado
-
-ou
-
-'b -> caracter não fechado
-b -> identificador
-
-## Separação de estados para estados específicos
-
-Foi feita a separação dos estados para:
-
-- operadores lógicos
-- operadores aritméticos
-- operadores relacionais
-
-Será necessário fazer a separação dos delimitadores?
