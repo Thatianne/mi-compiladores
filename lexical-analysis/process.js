@@ -13,6 +13,7 @@ class Process {
     let stateName = constants.INITIAL
     let state = states.states[stateName];
     let lineCounter = 1;
+    let hasError = false;
 
     for (let codeIndex = 0; codeIndex < codeLength; codeIndex++) {
       const character = code.charAt(codeIndex);
@@ -43,6 +44,11 @@ class Process {
           stateName = constants.RESERVED_WORD;
           state = states.states[stateName];
         }
+
+        if (state.isError()) {
+          hasError = true;
+        }
+
         console.log(`${lineCounter} ${lexeme} ${state.name}`);
         outputArray.push(`${lineCounter} ${lexeme} ${state.name}`);
 
@@ -55,7 +61,11 @@ class Process {
       }
     }
 
-    fs.writeFileSync(outputFile, outputArray.join('\n'), { flag: 'w+' });
+    if (!hasError) {
+      console.log('Success!');
+    }
+
+    fs.writeFileSync(outputFile, outputArray.join('\n').concat(!hasError ? '\nSuccess!' : ''), { flag: 'w+' });
   }
 }
 
