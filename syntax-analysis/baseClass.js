@@ -1,9 +1,10 @@
 const Constants = require('./constants');
 
 class BaseClass {
-  constructor(tokens, currentIndex) {
+  constructor(tokens, currentIndex, errors) {
     this.tokens = tokens;
     this.currentIndex = currentIndex;
+    this.errors = errors;
   }
 
   exec() {
@@ -28,6 +29,30 @@ class BaseClass {
 
   isDelimiter(token) {
     return token.class.toLowerCase() === Constants.DELIMITER.toLowerCase();
+  }
+
+  isSemicolon(token) {
+    return this.isDelimiter(token) && token.lexema === ';';
+  }
+
+  isVarReservedWord(token) {
+    return this.isReservedWord(token) && token.lexema === 'var';
+  }
+
+  isOpenCurlyBrackets(token) {
+    return this.isDelimiter(token) && token.lexema === '{';
+  }
+
+  isCloseCurlyBrackets(token) {
+    return this.isDelimiter(token) && token.lexema === '}';
+  }
+
+  isComma(token) {
+    return this.isDelimiter(token) && token.lexema === ',';
+  }
+
+  addError(error) {
+    this.errors.push(error);
   }
 }
 

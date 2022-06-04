@@ -1,23 +1,23 @@
 const BaseClass = require('../baseClass');
 const VarType = require('./varType');
 const VarDeclaration1 = require('./varDeclaration1');
+const IdentifierNotFound = require('../errors/identifierNotFound');
 
 class VarDeclaration extends BaseClass {
   exec() {
-    const varType = new VarType(this.tokens, this.currentIndex);
-    this.currentIndex = varType.exec(); // TODO try-catch
+    const varType = new VarType(this.tokens, this.currentIndex, this.errors);
+    this.currentIndex = varType.exec();
 
     if (this.isIdentifier(this.currentToken)) {
       this.next();
-
-      const varDeclaration1 = new VarDeclaration1(this.tokens, this.currentIndex);
-      this.currentIndex = varDeclaration1.exec(); // TODO try-catch
-      return this.currentIndex;
     } else {
-      // TODO throw error
+      this.addError(new IdentifierNotFound(this.currentIndex, this.currentToken));
     }
 
-    //TODO criar tratamento geral de erro
+    const varDeclaration1 = new VarDeclaration1(this.tokens, this.currentIndex, this.errors);
+    this.currentIndex = varDeclaration1.exec();
+
+    return this.currentIndex;
   }
 }
 

@@ -3,7 +3,7 @@ const VarStatement = require('../variable/varStatement');
 
 class GlobalStatement extends BaseClass {
   exec() {
-    const varStatement = new VarStatement(this.tokens, this.currentIndex);
+    const varStatement = new VarStatement(this.tokens, this.currentIndex, this.errors);
     this.currentIndex = varStatement.exec();
 
     // TODO const

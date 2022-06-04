@@ -1,24 +1,26 @@
 const BaseClass = require('../baseClass');
 const VarList = require('./varList');
+const ReservedWordNotFound = require('../errors/reservedWordNotFound');
+const DelimiterNotFound = require('../errors/delimiterNotFound');
 
 class VarStatement extends BaseClass {
   exec() {
-    if (this.isReservedWord(this.currentToken) && this.currentToken.lexema === 'var') {
+    if (this.isVarReservedWord(this.currentToken)) {
       this.next();
-
-      if (this.isDelimiter(this.currentToken) && this.currentToken.lexema === '{') {
-        this.next();
-
-        const varList = new VarList(this.tokens, this.currentIndex);
-        this.currentIndex = varList.exec();
-
-        return this.currentIndex;
-      } else {
-        // TODO throw error
-      }
     } else {
-      // TODO throw error
+      this.addError(new ReservedWordNotFound('var', this.currentIndex, this.currentToken));
     }
+
+    if (this.isOpenCurlyBrackets(this.currentToken)) {
+      this.next();
+    } else {
+      this.addError(new DelimiterNotFound('{', this.currentIndex, this.currentToken));
+    }
+
+    const varList = new VarList(this.tokens, this.currentIndex, this.errors);
+    this.currentIndex = varList.exec();
+
+    return this.currentIndex;
   }
 }
 
