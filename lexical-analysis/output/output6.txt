@@ -1,0 +1,24 @@
+1 program ReservedWord
+1 teste Identifier
+1 ; Delimiter
+3 var ReservedWord
+4 { Delimiter
+5 integer ReservedWord
+5 ab Identifier
+5 , Delimiter
+5 jk Identifier
+5 ; Delimiter
+6 Person Identifier
+6 person Identifier
+6 , Delimiter
+6 other Identifier
+6 ; Delimiter
+7 boolean ReservedWord
+7 abc Identifier
+7 , Delimiter
+7 kl Identifier
+7 , Delimiter
+7 qw Identifier
+7 ; Delimiter
+8 } Delimiter
+Success!
