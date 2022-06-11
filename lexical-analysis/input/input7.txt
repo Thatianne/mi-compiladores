@@ -1,5 +1,5 @@
 program Test;
 
-var { +
+var {
     integer ab, jk;
 }

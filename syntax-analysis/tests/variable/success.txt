@@ -1,0 +1,7 @@
+program Test;
+
+var {
+  boolean c, d;
+  integer a, b;
+  string e;
+}

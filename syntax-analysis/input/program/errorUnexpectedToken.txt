@@ -1,0 +1,6 @@
+1 7 Number
+1 program ReservedWord
+1 10 Number
+1 Test Identifier
+1 ; Delimiter
+Success!

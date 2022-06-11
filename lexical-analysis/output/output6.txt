@@ -8,5 +8,13 @@
 4 , Delimiter
 4 jk Identifier
 4 ; Delimiter
-5 } Delimiter
+5 boolean ReservedWord
+5 ab Identifier
+5 jk Identifier
+6 string ReservedWord
+6 ab Identifier
+6 , Delimiter
+6 jk Identifier
+6 ; Delimiter
+7 } Delimiter
 Success!

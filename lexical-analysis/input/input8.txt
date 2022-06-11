@@ -1,0 +1,5 @@
+program Test;
+
+var
+    integer ab, jk
+}

@@ -19,6 +19,10 @@ class BaseClass {
     this.currentIndex++;
   }
 
+  prev() {
+    this.currentIndex--;
+  }
+
   isReservedWord(token) {
     return token.class.toLowerCase() === Constants.RESERVED_WORD.toLowerCase();
   }
@@ -53,6 +57,14 @@ class BaseClass {
 
   addError(error) {
     this.errors.push(error);
+  }
+
+  isSyncToken(token) {
+    this.getSyncTokens().includes(token.lexema)
+  }
+
+  getSyncTokens() {
+    return []
   }
 }
 

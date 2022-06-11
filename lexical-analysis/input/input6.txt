@@ -2,4 +2,6 @@ program Test;
 
 var {
     integer ab, jk;
+    boolean ab jk
+    string ab, jk;
 }

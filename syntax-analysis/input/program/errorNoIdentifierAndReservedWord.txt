@@ -1,0 +1,5 @@
+1 ; Delimiter
+2 var ReservedWord
+2 { Delimiter
+2 } Delimiter
+Success!

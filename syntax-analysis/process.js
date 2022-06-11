@@ -19,7 +19,8 @@ class Process {
       console.log(`Last analysed index: ${lastIndex - 1}, token length: ${tokens.length - 1}`);
       console.log('Success!');
     } else {
-      console.log(errors)
+      errors.map((error) => console.log(error.message));
+      // console.log(errors);
     }
 
   }
