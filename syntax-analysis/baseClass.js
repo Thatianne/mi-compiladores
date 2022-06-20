@@ -1,4 +1,6 @@
 const Constants = require('./constants');
+const UnexpectedToken = require('./errors/unexpectedToken');
+const FileEnded = require('./errors/FileEndend');
 
 class BaseClass {
   constructor(tokens, currentIndex, errors) {
@@ -71,12 +73,39 @@ class BaseClass {
     return +this.prevToken.line < +this.currentToken.line;
   }
 
-  getSetFirst() {
+  static getSetFirst() {
     return [];
   }
 
-  isOnSetFirst() {
-    return this.getSetFirst().includes(this.currentToken);
+  static isOnSetFirst(token) {
+    return BaseClass.getSetFirst().includes(token);
+  }
+
+  nextUntil(funcSearchUntil, funcsStopSearch) {
+    let found = false;
+    let endedTokens = true;
+
+    while(this.currentToken) {
+      if (funcSearchUntil.call(this, this.currentToken)) {
+        found = true;
+        endedTokens = false
+        break
+      }
+      if (funcsStopSearch.some((func) => func.call(this, this.currentToken))) {
+        found = false;
+        endedTokens = false;
+        break;
+      } else {
+        this.addError(new UnexpectedToken(this.currentIndex, this.currentToken));
+        this.next();
+      }
+
+    }
+
+    if (endedTokens) {
+      this.addError(new FileEnded());
+    }
+    return [found, endedTokens];
   }
 }
 

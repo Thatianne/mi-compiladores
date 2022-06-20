@@ -6,7 +6,8 @@
   "scripts": {
     "lexical": "node lexical-analysis/run-lexical-analysis",
     "syntax": "node syntax-analysis/run-syntax-analysis",
-    "analyze": "node run-lexical-and-syntax.js"
+    "analyze": "node run-lexical-and-syntax.js",
+    "analyze:debug": "node run-lexical-and-syntax.js --inspect"
   },
   "repository": {
     "type": "git",

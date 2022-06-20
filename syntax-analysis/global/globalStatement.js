@@ -6,16 +6,17 @@ class GlobalStatement extends BaseClass {
   exec() {
     const varStatement = new VarStatement(this.tokens, this.currentIndex, this.errors);
     this.currentIndex = varStatement.exec();
-
     // TODO const
 
     return this.currentIndex;
   }
 
-  getSetFirst() {
-    return [
-      'var'
-    ];
+  static getSetFirst() {
+    return VarStatement.getSetFirst();
+  }
+
+  static isOnSetFirst(token) {
+    return VarStatement.isOnSetFirst(token);
   }
 }
 

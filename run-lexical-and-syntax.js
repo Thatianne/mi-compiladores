@@ -7,7 +7,7 @@ const files = process.argv.slice(2);
 if (files.length < 1) {
   console.log('Informe o nome do arquivo');
 } else {
-  const file = files[0];
+  const file = files[files.length - 1];
   LexicalProcess.init(`syntax-analysis/tests/${file}`, `syntax-analysis/input/${file}`);
 
   SyntaxProcess.run(`syntax-analysis/input/${file}`);
