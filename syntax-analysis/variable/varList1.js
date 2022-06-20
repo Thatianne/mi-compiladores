@@ -27,6 +27,8 @@ class VarList1 extends BaseClass {
 
     return this.currentIndex;
   }
+
+  getFir
 }
 
 module.exports = VarList1;

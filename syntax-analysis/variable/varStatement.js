@@ -5,13 +5,15 @@ const DelimiterNotFound = require('../errors/delimiterNotFound');
 
 class VarStatement extends BaseClass {
   exec() {
-    if (this.isVarReservedWord(this.currentToken)) {
+    const foundVar = this.nextUntilVarReservedWord();
+    if (foundVar) {
       this.next();
     } else {
       this.addError(new ReservedWordNotFound('var', this.currentIndex, this.currentToken));
     }
 
-    if (this.isOpenCurlyBrackets(this.currentToken)) {
+    const foundOpenCurlyBrackets = this.nextUntilOpenCurlyBrackets();
+    if (foundOpenCurlyBrackets) {
       this.next();
     } else {
       this.addError(new DelimiterNotFound('{', this.currentIndex, this.currentToken));
@@ -21,6 +23,41 @@ class VarStatement extends BaseClass {
     this.currentIndex = varList.exec();
 
     return this.currentIndex;
+  }
+
+  nextUntilVarReservedWord() {
+    while(!this.isVarReservedWord(this.currentToken)) {
+      if (
+        this.isOpenCurlyBrackets(this.currentToken) ||
+        this.isSyncToken(this.currentToken)
+      ) {
+        return false;
+      } else {
+        this.addError(new UnexpectedToken(this.currentIndex, this.currentToken));
+        this.next();
+      }
+    }
+
+    return true;
+  }
+
+  nextUntilOpenCurlyBrackets() {
+    while(!this.isOpenCurlyBrackets(this.currentToken)) {
+      if (this.isSyncToken(this.currentToken)) {
+        return false;
+      } else {
+        this.addError(new UnexpectedToken(this.currentIndex, this.currentToken));
+        this.next();
+      }
+    }
+
+    return true;
+  }
+
+  getSyncTokens() {
+    return [
+      '{'
+    ]
   }
 }
 

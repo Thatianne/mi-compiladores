@@ -7,6 +7,7 @@ const UnexpectedToken = require('./errors/unexpectedToken');
 
 const PROGRAM = 'program';
 
+// <Start> ::= 'program' Identifier ';' <GlobalStatement>
 class Start extends BaseClass {
   exec() {
     const foundProgram = this.nextUntilProgramReservedWord();
@@ -32,9 +33,8 @@ class Start extends BaseClass {
       this.addError(new DelimiterNotFound(';', this.currentIndex, this.currentToken));
     }
 
-    const foundSyncToken = this.nextUntilSyncToken();
-    if(foundSyncToken) {
-      const globalStatement = new GlobalStatement(this.tokens, this.currentIndex, this.errors);
+    const globalStatement = new GlobalStatement(this.tokens, this.currentIndex, this.errors);
+    if(this.currentToken && (foundSemicolon || this.changedLine() || globalStatement.isOnSetFirst())) {
       this.currentIndex = globalStatement.exec();
     }
 
@@ -45,13 +45,9 @@ class Start extends BaseClass {
     return this.isReservedWord(token) && token.lexema === PROGRAM;
   }
 
-  nextUntilProgramReservedWord() {
-    while(!this.isProgramReservedWord(this.currentToken)) {
-      if (
-        this.isIdentifier(this.currentToken) ||
-        this.isSemicolon(this.currentToken) ||
-        this.isSyncToken(this.currentToken)
-      ) {
+  nextUntil(funcSearchUntil, funcsStopSearch) {
+    while(funcSearchUntil(this.currentToken)) {
+      if (funcsStopSearch.some((func) => func.call(this, this.currentToken))) {
         return false;
       } else {
         this.addError(new UnexpectedToken(this.currentIndex, this.currentToken));
@@ -60,58 +56,36 @@ class Start extends BaseClass {
     }
 
     return true;
+  }
+
+  nextUntilProgramReservedWord() {
+    return this.nextUntil(
+      (token) => !this.isProgramReservedWord(token),
+      [
+        this.isIdentifier,
+        this.isSemicolon,
+        this.isOnSetFirst,
+      ]
+    );
   }
 
   nextUntilIdentifier() {
-    while(!this.isIdentifier(this.currentToken)) {
-      if (
-        this.isSemicolon(this.currentToken) ||
-        this.isSyncToken(this.currentToken)
-      ) {
-        return false;
-      } else {
-        this.addError(new UnexpectedToken(this.currentIndex, this.currentToken));
-        this.next();
-      }
-    }
-
-    return true;
+    return this.nextUntil(
+      (token) => !this.isIdentifier(token),
+      [
+        this.isSemicolon,
+        this.isOnSetFirst,
+      ]
+    );
   }
 
   nextUntilSemicolon() {
-    while(!this.isSemicolon(this.currentToken)) {
-      if (this.isSyncToken(this.currentToken)) {
-        return false;
-      } else {
-        this.addError(new UnexpectedToken(this.currentIndex, this.currentToken));
-        this.next();
-      }
-    }
-
-    return true;
-  }
-
-  nextUntilSyncToken() {
-    while(!this.isSyncToken(this.currentToken)) {
-      if (this.currentToken) {
-        this.addError(new UnexpectedToken(this.currentIndex, this.currentToken));
-        this.next();
-      } else { // não tem mais para ler
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  isSyncToken(token) {
-    return token ? this.getSyncTokens().includes(token.lexema) : false;
-  }
-
-  getSyncTokens() {
-    return [
-      'var'
-    ]
+    return this.nextUntil(
+      (token) => !this.isSemicolon(token),
+      [
+        this.isOnSetFirst,
+      ]
+    );
   }
 }
 

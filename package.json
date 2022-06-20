@@ -1,0 +1,21 @@
+{
+  "name": "compiler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lexical": "node lexical-analysis/run-lexical-analysis",
+    "syntax": "node syntax-analysis/run-syntax-analysis",
+    "analyze": "node run-lexical-and-syntax.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thatianne/mi-compiladores.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thatianne/mi-compiladores/issues"
+  },
+  "homepage": "https://github.com/Thatianne/mi-compiladores#readme"
+}

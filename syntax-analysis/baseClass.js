@@ -15,6 +15,10 @@ class BaseClass {
     return this.tokens[this.currentIndex];
   }
 
+  get prevToken() {
+    return this.tokens[this.currentIndex - 1];
+  }
+
   next() {
     this.currentIndex++;
   }
@@ -59,12 +63,20 @@ class BaseClass {
     this.errors.push(error);
   }
 
-  isSyncToken(token) {
-    this.getSyncTokens().includes(token.lexema)
+  hasErrors() {
+    return this.errors.length > 0;
   }
 
-  getSyncTokens() {
-    return []
+  changedLine() {
+    return +this.prevToken.line < +this.currentToken.line;
+  }
+
+  getSetFirst() {
+    return [];
+  }
+
+  isOnSetFirst() {
+    return this.getSetFirst().includes(this.currentToken);
   }
 }
 

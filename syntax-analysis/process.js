@@ -15,8 +15,9 @@ class Process {
     const start = new Start(tokens, 0, errors);
     const lastIndex = start.exec();
 
+    console.log(`Last analysed index: ${lastIndex}, token length: ${tokens.length}`);
+
     if (errors.length === 0) {
-      console.log(`Last analysed index: ${lastIndex - 1}, token length: ${tokens.length - 1}`);
       console.log('Success!');
     } else {
       errors.map((error) => console.log(error.message));
