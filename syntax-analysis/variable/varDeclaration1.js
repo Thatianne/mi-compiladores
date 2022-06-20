@@ -15,7 +15,6 @@ class VarDeclaration1 extends BaseClass {
       if (foundComma) {
         this.next();
       } else {
-        console.log(this.prevToken)
         this.addError(new DelimiterNotFound(';', this.currentIndex, this.currentToken));
       }
 

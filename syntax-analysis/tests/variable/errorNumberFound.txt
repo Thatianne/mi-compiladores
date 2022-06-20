@@ -2,6 +2,6 @@ program Test;
 
 var {
   7;
-  integer a b;
+  integer a, b;
   string e;
 }
