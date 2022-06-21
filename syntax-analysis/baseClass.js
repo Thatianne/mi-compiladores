@@ -49,6 +49,10 @@ class BaseClass {
     return this.isReservedWord(token) && token.lexema === 'var';
   }
 
+  isConstReservedWord(token) {
+    return this.isReservedWord(token) && token.lexema === 'const';
+  }
+
   isOpenCurlyBrackets(token) {
     return this.isDelimiter(token) && token.lexema === '{';
   }
@@ -59,6 +63,14 @@ class BaseClass {
 
   isComma(token) {
     return this.isDelimiter(token) && token.lexema === ',';
+  }
+
+  isDot(token) {
+    return this.isDelimiter(token) && token.lexema === '.';
+  }
+
+  isEquals(token) {
+    return token.lexema === '=';
   }
 
   addError(error) {

@@ -1,0 +1,13 @@
+program Test;
+
+var {
+  integer a, b;
+  string e;
+}
+
+const {
+  boolean c = 10, d = "abc";
+  7
+  integer a = 'a' b = true;
+  string e = 'b';
+}
