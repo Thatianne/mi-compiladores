@@ -17,9 +17,13 @@ class Value extends BaseClass {
     if (!endedTokens) {
       if (foundedType) {
         if (this.isRegisterStart(this.currentToken)) {
-          this.next();
-          const valueRegister = new ValueRegister(this.tokens, this.currentIndex, this.errors);
-          this.currentIndex = valueRegister.exec();
+          if (this.isDot(this.nextToken)) {
+            this.next();
+            const valueRegister = new ValueRegister(this.tokens, this.currentIndex, this.errors);
+            this.currentIndex = valueRegister.exec();
+          } else {
+            this.next();
+          }
         } else {
           this.next();
         }

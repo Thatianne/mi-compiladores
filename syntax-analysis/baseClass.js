@@ -21,6 +21,10 @@ class BaseClass {
     return this.tokens[this.currentIndex - 1];
   }
 
+  get nextToken() {
+    return this.tokens[this.currentIndex + 1];
+  }
+
   next() {
     this.currentIndex++;
   }
@@ -51,6 +55,10 @@ class BaseClass {
 
   isConstReservedWord(token) {
     return this.isReservedWord(token) && token.lexema === 'const';
+  }
+
+  isRegisterReservedWord(token) {
+    return this.isReservedWord(token) && token.lexema === 'register';
   }
 
   isOpenCurlyBrackets(token) {

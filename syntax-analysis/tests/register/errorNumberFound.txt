@@ -1,0 +1,18 @@
+program Test;
+
+var {
+  integer a, b;
+  string e;
+}
+
+const {
+  boolean c = 10, d = "abc";
+  integer a = e, a = j.k, b = true;
+  string e = 'b';
+}
+
+register Pessoa {
+  string nome, sobrenome;
+  7
+  integer ano;
+}

@@ -1,6 +1,7 @@
 const BaseClass = require('../baseClass');
 const VarStatement = require('../variable/varStatement');
 const ConstStatement = require('../constant/constStatement');
+const RegisterStatement = require('../register/registerStatement');
 
 //<GlobalStatement> ::= <VarStatement> <ConstStatement> <RegisterStatement><ProcedureStatement><FunctionStatement> <Main>
 class GlobalStatement extends BaseClass {
@@ -9,7 +10,10 @@ class GlobalStatement extends BaseClass {
     this.currentIndex = varStatement.exec();
 
     const constStatement = new ConstStatement(this.tokens, this.currentIndex, this.errors);
-    this.currentIndex = constStatement.exec();
+    this.currentIndex = constStatement.exec()
+
+    const registerStatement = new RegisterStatement(this.tokens, this.currentIndex, this.errors);
+    this.currentIndex = registerStatement.exec();
 
     // TODO register
 
