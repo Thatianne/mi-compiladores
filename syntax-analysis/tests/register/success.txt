@@ -16,3 +16,8 @@ register Pessoa {
   string nome, sobrenome;
   integer ano;
 }
+
+register Pessoa {
+  string nome, sobrenome;
+  integer ano;
+}

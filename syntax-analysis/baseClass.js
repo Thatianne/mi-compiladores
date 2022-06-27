@@ -61,6 +61,14 @@ class BaseClass {
     return this.isReservedWord(token) && token.lexema === 'register';
   }
 
+  isProcedureReservedWord(token) {
+    return this.isReservedWord(token) && token.lexema === 'procedure';
+  }
+
+  isFunctionReservedWord(token) {
+    return this.isReservedWord(token) && token.lexema === 'function';
+  }
+
   isOpenCurlyBrackets(token) {
     return this.isDelimiter(token) && token.lexema === '{';
   }
@@ -75,6 +83,14 @@ class BaseClass {
 
   isDot(token) {
     return this.isDelimiter(token) && token.lexema === '.';
+  }
+
+  isOpenBrackets(token) {
+    return this.isDelimiter(token) && token.lexema === '(';
+  }
+
+  isCloseBrackets(token) {
+    return this.isDelimiter(token) && token.lexema === ')';
   }
 
   isEquals(token) {

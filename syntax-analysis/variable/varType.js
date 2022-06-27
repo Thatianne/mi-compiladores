@@ -13,12 +13,20 @@ class VarType extends BaseClass {
   }
 
   getTypes() {
+    return VarType.getSetFirst();
+  }
+
+  static getSetFirst() {
     return ['integer', 'string', 'real', 'boolean', 'char'];
+  }
+
+  static isOnSetFirst(token) {
+    return VarType.getSetFirst().includes(token.lexema);
   }
 
   nextUntilType() {
     return this.nextUntil(
-      (token) => this.getTypes().includes(token.lexema), [
+      VarType.isOnSetFirst, [
         this.isIdentifier
     ]);
   }

@@ -21,7 +21,6 @@ class Process {
       console.log('Success!');
     } else {
       errors.map((error) => console.log(error.message));
-      // console.log(errors);
     }
 
   }

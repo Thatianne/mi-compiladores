@@ -1,15 +1,13 @@
 const BaseClass = require('../baseClass');
-const RegisterStatement = require('./registerStatement');
 
 // <RegisterStatementMultiple> ::= <RegisterStatement> |
 class RegisterStatementMultiple extends BaseClass {
   exec() {
     if (this.currentToken) {
-      if (this.currentToken.lexema === 'register') { // TODO ver se tem dependencia circular
+      if (this.currentToken.lexema === 'register') { // TODO trocar por isInFirstSet
+        const RegisterStatement = require('./registerStatement');
         const registerStatement = new RegisterStatement(this.tokens, this.currentIndex, this.errors);
-        this.currentToken = registerStatement.exec();
-      } else {
-        this.next();
+        this.currentIndex = registerStatement.exec();
       }
     }
 

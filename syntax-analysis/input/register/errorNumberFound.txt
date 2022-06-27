@@ -57,4 +57,16 @@
 17 ano Identifier
 17 ; Delimiter
 18 } Delimiter
+20 register ReservedWord
+20 Pessoa Identifier
+20 { Delimiter
+21 string ReservedWord
+21 nome Identifier
+21 , Delimiter
+21 sobrenome Identifier
+21 ; Delimiter
+22 integer ReservedWord
+22 ano Identifier
+22 ; Delimiter
+23 } Delimiter
 Success!
