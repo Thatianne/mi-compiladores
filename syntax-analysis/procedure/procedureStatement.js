@@ -53,8 +53,6 @@ class ProcedureStatement extends BaseClass {
           }
         }
       }
-    } else if (!endedTokens) {
-      this.addError(new ReservedWordNotFound('procedure', this.currentIndex, this.currentToken));
     }
 
     return this.currentIndex;

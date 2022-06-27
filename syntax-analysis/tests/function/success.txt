@@ -1,6 +1,7 @@
 program Test;
 
 var {
+  boolean c, d;
   integer a, b;
   string e;
 }
@@ -13,11 +14,21 @@ const {
 
 register Pessoa {
   string nome, sobrenome;
-  7
   integer ano;
 }
 
-register Pessoa {
-  string nome, sobrenome;
-  integer ano;
+procedure test(integer a, string b) {
+
+}
+
+procedure test() {
+
+}
+
+function test(integer a, string b): integer {
+  return a;
+}
+
+function test(): integer {
+  return a;
 }

@@ -1,4 +1,5 @@
 const BaseClass = require('../baseClass');
+const IdentifierNotFound = require('../errors/identifierNotFound');
 const VarType = require('../variable/varType');
 const ParameterListProcedure = require('./parameterListProcedure');
 

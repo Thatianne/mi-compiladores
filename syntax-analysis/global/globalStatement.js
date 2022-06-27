@@ -3,6 +3,7 @@ const VarStatement = require('../variable/varStatement');
 const ConstStatement = require('../constant/constStatement');
 const RegisterStatement = require('../register/registerStatement');
 const ProcedureStatement = require('../procedure/procedureStatement');
+const FunctionStatement = require('../function/functionStatement');
 
 //<GlobalStatement> ::= <VarStatement> <ConstStatement> <RegisterStatement> <ProcedureStatement> <FunctionStatement> <Main>
 class GlobalStatement extends BaseClass {
@@ -25,6 +26,11 @@ class GlobalStatement extends BaseClass {
     if (this.currentToken) {
       const procedureStatement = new ProcedureStatement(this.tokens, this.currentIndex, this.errors);
       this.currentIndex = procedureStatement.exec();
+    }
+
+    if (this.currentToken) {
+      const functionStatement = new FunctionStatement(this.tokens, this.currentIndex, this.errors);
+      this.currentIndex = functionStatement.exec();
     }
 
     // TODO function
