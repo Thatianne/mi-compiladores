@@ -7,7 +7,7 @@ const TypeNotFound = require('../errors/typeNotFound');
 | 'boolean'
 | 'char'
 */
-class VarType extends BaseClass {
+class ConstType extends BaseClass {
   exec() {
     const [foundType, endedTokens] = this.nextUntilType();
     if (foundType) {
@@ -31,4 +31,4 @@ class VarType extends BaseClass {
   }
 }
 
-module.exports = VarType;
+module.exports = ConstType;

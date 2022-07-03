@@ -17,8 +17,13 @@ class RegisterStatement extends BaseClass {
     if (!endedTokens) {
       let [foundIdentifier, endedTokens] = this.nextUntilIdentifier();
 
-      if (foundIdentifier && !endedTokens) {
+      if (foundIdentifier) {
         this.next();
+      } else {
+        this.addError(new IdentifierNotFound(this.currentIndex, this.currentToken));
+      }
+
+      if (!endedTokens) {
         let [foundOpenCurlyBrackets, endedTokens] = this.nextUntilOpenCurlyBrackets();
 
         if (foundOpenCurlyBrackets) {
@@ -31,9 +36,6 @@ class RegisterStatement extends BaseClass {
           const registerList = new RegisterList(this.tokens, this.currentIndex, this.errors);
           this.currentIndex = registerList.exec();
         }
-      } else {
-        this.addError(new IdentifierNotFound(this.currentIndex, this.currentToken));
-
       }
     }
 
