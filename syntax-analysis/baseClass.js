@@ -25,8 +25,13 @@ class BaseClass {
     return this.tokens[this.currentIndex + 1];
   }
 
+  get count() {
+    return this.tokens.length;
+  }
+
   next() {
     this.currentIndex++;
+    return this.currentIndex >= this.count - 1; // acabaram os tokens
   }
 
   prev() {

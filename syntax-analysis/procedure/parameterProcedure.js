@@ -13,7 +13,7 @@ class ParameterProcedure extends BaseClass {
     if (foundCloseBrackets) {
       this.next();
     } else {
-      if (!endedTokens && VarType.isOnSetFirst(this.currentToken)) {
+      if (!endedTokens) {
         const varType = new VarType(this.tokens, this.currentIndex, this.errors);
         this.currentIndex = varType.exec();
 
@@ -30,7 +30,7 @@ class ParameterProcedure extends BaseClass {
           this.currentIndex = parameterListProcedure.exec();
         }
       } else {
-        this.addError(DelimiterNotFound(')', this.currentIndex, this.currentToken));
+        this.addError(new DelimiterNotFound(')', this.currentIndex, this.currentToken));
       }
     }
 
@@ -38,7 +38,7 @@ class ParameterProcedure extends BaseClass {
   }
 
   nextUntilCloseBrackets() {
-    return this.nextUntil(this.isCloseBrackets, [VarType.isOnSetFirst])
+    return this.nextUntil(this.isCloseBrackets, [VarType.isOnSetFirst, this.isIdentifier, ParameterListProcedure.isOnSetFirst])
   }
 
   nextUntilIdentifier() {

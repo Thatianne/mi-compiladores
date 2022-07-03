@@ -6,7 +6,7 @@ class ProcedureStatement1 extends BaseClass {
     let [foundCloseCurlyBrackets, endedTokens] = this.nextUntilCloseCurlyBrackets();
 
     if (foundCloseCurlyBrackets) {
-      this.next();
+      endedTokens = this.next();
     } else {
       this.addError(new DelimiterNotFound('}', this.currentIndex, this.currentToken));
     }
