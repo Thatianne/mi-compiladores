@@ -2,54 +2,60 @@ const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const IdentifierNotFound = require('../errors/identifierNotFound');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
+const FunctionStatement = require('../function/functionStatement');
 const ParameterProcedure = require('./parameterProcedure');
 const ProcedureStatement1 = require('./procedureStatement1');
 
 // <ProcedureStatement> ::= 'procedure' Identifier '(' <ParameterProcedure> '{' <LocalStatement> <ProcedureStatement1> |
 class ProcedureStatement extends BaseClass {
   exec() {
-    let [foundProcedureOrFunction, endedTokens] = this.nextUntilProcedureOrFunction();
+    let [foundProcedure, endedTokens] = this.nextUntilProcedure();
+    let useEmptyProduction = false;
 
-    if (foundProcedureOrFunction) {
-      if (!this.isFunctionReservedWord(this.currentToken)) {
+    if (foundProcedure) {
+      this.next();
+    } else {
+      if (FunctionStatement.isOnSetFirst(this.currentToken)) {
+        useEmptyProduction = true;
+      } else {
+        this.addError(new ReservedWordNotFound('procedure', this.currentIndex, this.currentToken));
+      }
+    }
+
+    if (!endedTokens && !useEmptyProduction) {
+      let [foundIdentifier, endedTokens] = this.nextUntilIdentifier();
+
+      if (foundIdentifier) {
         this.next();
+      } else {
+        this.addError(new IdentifierNotFound(this.currentIndex, this.currentToken));
+      }
+
+      if (!endedTokens) {
+        let [foundOpenBrackets, endedTokens] = this.nextUntilOpenBrackets();
+
+        if (foundOpenBrackets) {
+          this.next();
+        } else {
+          this.addError(new DelimiterNotFound('(', this.currentIndex, this.currentToken));
+        }
 
         if (!endedTokens) {
-          let [foundIdentifier, endedTokens] = this.nextUntilIdentifier();
+          const parameterProcedure = new ParameterProcedure(this.tokens, this.currentIndex, this.errors);
+          this.currentIndex = parameterProcedure.exec();
 
-          if (foundIdentifier) {
+          let [foundOpenCurlyBrackets, endedTokens] = this.nextUntilOpenCurlyBrackets();
+          if (foundOpenCurlyBrackets) {
             this.next();
           } else {
-            this.addError(new IdentifierNotFound(this.currentIndex, this.currentToken));
+            this.addError(new DelimiterNotFound('{', this.currentIndex, this.currentToken));
           }
 
           if (!endedTokens) {
-            let [foundOpenBrackets, endedTokens] = this.nextUntilOpenBrackets();
+            // TODO adicionar localStatement
 
-            if (foundOpenBrackets) {
-              this.next();
-            } else {
-              this.addError(new DelimiterNotFound('(', this.currentIndex, this.currentToken));
-            }
-
-            if (!endedTokens) {
-              const parameterProcedure = new ParameterProcedure(this.tokens, this.currentIndex, this.errors);
-              this.currentIndex = parameterProcedure.exec();
-
-              let [foundOpenCurlyBrackets, endedTokens] = this.nextUntilOpenCurlyBrackets();
-              if (foundOpenCurlyBrackets) {
-                this.next();
-              } else {
-                this.addError(new DelimiterNotFound('{', this.currentIndex, this.currentToken));
-              }
-
-              if (!endedTokens) {
-                // TODO adicionar localStatement
-
-                const procedureStatement1 = new ProcedureStatement1(this.tokens, this.currentIndex, this.errors);
-                this.currentIndex = procedureStatement1.exec();
-              }
-            }
+            const procedureStatement1 = new ProcedureStatement1(this.tokens, this.currentIndex, this.errors);
+            this.currentIndex = procedureStatement1.exec();
           }
         }
       }
@@ -71,11 +77,7 @@ class ProcedureStatement extends BaseClass {
   }
 
   nextUntilProcedure() {
-    return this.nextUntil(this.isProcedureReservedWord, [this.isIdentifier, this.isOpenBrackets, ParameterProcedure.isOnSetFirst, this.isOpenCurlyBrackets, ProcedureStatement1.isOnSetFirst])
-  }
-
-  nextUntilProcedureOrFunction() {
-    return this.nextUntil((token) => this.isProcedureReservedWord(token) || this.isFunctionReservedWord(token), [this.isIdentifier, this.isOpenBrackets, ParameterProcedure.isOnSetFirst, this.isOpenCurlyBrackets, ProcedureStatement1.isOnSetFirst])
+    return this.nextUntil(this.isProcedureReservedWord, [FunctionStatement.isOnSetFirst, this.isIdentifier, this.isOpenBrackets, ParameterProcedure.isOnSetFirst, this.isOpenCurlyBrackets, ProcedureStatement1.isOnSetFirst])
   }
 
   static getSetFirst() {

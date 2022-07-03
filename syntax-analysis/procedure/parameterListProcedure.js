@@ -1,32 +1,41 @@
 const BaseClass = require('../baseClass');
-const VarType = require('../variable/varType');
+const DelimiterNotFound = require('../errors/delimiterNotFound');
 
 // <ParameterListProcedure> ::= ',' <ParameterProcedure> | ')'
 class ParameterListProcedure extends BaseClass {
   exec() {
-    if (this.isCloseBrackets(this.currentToken)) {
-      this.next();
-    } else if (this.isComma(this.currentToken)){
-      this.next();
+    let [foundCloseBrackets, endedTokens] = this.nextUntilCloseBrackets();
 
-      const ParameterProcedure = require('./parameterProcedure');
-      const parameterProcedure = new ParameterProcedure(this.tokens, this.currentIndex, this.errors);
-      this.currentIndex = parameterProcedure.exec();
+    if (foundCloseBrackets) {
+      this.next();
+    } else {
+      if (this.isComma(this.currentToken)) {
+        this.next();
+
+        if (!endedTokens) {
+          const ParameterProcedure = require('./parameterProcedure');
+          const parameterProcedure = new ParameterProcedure(this.tokens, this.currentIndex, this.errors);
+          this.currentIndex = parameterProcedure.exec();
+        }
+      } else {
+        this.addError(new DelimiterNotFound(')', this.currentIndex, this.currentToken));
+      }
     }
 
     return this.currentIndex;
   }
 
-  nextUntilIdentifier() {
-    return this.nextUntil(this.isIdentifier, [])
+  nextUntilCloseBrackets() {
+    const ParameterProcedure = require('./parameterProcedure');
+    return this.nextUntil(this.isCloseBrackets, [this.isComma, ParameterProcedure.isOnSetFirst])
   }
 
   static getSetFirst() {
-    return VarType.getSetFirst().concat([')']);
+    return [',', ')'];
   }
 
   static isOnSetFirst(token) {
-    return ParameterProcedure.getSetFirst().includes(token.lexema);
+    return ParameterListProcedure.getSetFirst().includes(token.lexema);
   }
 }
 

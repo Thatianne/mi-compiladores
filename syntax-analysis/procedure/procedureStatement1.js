@@ -1,6 +1,6 @@
 const BaseClass = require('../baseClass');
 
-// <ProcedureStatement1> ::= '}'  <ProcedureStatement>
+// <ProcedureStatement1> ::= '}' <ProcedureStatement>
 class ProcedureStatement1 extends BaseClass {
   exec() {
     let [foundCloseCurlyBrackets, endedTokens] = this.nextUntilCloseCurlyBrackets();
