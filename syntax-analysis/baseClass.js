@@ -114,7 +114,7 @@ class BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return BaseClass.getSetFirst().includes(token);
+    return BaseClass.getSetFirst().includes(token.lexema);
   }
 
   nextUntil(funcSearchUntil, funcsStopSearch) {

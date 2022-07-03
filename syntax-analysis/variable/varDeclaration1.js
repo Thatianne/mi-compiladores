@@ -59,7 +59,7 @@ class VarDeclaration1 extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return VarDeclaration1.getSetFirst().includes(token);
+    return VarDeclaration1.getSetFirst().includes(token.lexema);
   }
 }
 

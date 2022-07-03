@@ -52,7 +52,7 @@ class VarStatement extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return VarStatement.getSetFirst().includes(token);
+    return VarStatement.getSetFirst().includes(token.lexema);
   }
 }
 

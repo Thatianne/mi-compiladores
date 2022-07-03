@@ -1,5 +1,12 @@
 const BaseClass = require('../baseClass');
 const TypeNotFound = require('../errors/typeNotFound');
+
+/* <ConstType> ::= 'integer'
+| 'string'
+| 'real'
+| 'boolean'
+| 'char'
+*/
 class VarType extends BaseClass {
   exec() {
     const [foundType, endedTokens] = this.nextUntilType();

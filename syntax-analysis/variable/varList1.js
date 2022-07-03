@@ -27,7 +27,7 @@ class VarList1 extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return VarList1.getSetFirst().includes(token);
+    return VarList1.getSetFirst().includes(token.lexema);
   }
 }
 

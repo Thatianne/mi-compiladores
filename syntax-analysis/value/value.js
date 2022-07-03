@@ -14,22 +14,20 @@ class Value extends BaseClass {
   exec() {
     let [foundedType, endedTokens] = this.nextUntilTypes();
 
-    if (!endedTokens) {
-      if (foundedType) {
-        if (this.isRegisterStart(this.currentToken)) {
-          if (this.isDot(this.nextToken)) {
-            this.next();
-            const valueRegister = new ValueRegister(this.tokens, this.currentIndex, this.errors);
-            this.currentIndex = valueRegister.exec();
-          } else {
-            this.next();
-          }
+    if (foundedType) {
+      if (this.isRegisterStart(this.currentToken)) {
+        if (this.isDot(this.nextToken)) {
+          this.next();
+          const valueRegister = new ValueRegister(this.tokens, this.currentIndex, this.errors);
+          this.currentIndex = valueRegister.exec();
         } else {
           this.next();
         }
       } else {
-        this.addError(new AttributionValueNotFound(this.currentIndex, this.currentToken));
+        this.next();
       }
+    } else {
+      this.addError(new AttributionValueNotFound(this.currentIndex, this.currentToken));
     }
 
     return this.currentIndex;

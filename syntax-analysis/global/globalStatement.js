@@ -43,7 +43,7 @@ class GlobalStatement extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return VarStatement.isOnSetFirst(token);
+    return VarStatement.isOnSetFirst(token.lexema);
   }
 }
 

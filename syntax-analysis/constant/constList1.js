@@ -28,7 +28,7 @@ class ConstList1 extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ConstList1.getSetFirst().includes(token);
+    return ConstList1.getSetFirst().includes(token.lexema);
   }
 }
 
