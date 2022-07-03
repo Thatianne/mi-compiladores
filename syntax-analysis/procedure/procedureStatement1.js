@@ -1,4 +1,5 @@
 const BaseClass = require('../baseClass');
+const DelimiterNotFound = require('../errors/delimiterNotFound');
 
 // <ProcedureStatement1> ::= '}' <ProcedureStatement>
 class ProcedureStatement1 extends BaseClass {

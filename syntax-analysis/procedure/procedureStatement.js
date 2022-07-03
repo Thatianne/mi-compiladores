@@ -3,6 +3,7 @@ const DelimiterNotFound = require('../errors/delimiterNotFound');
 const IdentifierNotFound = require('../errors/identifierNotFound');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
 const FunctionStatement = require('../function/functionStatement');
+const LocalStatement = require('../localStatement/localStatement');
 const ParameterProcedure = require('./parameterProcedure');
 const ProcedureStatement1 = require('./procedureStatement1');
 
@@ -52,7 +53,8 @@ class ProcedureStatement extends BaseClass {
           }
 
           if (!endedTokens) {
-            // TODO adicionar localStatement
+            const localStatement = new LocalStatement(this.tokens, this.currentIndex, this.errors);
+            this.currentIndex = localStatement.exec();
 
             const procedureStatement1 = new ProcedureStatement1(this.tokens, this.currentIndex, this.errors);
             this.currentIndex = procedureStatement1.exec();
@@ -81,7 +83,7 @@ class ProcedureStatement extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['procedure', 'function']; // TODO trocar 'function' pela funcão getSetFirst de FunctionStatement
+    return ['procedure'];
   }
 
   static isOnSetFirst(token) {

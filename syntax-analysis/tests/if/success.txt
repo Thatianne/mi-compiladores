@@ -1,0 +1,31 @@
+program Test;
+
+var {
+  boolean c, d;
+  integer a, b;
+  string e;
+}
+
+const {
+  boolean c = 10, d = "abc";
+  integer a = e, a = j.k, b = true;
+  string e = 'b';
+}
+
+register Pessoa {
+  string nome, sobrenome;
+  integer ano;
+}
+
+procedure test(integer a, string b) {
+  if () {
+
+  } else {
+
+  }
+
+}
+
+procedure test() {
+
+}

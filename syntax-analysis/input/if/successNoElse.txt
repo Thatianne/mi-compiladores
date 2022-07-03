@@ -74,15 +74,13 @@
 21 if ReservedWord
 21 ( Delimiter
 21 ) Delimiter
+21 { Delimiter
 23 } Delimiter
-23 else ReservedWord
-23 { Delimiter
 25 } Delimiter
-27 } Delimiter
-29 procedure ReservedWord
-29 test Identifier
-29 ( Delimiter
-29 ) Delimiter
-29 { Delimiter
-31 } Delimiter
+27 procedure ReservedWord
+27 test Identifier
+27 ( Delimiter
+27 ) Delimiter
+27 { Delimiter
+29 } Delimiter
 Success!

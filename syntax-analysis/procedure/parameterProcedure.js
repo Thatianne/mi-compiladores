@@ -4,7 +4,6 @@ const IdentifierNotFound = require('../errors/identifierNotFound');
 const VarType = require('../variable/varType');
 const ParameterListProcedure = require('./parameterListProcedure');
 
-// TODO qual erro indicar se não vier um varType nem ')'
 // <ParameterProcedure> ::= <VarType> Identifier <ParameterListProcedure> | ')'
 class ParameterProcedure extends BaseClass {
   exec() {

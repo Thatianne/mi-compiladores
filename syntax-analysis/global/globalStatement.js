@@ -33,7 +33,7 @@ class GlobalStatement extends BaseClass {
       this.currentIndex = functionStatement.exec();
     }
 
-    // TODO function
+    // TODO main
 
     return this.currentIndex;
   }
