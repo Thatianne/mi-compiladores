@@ -7,40 +7,65 @@ const ParameterListFunction = require('./parameterListFunction');
 // <VarType> Identifier <ParameterListFunction> | ')' ':' <VarType>
 class ParameterFunction extends BaseClass {
   exec() {
-    if (this.isCloseBrackets(this.currentToken)) {
+    let [foundCloseBrackets, endedTokens] = this.nextUntilCloseBrackets();
+
+    if (foundCloseBrackets) {
       this.next();
 
-      if (this.currentToken.lexema === ':') { // TODO trocar
-        this.next();
+      let [foundColon, endedTokens] = this.nextUntilColon();
+      if (foundColon) {
+        endedTokens = this.next();
       } else {
         this.addError(new DelimiterNotFound(':', this.currentIndex, this.currentToken));
       }
 
-      const varType = new VarType(this.tokens, this.currentIndex, this.errors);
-      this.currentIndex = varType.exec();
-    } else if (VarType.isOnSetFirst(this.currentToken)){
-      const varType = new VarType(this.tokens, this.currentIndex, this.errors);
-      this.currentIndex = varType.exec();
-
-      let [foundIdentifier, endedTokens] = this.nextUntilIdentifier();
-
-      if (foundIdentifier) {
-        this.next();
-      } else {
-        this.addError(new IdentifierNotFound(this.currentIndex, this.currentToken));
-      }
-
       if (!endedTokens) {
-        const parameterListFunction = new ParameterListFunction(this.tokens, this.currentIndex, this.errors);
-        this.currentIndex = parameterListFunction.exec();
+        const varType = new VarType(this.tokens, this.currentIndex, this.errors);
+        this.currentIndex = varType.exec();
+      }
+    } else {
+      if (!endedTokens) {
+        const varType = new VarType(this.tokens, this.currentIndex, this.errors);
+        this.currentIndex = varType.exec();
+
+        let [foundIdentifier, endedTokens] = this.nextUntilIdentifier();
+
+        if (foundIdentifier) {
+          this.next();
+        } else {
+          this.addError(new IdentifierNotFound(this.currentIndex, this.currentToken));
+        }
+
+        if (!endedTokens) {
+          const parameterListFunction = new ParameterListFunction(this.tokens, this.currentIndex, this.errors);
+          this.currentIndex = parameterListFunction.exec();
+        }
+      } else {
+        this.addError(new DelimiterNotFound(')', this.currentIndex, this.currentToken));
       }
     }
 
     return this.currentIndex;
   }
 
+  nextUntilCloseBrackets() {
+    return this.nextUntil(this.isCloseBrackets, [VarType.isOnSetFirst, this.isIdentifier, ParameterListFunction.isOnSetFirst])
+  }
+
   nextUntilIdentifier() {
     return this.nextUntil(this.isIdentifier, [ParameterListFunction.isOnSetFirst])
+  }
+
+  nextUntilColon() {
+    return this.nextUntil(this.isColon, [VarType.isOnSetFirst])
+  }
+
+  static getSetFirst() {
+    return VarType.getSetFirst().concat([')']);
+  }
+
+  static isOnSetFirst(token) {
+    return ParameterFunction.getSetFirst().includes(token.lexema);
   }
 
   static getSetFirst() {

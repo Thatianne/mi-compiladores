@@ -54,6 +54,10 @@ class BaseClass {
     return this.isDelimiter(token) && token.lexema === ';';
   }
 
+  isColon(token) {
+    return this.isDelimiter(token) && token.lexema === ':';
+  }
+
   isVarReservedWord(token) {
     return this.isReservedWord(token) && token.lexema === 'var';
   }

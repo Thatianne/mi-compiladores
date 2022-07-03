@@ -6,88 +6,148 @@ const ParameterFunction = require('./parameterFunction');
 const FunctionStatement1 = require('./functionStatement1');
 const Value = require('../value/value');
 
-// <FunctionStatement>::= 'function' Identifier  '(' <ParameterFunction> '{' <LocalStatement> 'return' <Value>';' <FunctionStatement1> |
+// <FunctionStatement>::= 'function' Identifier '(' <ParameterFunction> '{' <LocalStatement> 'return' <Value>';' <FunctionStatement1> |
 class FunctionStatement extends BaseClass {
   exec() {
     let [foundFunction, endedTokens] = this.nextUntilFunction();
+    let useEmptyProduction = false;
 
     if (foundFunction) {
       this.next();
+    } else {
+      // TODO quando fizer o mainStatement
+      // if (MainStatement.isOnSetFirst(this.currentToken)) {
+      //  useEmptyProduction = true;
+      // } else {
+        this.addError(new ReservedWordNotFound('function', this.currentIndex, this.currentToken));
+      // }
+    }
+
+    if (!endedTokens && !useEmptyProduction) {
+      let [foundIdentifier, endedTokens] = this.nextUntilIdentifier();
+
+      if (foundIdentifier) {
+        this.next();
+      } else {
+        this.addError(new IdentifierNotFound(this.currentIndex, this.currentToken));
+      }
 
       if (!endedTokens) {
-        let [foundIdentifier, endedTokens] = this.nextUntilIdentifier();
+        let [foundOpenBrackets, endedTokens] = this.nextUntilOpenBrackets();
 
-        if (foundIdentifier) {
+        if (foundOpenBrackets) {
           this.next();
         } else {
-          this.addError(new IdentifierNotFound(this.currentIndex, this.currentToken));
+          this.addError(new DelimiterNotFound('(', this.currentIndex, this.currentToken));
         }
 
         if (!endedTokens) {
-          let [foundOpenBrackets, endedTokens] = this.nextUntilOpenBrackets();
+          const parameterFunction = new ParameterFunction(this.tokens, this.currentIndex, this.errors);
+          this.currentIndex = parameterFunction.exec();
 
-          if (foundOpenBrackets) {
+          let [foundOpenCurlyBrackets, endedTokens] = this.nextUntilOpenCurlyBrackets();
+          if (foundOpenCurlyBrackets) {
             this.next();
           } else {
-            this.addError(new DelimiterNotFound('(', this.currentIndex, this.currentToken));
+            this.addError(new DelimiterNotFound('{', this.currentIndex, this.currentToken));
           }
 
           if (!endedTokens) {
-            const parameterFunction = new ParameterFunction(this.tokens, this.currentIndex, this.errors);
-            this.currentIndex = parameterFunction.exec();
+            // TODO adicionar localStatement
 
-            let [foundOpenCurlyBrackets, endedTokens] = this.nextUntilOpenCurlyBrackets();
-            if (foundOpenCurlyBrackets) {
-              this.next();
+            let [foundReturn, endedTokens] = this.nextUntilReturn();
+
+            if (foundReturn) {
+              endedTokens = this.next();
             } else {
-              this.addError(new DelimiterNotFound('{', this.currentIndex, this.currentToken));
+              this.addError(new ReservedWordNotFound('return', this.currentIndex, this.currentToken));
             }
 
             if (!endedTokens) {
-              // TODO adicionar localStatement
-
-              if (this.currentToken.lexema === 'return') { // TODO ajeitar
-                this.next();
-              } else {
-                // TODO adicionar erro
-              }
-
               const value = new Value(this.tokens, this.currentIndex, this.errors);
               this.currentIndex = value.exec();
+            }
 
-              if (this.currentToken.lexema === ';') {
-                this.next();
+            if (this.currentToken) {
+              let [foundSemicolon, endedTokens] = this.nextUntilSemicolon();
+              if (foundSemicolon) {
+                endedTokens = this.next();
               } else {
-                // TODO adicionar erro
+                this.addError(new DelimiterNotFound(';', this.currentIndex, this.currentToken));
               }
+            }
 
+            if (this.currentToken) {
               const functionStatement1 = new FunctionStatement1(this.tokens, this.currentIndex, this.errors);
               this.currentIndex = functionStatement1.exec();
             }
           }
         }
       }
-    } else if (!endedTokens) {
-      this.addError(new ReservedWordNotFound('procedure', this.currentIndex, this.currentToken));
     }
 
     return this.currentIndex;
   }
 
+  nextUntilSemicolon() {
+    return this.nextUntil(this.isSemicolon, [FunctionStatement1.isOnSetFirst]);
+  }
+
+  nextUntilReturn() {
+    return this.nextUntil(this.isReturnReservedWord, [
+      Value.isOnSetFirst,
+      this.isSemicolon,
+      FunctionStatement1.isOnSetFirst
+    ]);
+  }
+
   nextUntilOpenCurlyBrackets() {
-    return this.nextUntil(this.isOpenCurlyBrackets, [FunctionStatement1.isOnSetFirst])
+    return this.nextUntil(this.isOpenCurlyBrackets, [
+      this.isReturnReservedWord,
+      Value.isOnSetFirst,
+      this.isSemicolon,
+      FunctionStatement1.isOnSetFirst
+    ]);
   }
 
   nextUntilOpenBrackets() {
-    return this.nextUntil(this.isOpenBrackets, [ParameterFunction.isOnSetFirst, this.isOpenCurlyBrackets, FunctionStatement1.isOnSetFirst])
+    return this.nextUntil(this.isOpenBrackets, [
+      ParameterFunction.isOnSetFirst,
+      this.isOpenCurlyBrackets,
+      this.isReturnReservedWord,
+      Value.isOnSetFirst,
+      this.isSemicolon,
+      FunctionStatement1.isOnSetFirst
+    ]);
   }
 
   nextUntilIdentifier() {
-    return this.nextUntil(this.isIdentifier, [this.isOpenBrackets, ParameterFunction.isOnSetFirst, this.isOpenCurlyBrackets, FunctionStatement1.isOnSetFirst])
+    return this.nextUntil(this.isIdentifier, [
+      this.isOpenBrackets,
+      ParameterFunction.isOnSetFirst,
+      this.isOpenCurlyBrackets,
+      this.isReturnReservedWord,
+      Value.isOnSetFirst,
+      this.isSemicolon,
+      FunctionStatement1.isOnSetFirst
+    ]);
   }
 
   nextUntilFunction() {
-    return this.nextUntil(this.isFunctionReservedWord, [this.isIdentifier, this.isOpenBrackets, ParameterFunction.isOnSetFirst, this.isOpenCurlyBrackets, FunctionStatement1.isOnSetFirst])
+    return this.nextUntil(this.isFunctionReservedWord, [
+      this.isIdentifier,
+      this.isOpenBrackets,
+      ParameterFunction.isOnSetFirst,
+      this.isOpenCurlyBrackets,
+      this.isReturnReservedWord,
+      Value.isOnSetFirst,
+      this.isSemicolon,
+      FunctionStatement1.isOnSetFirst
+    ]);
+  }
+
+  isReturnReservedWord(token) {
+    return this.isReservedWord(token) && token.lexema === 'return';
   }
 
   static getSetFirst() {

@@ -6,15 +6,15 @@ class ProcedureStatement1 extends BaseClass {
     let [foundCloseCurlyBrackets, endedTokens] = this.nextUntilCloseCurlyBrackets();
 
     if (foundCloseCurlyBrackets) {
-      this.next();
+      endedTokens = this.next();
     } else {
       this.addError(new DelimiterNotFound('}', this.currentIndex, this.currentToken));
     }
 
     if (!endedTokens) {
-      const ProcedureStatement = require('./functionStatement');
-      const procedureStatement = new ProcedureStatement(this.tokens, this.currentIndex, this.errors);
-      this.currentIndex = procedureStatement.exec();
+      const FunctionStatement = require('./functionStatement');
+      const functionStatement = new FunctionStatement(this.tokens, this.currentIndex, this.errors);
+      this.currentIndex = functionStatement.exec();
     }
 
     return this.currentIndex;
