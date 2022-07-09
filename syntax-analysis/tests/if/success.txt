@@ -18,7 +18,7 @@ register Pessoa {
 }
 
 procedure test(integer a, string b) {
-  if () {
+  if (resposta >= 3) {
 
   } else {
 

@@ -46,6 +46,10 @@ class BaseClass {
     return token.class.toLowerCase() === Constants.IDENTIFIER.toLowerCase();
   }
 
+  static isIdentifier(token) {
+    return token.class.toLowerCase() === Constants.IDENTIFIER.toLowerCase();
+  }
+
   isDelimiter(token) {
     return token.class.toLowerCase() === Constants.DELIMITER.toLowerCase();
   }
@@ -104,6 +108,54 @@ class BaseClass {
 
   isEquals(token) {
     return token.lexema === '=';
+  }
+
+  isDecimal(token) {
+    return /[0-9]+/.test(token.lexema);
+  }
+
+  isReal(token) {
+    return /[0-9]+\.[0-9]+/.test(token.lexema);
+  }
+
+  isString(token) {
+    return /".+"/.test(token.lexema);
+  }
+
+  isChar(token) {
+    return /'.'/.test(token.lexema);
+  }
+
+  isBoolean(token) {
+    return ['true', 'false'].includes(token.lexema.toLowerCase());
+  }
+
+  static isDecimal(token) {
+    return /[0-9]+/.test(token.lexema);
+  }
+
+  static isReal(token) {
+    return /[0-9]+\.[0-9]+/.test(token.lexema);
+  }
+
+  static isString(token) {
+    return /".+"/.test(token.lexema);
+  }
+
+  static isChar(token) {
+    return /'.'/.test(token.lexema);
+  }
+
+  static isBoolean(token) {
+    return ['true', 'false'].includes(token.lexema.toLowerCase());
+  }
+
+  isOr(token) {
+    return token.lexema === '||';
+  }
+
+  isAnd(token) {
+    return token.lexema === '&&';
   }
 
   addError(error) {

@@ -49,26 +49,6 @@ class Value extends BaseClass {
     )
   }
 
-  isDecimal(token) {
-    return /[0-9]+/.test(token.lexema);
-  }
-
-  isReal(token) {
-    return /[0-9]+\.[0-9]+/.test(token.lexema);
-  }
-
-  isString(token) {
-    return /".+"/.test(token.lexema);
-  }
-
-  isChar(token) {
-    return /'.'/.test(token.lexema);
-  }
-
-  isBoolean(token) {
-    return ['true', 'false'].includes(token.lexema.toLowerCase());
-  }
-
   isRegisterStart(token) {
     return this.isIdentifier(token);
   }

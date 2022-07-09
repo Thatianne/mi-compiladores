@@ -2,6 +2,7 @@ const BaseClass = require('../baseClass');
 const ElseDecs = require('./elseDecs');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
+const AssignExpr = require('../assignExpr/assignExpr');
 
 // <IfDecs> ::= 'if' '(' <AssignExpr> ')' '{' <LocalCommands> '}' <ElseDecs>
 class IfDecs extends BaseClass {
@@ -25,6 +26,8 @@ class IfDecs extends BaseClass {
 
       if (!endedTokens) {
         // TODO executar AssignExpr
+        const assignExpr = new AssignExpr(this.tokens, this.currentIndex, this.errors);
+        this.currentIndex = assignExpr.exec();
 
         let [foundCloseBrackets, endedTokens] = this.nextUntilCloseBrackets();
 
