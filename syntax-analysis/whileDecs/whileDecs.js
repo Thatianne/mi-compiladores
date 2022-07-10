@@ -2,6 +2,7 @@ const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
 const AssignExpr = require('../assignExpr/assignExpr');
+const TokenHelper = require('../tokenHelper');
 
 // <WhileDecs>::= 'while' '('<AssignExpr>')' '{' <LocalCommands> '}'
 class WhileDecs extends BaseClass {
@@ -73,43 +74,43 @@ class WhileDecs extends BaseClass {
   }
 
   isWhileReservedWord(token) {
-    return this.isReservedWord(token) && token.lexema === 'while';
+    return TokenHelper.isReservedWord(token) && token.lexema === 'while';
   }
 
   nextUntilWhile() {
     return this.nextUntil(this.isWhileReservedWord, [
-      this.isOpenBrackets,
+      TokenHelper.isOpenBrackets,
       AssignExpr.isOnSetFirst,
-      this.isCloseBrackets,
-      this.isOpenCurlyBrackets,
-      this.isCloseCurlyBrackets,
+      TokenHelper.isCloseBrackets,
+      TokenHelper.isOpenCurlyBrackets,
+      TokenHelper.isCloseCurlyBrackets,
     ]);
   }
 
   nextUntilOpenBrackets() {
-    return this.nextUntil(this.isOpenBrackets, [
+    return this.nextUntil(TokenHelper.isOpenBrackets, [
       AssignExpr.isOnSetFirst,
-      this.isCloseBrackets,
-      this.isOpenCurlyBrackets,
-      this.isCloseCurlyBrackets,
+      TokenHelper.isCloseBrackets,
+      TokenHelper.isOpenCurlyBrackets,
+      TokenHelper.isCloseCurlyBrackets,
     ]);
   }
 
   nextUntilCloseBrackets() {
-    return this.nextUntil(this.isCloseBrackets, [
-      this.isOpenCurlyBrackets,
-      this.isCloseCurlyBrackets,
+    return this.nextUntil(TokenHelper.isCloseBrackets, [
+      TokenHelper.isOpenCurlyBrackets,
+      TokenHelper.isCloseCurlyBrackets,
     ]);
   }
 
   nextUntilOpenCurlyBrackets() {
-    return this.nextUntil(this.isOpenCurlyBrackets, [
-      this.isCloseCurlyBrackets,
+    return this.nextUntil(TokenHelper.isOpenCurlyBrackets, [
+      TokenHelper.isCloseCurlyBrackets,
     ]);
   }
 
   nextUntilCloseCurlyBrackets() {
-    return this.nextUntil(this.isCloseCurlyBrackets, [
+    return this.nextUntil(TokenHelper.isCloseCurlyBrackets, [
     ]);
   }
 }

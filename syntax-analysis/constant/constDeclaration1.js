@@ -2,6 +2,7 @@ const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const IdentifierNotFound = require('../errors/identifierNotFound');
 const OperatorNotFound = require('../errors/operatorNotFound');
+const TokenHelper = require('../tokenHelper');
 const Value = require('../value/value');
 
 // <ConstDeclaration1> ::= ',' Identifier  '=' <Value> <ConstDeclaration1> | ';''
@@ -10,7 +11,7 @@ class ConstDeclaration1 extends BaseClass {
     let [foundSemicolonOrComma, endedTokens] = this.nextUntilSemicolonOrComma();
 
     if (foundSemicolonOrComma) {
-      if (this.isSemicolon(this.currentToken)) {
+      if (TokenHelper.isSemicolon(this.currentToken)) {
         this.next();
       } else {
         this.next();
@@ -54,9 +55,9 @@ class ConstDeclaration1 extends BaseClass {
 
   nextUntilSemicolonOrComma() {
     return this.nextUntil(
-      (token) => this.isComma(token) || this.isSemicolon(token), [
-        this.isIdentifier,
-        this.isEquals,
+      (token) => TokenHelper.isComma(token) || TokenHelper.isSemicolon(token), [
+        TokenHelper.isIdentifier,
+        TokenHelper.isEquals,
         Value.isOnSetFirst,
         ConstDeclaration1.isOnSetFirst
     ]);
@@ -64,8 +65,8 @@ class ConstDeclaration1 extends BaseClass {
 
   nextUntilIdentifier() {
     return this.nextUntil(
-      this.isIdentifier, [
-        this.isEquals,
+      TokenHelper.isIdentifier, [
+        TokenHelper.isEquals,
         Value.isOnSetFirst,
         ConstDeclaration1.isOnSetFirst,
     ]);
@@ -73,7 +74,7 @@ class ConstDeclaration1 extends BaseClass {
 
   nextUntilEquals() {
     return this.nextUntil(
-      this.isEquals, [
+      TokenHelper.isEquals, [
         Value.isOnSetFirst,
         ConstDeclaration1.isOnSetFirst,
     ]);

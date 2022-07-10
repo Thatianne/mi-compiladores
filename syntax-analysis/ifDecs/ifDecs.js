@@ -3,6 +3,7 @@ const ElseDecs = require('./elseDecs');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
 const AssignExpr = require('../assignExpr/assignExpr');
+const TokenHelper = require('../tokenHelper');
 
 // <IfDecs> ::= 'if' '(' <AssignExpr> ')' '{' <LocalCommands> '}' <ElseDecs>
 class IfDecs extends BaseClass {
@@ -77,47 +78,47 @@ class IfDecs extends BaseClass {
   }
 
   isIfReservedWord(token) {
-    return this.isReservedWord(token) && token.lexema === 'if';
+    return TokenHelper.isReservedWord(token) && token.lexema === 'if';
   }
 
   nextUntilIf() {
     return this.nextUntil(this.isIfReservedWord, [
-      this.isOpenBrackets,
+      TokenHelper.isOpenBrackets,
       // AssignExpr.isOnSetFirst,
-      this.isCloseBrackets,
-      this.isOpenCurlyBrackets,
-      this.isCloseCurlyBrackets,
+      TokenHelper.isCloseBrackets,
+      TokenHelper.isOpenCurlyBrackets,
+      TokenHelper.isCloseCurlyBrackets,
       ElseDecs.isOnSetFirst
     ]);
   }
 
   nextUntilOpenBrackets() {
-    return this.nextUntil(this.isOpenBrackets, [
+    return this.nextUntil(TokenHelper.isOpenBrackets, [
       // AssignExpr.isOnSetFirst,
-      this.isCloseBrackets,
-      this.isOpenCurlyBrackets,
-      this.isCloseCurlyBrackets,
+      TokenHelper.isCloseBrackets,
+      TokenHelper.isOpenCurlyBrackets,
+      TokenHelper.isCloseCurlyBrackets,
       ElseDecs.isOnSetFirst
     ]);
   }
 
   nextUntilCloseBrackets() {
-    return this.nextUntil(this.isCloseBrackets, [
-      this.isOpenCurlyBrackets,
-      this.isCloseCurlyBrackets,
+    return this.nextUntil(TokenHelper.isCloseBrackets, [
+      TokenHelper.isOpenCurlyBrackets,
+      TokenHelper.isCloseCurlyBrackets,
       ElseDecs.isOnSetFirst
     ]);
   }
 
   nextUntilOpenCurlyBrackets() {
-    return this.nextUntil(this.isOpenCurlyBrackets, [
-      this.isCloseCurlyBrackets,
+    return this.nextUntil(TokenHelper.isOpenCurlyBrackets, [
+      TokenHelper.isCloseCurlyBrackets,
       ElseDecs.isOnSetFirst
     ]);
   }
 
   nextUntilCloseCurlyBrackets() {
-    return this.nextUntil(this.isCloseCurlyBrackets, [
+    return this.nextUntil(TokenHelper.isCloseCurlyBrackets, [
       ElseDecs.isOnSetFirst
     ]);
   }

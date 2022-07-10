@@ -1,11 +1,12 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const IdentifierNotFound = require('../errors/identifierNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <RegisterDeclaration1> ::= ',' Identifier <RegisterDeclaration1> | ';'
 class RegisterDeclaration1 extends BaseClass {
   exec() {
-    if (this.isSemicolon(this.currentToken)) {
+    if (TokenHelper.isSemicolon(this.currentToken)) {
       this.next();
     } else {
       let [foundComma, endedTokens] = this.nextUntilComma();
@@ -36,15 +37,15 @@ class RegisterDeclaration1 extends BaseClass {
 
   nextUntilComma() {
     return this.nextUntil(
-      this.isComma, [
-        this.isIdentifier,
+      TokenHelper.isComma, [
+        TokenHelper.isIdentifier,
         RegisterDeclaration1.isOnSetFirst
     ]);
   }
 
   nextUntilIdentifier() {
     return this.nextUntil(
-      this.isIdentifier, [
+      TokenHelper.isIdentifier, [
         RegisterDeclaration1.isOnSetFirst,
     ]);
   }

@@ -1,4 +1,5 @@
 const BaseClass = require('../baseClass');
+const TokenHelper = require('../tokenHelper');
 const ListArgumentsRead = require('./listArgumentsRead');
 const RegisterRead = require('./registerRead');
 
@@ -24,11 +25,11 @@ class ArgumentsRead extends BaseClass {
   }
 
   nextUntilIdentifier() {
-    return this.nextUntil(this.isIdentifier, [RegisterRead.isOnSetFirst, ListArgumentsRead.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isIdentifier, [RegisterRead.isOnSetFirst, ListArgumentsRead.isOnSetFirst])
   }
 
   static getSetFirst() {
-    return [BaseClass.isIdentifier];
+    return [TokenHelper.isIdentifier];
   }
 
   static isOnSetFirst(token) {

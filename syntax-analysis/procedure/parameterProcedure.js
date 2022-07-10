@@ -1,6 +1,7 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const IdentifierNotFound = require('../errors/identifierNotFound');
+const TokenHelper = require('../tokenHelper');
 const VarType = require('../variable/varType');
 const ParameterListProcedure = require('./parameterListProcedure');
 
@@ -37,11 +38,11 @@ class ParameterProcedure extends BaseClass {
   }
 
   nextUntilCloseBrackets() {
-    return this.nextUntil(this.isCloseBrackets, [VarType.isOnSetFirst, this.isIdentifier, ParameterListProcedure.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isCloseBrackets, [VarType.isOnSetFirst, TokenHelper.isIdentifier, ParameterListProcedure.isOnSetFirst])
   }
 
   nextUntilIdentifier() {
-    return this.nextUntil(this.isIdentifier, [ParameterListProcedure.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isIdentifier, [ParameterListProcedure.isOnSetFirst])
   }
 
   static getSetFirst() {

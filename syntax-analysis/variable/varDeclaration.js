@@ -2,6 +2,7 @@ const BaseClass = require('../baseClass');
 const VarType = require('./varType');
 const VarDeclaration1 = require('./varDeclaration1');
 const IdentifierNotFound = require('../errors/identifierNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <VarDeclaration>::= <VarType> Identifier <VarDeclaration1>
 class VarDeclaration extends BaseClass {
@@ -28,7 +29,7 @@ class VarDeclaration extends BaseClass {
 
   nextUntilIdentifier() {
     return this.nextUntil(
-      this.isIdentifier, [
+      TokenHelper.isIdentifier, [
         VarDeclaration1.isOnSetFirst,
     ]);
   }

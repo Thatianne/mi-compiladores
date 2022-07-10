@@ -1,14 +1,12 @@
 const BaseClass = require('../baseClass');
 const ConstDeclaration = require('./constDeclaration');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
+const TokenHelper = require('../tokenHelper');
 
-/*
-<ConstList1> ::= <ConstDeclaration> <ConstList1>
-              | '}'
-*/
+// <ConstList1> ::= <ConstDeclaration> <ConstList1> | '}'
 class ConstList1 extends BaseClass {
   exec() {
-    if (this.isCloseCurlyBrackets(this.currentToken)) {
+    if (TokenHelper.isCloseCurlyBrackets(this.currentToken)) {
       this.next();
     } else {
       const constDeclaration = new ConstDeclaration(this.tokens, this.currentIndex, this.errors);

@@ -1,5 +1,6 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <ProcedureStatement1> ::= '}' <ProcedureStatement>
 class ProcedureStatement1 extends BaseClass {
@@ -23,7 +24,7 @@ class ProcedureStatement1 extends BaseClass {
 
   nextUntilCloseCurlyBrackets() {
     const ProcedureStatement = require('./procedureStatement');
-    return this.nextUntil(this.isCloseCurlyBrackets, [ProcedureStatement.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isCloseCurlyBrackets, [ProcedureStatement.isOnSetFirst])
   }
 
   static getSetFirst() {

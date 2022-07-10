@@ -1,5 +1,6 @@
 const BaseClass = require('../baseClass');
 const TypeNotFound = require('../errors/typeNotFound');
+const TokenHelper = require('../tokenHelper');
 
 const ACCEPTED_TYPES = ['integer', 'string', 'real', 'boolean', 'char']
 class VarType extends BaseClass {
@@ -29,7 +30,7 @@ class VarType extends BaseClass {
   nextUntilType() {
     return this.nextUntil(
       VarType.isOnSetFirst, [
-        this.isIdentifier
+        TokenHelper.isIdentifier
     ]);
   }
 }

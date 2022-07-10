@@ -1,5 +1,6 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <ListArgumentsRead> ::= ',' <ArgumentsRead> | ')' ';'
 class ListArgumentsRead extends BaseClass {
@@ -9,10 +10,10 @@ class ListArgumentsRead extends BaseClass {
 
     const ArgumentsRead = require('./argumentsRead');
 
-    if (this.isComma(this.currentToken)) {
+    if (TokenHelper.isComma(this.currentToken)) {
       this.next();
       useFirstProduction = true;
-    } else if (this.isCloseBrackets(this.currentToken)) {
+    } else if (TokenHelper.isCloseBrackets(this.currentToken)) {
       this.next();
       useSecondProduction = true;
     } else {
@@ -20,7 +21,7 @@ class ListArgumentsRead extends BaseClass {
     }
 
     if (!useFirstProduction) {
-      if (this.isSemicolon(this.currentToken)) {
+      if (TokenHelper.isSemicolon(this.currentToken)) {
         this.next();
       } else {
         this.addError(new DelimiterNotFound(';', this.currentIndex, this.currentToken));

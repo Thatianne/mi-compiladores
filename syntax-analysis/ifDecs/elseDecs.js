@@ -1,6 +1,7 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <ElseDecs>::= 'else' '{' <LocalCommands> '}' |
 class ElseDecs extends BaseClass {
@@ -32,7 +33,7 @@ class ElseDecs extends BaseClass {
         const localCommands = new LocalCommands(this.tokens, this.currentIndex, this.errors);
         this.currentIndex = localCommands.exec();
 
-        if (this.isCloseCurlyBrackets(this.currentToken)) {
+        if (TokenHelper.isCloseCurlyBrackets(this.currentToken)) {
           endedTokens = this.next();
         } else {
           this.addError(new DelimiterNotFound('}', this.currentIndex, this.currentToken));
@@ -51,7 +52,7 @@ class ElseDecs extends BaseClass {
   }
 
   isElseReservedWord(token) {
-    return this.isReservedWord(token) && token.lexema === 'else';
+    return TokenHelper.isReservedWord(token) && token.lexema === 'else';
   }
 
   nextUntilElse() {
@@ -59,13 +60,13 @@ class ElseDecs extends BaseClass {
 
     return this.nextUntil(this.isElseReservedWord, [
       LocalCommands.isOnSetFirst,
-      this.isOpenCurlyBrackets,
-      this.isCloseCurlyBrackets,
+      TokenHelper.isOpenCurlyBrackets,
+      TokenHelper.isCloseCurlyBrackets,
     ]);
   }
 
   nextUntilOpenCurlyBrackets() {
-    return this.nextUntil(this.isOpenCurlyBrackets, [this.isCloseCurlyBrackets]);
+    return this.nextUntil(TokenHelper.isOpenCurlyBrackets, [TokenHelper.isCloseCurlyBrackets]);
   }
 }
 

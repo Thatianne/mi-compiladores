@@ -1,13 +1,14 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const IdentifierNotFound = require('../errors/identifierNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <VarDeclaration1>::= ',' Identifier <VarDeclaration1>
 // | ';'
 
 class VarDeclaration1 extends BaseClass {
   exec() {
-    if (this.isSemicolon(this.currentToken)) {
+    if (TokenHelper.isSemicolon(this.currentToken)) {
       this.next();
     } else {
       let [foundComma, endedTokens] = this.nextUntilComma();
@@ -38,15 +39,15 @@ class VarDeclaration1 extends BaseClass {
 
   nextUntilComma() {
     return this.nextUntil(
-      this.isComma, [
-        this.isIdentifier,
+      TokenHelper.isComma, [
+        TokenHelper.isIdentifier,
         VarDeclaration1.isOnSetFirst
     ]);
   }
 
   nextUntilIdentifier() {
     return this.nextUntil(
-      this.isIdentifier, [
+      TokenHelper.isIdentifier, [
         VarDeclaration1.isOnSetFirst,
     ]);
   }

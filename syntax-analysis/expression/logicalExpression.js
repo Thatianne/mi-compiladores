@@ -1,14 +1,14 @@
 const AddendOperator = require('../addendOperator/addendOperator');
 const BaseClass = require('../baseClass');
 const OperatorNotFound = require('../errors/operatorNotFound');
+const TokenHelper = require('../tokenHelper');
 
-/* <LogicalExpression> ::= '||' <AddendOperator>
-                     | '&&' <AddendOperator>
-*/
+// <LogicalExpression> ::= '||' <AddendOperator> | '&&' <AddendOperator>
+
 const OPERATORS = ['||', '&&'];
 class LogicalExpression extends BaseClass {
   exec() {
-    if (this.isOr(this.currentToken) || this.isAnd(this.currentToken)) {
+    if (TokenHelper.isOr(this.currentToken) || TokenHelper.isAnd(this.currentToken)) {
     let endedTokens = this.next();
 
     if (!endedTokens) {

@@ -1,5 +1,6 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <ParameterListProcedure> ::= ',' <ParameterProcedure> | ')'
 class ParameterListProcedure extends BaseClass {
@@ -9,7 +10,7 @@ class ParameterListProcedure extends BaseClass {
     if (foundCloseBrackets) {
       this.next();
     } else {
-      if (this.isComma(this.currentToken)) {
+      if (TokenHelper.isComma(this.currentToken)) {
         this.next();
       } else {
         this.addError(new DelimiterNotFound(',', this.currentIndex, this.currentToken));
@@ -27,7 +28,7 @@ class ParameterListProcedure extends BaseClass {
 
   nextUntilCloseBrackets() {
     const ParameterProcedure = require('./parameterProcedure');
-    return this.nextUntil(this.isCloseBrackets, [this.isComma, ParameterProcedure.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isCloseBrackets, [TokenHelper.isComma, ParameterProcedure.isOnSetFirst])
   }
 
   static getSetFirst() {

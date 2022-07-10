@@ -1,6 +1,7 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
+const TokenHelper = require('../tokenHelper');
 const ArgumentsWrite = require('./argumentsWrite');
 
 // <WriteDecs> ::= 'write' '(' <ArgumentsWrite>
@@ -35,15 +36,15 @@ class WriteDecs extends BaseClass {
   }
 
   isWriteReservedWord(token) {
-    return this.isReservedWord(token) && token.lexema === 'write';
+    return TokenHelper.isReservedWord(token) && token.lexema === 'write';
   }
 
   nextUntilWrite() {
-    return this.nextUntil(this.isWriteReservedWord, [this.isOpenBrackets, ArgumentsWrite.isOnSetFirst])
+    return this.nextUntil(this.isWriteReservedWord, [TokenHelper.isOpenBrackets, ArgumentsWrite.isOnSetFirst])
   }
 
   nextUntilOpenBrackets() {
-    return this.nextUntil(this.isOpenBrackets, [ArgumentsWrite.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isOpenBrackets, [ArgumentsWrite.isOnSetFirst])
   }
 
   static getSetFirst() {

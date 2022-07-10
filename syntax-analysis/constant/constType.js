@@ -1,5 +1,6 @@
 const BaseClass = require('../baseClass');
 const TypeNotFound = require('../errors/typeNotFound');
+const TokenHelper = require('../tokenHelper');
 
 /* <ConstType> ::= 'integer'
 | 'string'
@@ -27,7 +28,7 @@ class ConstType extends BaseClass {
   nextUntilType() {
     return this.nextUntil(
       (token) => this.getTypes().includes(token.lexema), [
-        this.isIdentifier
+        TokenHelper.isIdentifier
     ]);
   }
 }

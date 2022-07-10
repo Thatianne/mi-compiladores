@@ -22,7 +22,7 @@ class ProcedureStatement1 extends BaseClass {
 
   nextUntilCloseCurlyBrackets() {
     const ProcedureStatement = require('./functionStatement');
-    return this.nextUntil(this.isCloseCurlyBrackets, [ProcedureStatement.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isCloseCurlyBrackets, [ProcedureStatement.isOnSetFirst])
   }
 
   static getSetFirst() {

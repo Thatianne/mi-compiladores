@@ -1,6 +1,7 @@
 const BaseClass = require('../baseClass');
 const ValueRegister = require('./valueRegister');
 const AttributionValueNotFound = require('../errors/attributionValueNotFound');
+const TokenHelper = require('../tokenHelper');
 
 /*
 <Value>  ::= Decimal
@@ -16,7 +17,7 @@ class Value extends BaseClass {
 
     if (foundedType) {
       if (this.isRegisterStart(this.currentToken)) {
-        if (this.isDot(this.nextToken)) {
+        if (TokenHelper.isDot(this.nextToken)) {
           this.next();
           const valueRegister = new ValueRegister(this.tokens, this.currentIndex, this.errors);
           this.currentIndex = valueRegister.exec();
@@ -36,21 +37,21 @@ class Value extends BaseClass {
   nextUntilTypes() {
     return this.nextUntil(
       (token) => {
-        return this.isDecimal(token) ||
-        this.isReal(token) ||
-        this.isString(token) ||
-        this.isChar(token) ||
-        this.isBoolean(token) ||
+        return TokenHelper.isDecimal(token) ||
+        TokenHelper.isReal(token) ||
+        TokenHelper.isString(token) ||
+        TokenHelper.isChar(token) ||
+        TokenHelper.isBoolean(token) ||
         this.isRegisterStart(token)
       }, [
-        this.isComma,
-        this.isSemicolon
+        TokenHelper.isComma,
+        TokenHelper.isSemicolon
       ]
     )
   }
 
   isRegisterStart(token) {
-    return this.isIdentifier(token);
+    return TokenHelper.isIdentifier(token);
   }
 
 }

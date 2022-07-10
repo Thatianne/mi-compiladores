@@ -2,6 +2,7 @@ const BaseClass = require('../baseClass');
 const ConstType = require('../constant/constType');
 const RegisterDeclaration1 = require('./registerDeclaration1');
 const IdentifierNotFound = require('../errors/identifierNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <RegisterDeclaration> ::= <ConstType> Identifier <RegisterDeclaration1>
 class RegisterDeclaration extends BaseClass {
@@ -28,7 +29,7 @@ class RegisterDeclaration extends BaseClass {
 
   nextUntilIdentifier() {
     return this.nextUntil(
-      this.isIdentifier, [
+      TokenHelper.isIdentifier, [
         RegisterDeclaration1.isOnSetFirst,
     ]);
   }

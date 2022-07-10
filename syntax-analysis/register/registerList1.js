@@ -1,11 +1,12 @@
 const BaseClass = require('../baseClass');
+const TokenHelper = require('../tokenHelper');
 const RegisterDeclaration = require('./registerDeclaration');
 const RegisterStatementMultiple = require('./registerStatementMultiple');
 
 // <RegisterList1> ::= <RegisterDeclaration> <RegisterList1> | '}' <RegisterStatementMultiple>
 class RegisterList1 extends BaseClass {
   exec() {
-    if (this.isCloseCurlyBrackets(this.currentToken)) {
+    if (TokenHelper.isCloseCurlyBrackets(this.currentToken)) {
       this.next();
 
       const registerStatementMultiple = new RegisterStatementMultiple(this.tokens, this.currentIndex, this.errors);

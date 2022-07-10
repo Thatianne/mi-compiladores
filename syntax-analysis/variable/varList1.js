@@ -1,13 +1,12 @@
 const BaseClass = require('../baseClass');
 const VarDeclaration = require('./varDeclaration');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
+const TokenHelper = require('../tokenHelper');
 
-// <VarList1> ::= <VarDeclaration> <VarList1>
-// | '}'
-
+// <VarList1> ::= <VarDeclaration> <VarList1> | '}'
 class VarList1 extends BaseClass {
   exec() {
-    if (this.isCloseCurlyBrackets(this.currentToken)) {
+    if (TokenHelper.isCloseCurlyBrackets(this.currentToken)) {
       this.next();
     } else {
       const varDeclaration = new VarDeclaration(this.tokens, this.currentIndex, this.errors);

@@ -18,7 +18,7 @@ class RelationalExpression extends BaseClass {
       this.isDifferent(this.currentToken) ||
       this.isLessOrEquals(this.currentToken) ||
       this.isBiggerOrEquals(this.currentToken) ||
-      this.isEqualsTo(this.currentToken)
+      TokenHelper.isEqualsTo(this.currentToken)
     ) {
       let endedTokens = this.next();
 

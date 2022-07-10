@@ -2,6 +2,7 @@ const BaseClass = require('../baseClass');
 const ConstList = require('./constList');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <ConstStatement>::= 'const' '{' <ConstList>
 class ConstStatement extends BaseClass {
@@ -32,15 +33,15 @@ class ConstStatement extends BaseClass {
 
   nextUntilConstReservedWord() {
     return this.nextUntil(
-      this.isConstReservedWord, [
-        this.isOpenCurlyBrackets,
+      TokenHelper.isConstReservedWord, [
+        TokenHelper.isOpenCurlyBrackets,
         ConstList.isOnSetFirst
     ]);
   }
 
   nextUntilOpenCurlyBrackets() {
     return this.nextUntil(
-      this.isOpenCurlyBrackets, [
+      TokenHelper.isOpenCurlyBrackets, [
         ConstList.isOnSetFirst
     ]);
   }

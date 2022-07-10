@@ -19,6 +19,7 @@ class Condition extends BaseClass {
   }
 
   static isOnSetFirst(token) {
+    const set = Condition.getSetFirst();
     const functions = Condition.getSetFirst().filter(tokenType => typeof tokenType === 'function');
     const notFunctions = Condition.getSetFirst().filter(tokenType => typeof tokenType !== 'function');
 

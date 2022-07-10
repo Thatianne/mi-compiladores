@@ -1,6 +1,7 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const IdentifierNotFound = require('../errors/identifierNotFound');
+const TokenHelper = require('../tokenHelper');
 const VarType = require('../variable/varType');
 const ParameterListFunction = require('./parameterListFunction');
 
@@ -49,15 +50,15 @@ class ParameterFunction extends BaseClass {
   }
 
   nextUntilCloseBrackets() {
-    return this.nextUntil(this.isCloseBrackets, [VarType.isOnSetFirst, this.isIdentifier, ParameterListFunction.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isCloseBrackets, [VarType.isOnSetFirst, TokenHelper.isIdentifier, ParameterListFunction.isOnSetFirst])
   }
 
   nextUntilIdentifier() {
-    return this.nextUntil(this.isIdentifier, [ParameterListFunction.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isIdentifier, [ParameterListFunction.isOnSetFirst])
   }
 
   nextUntilColon() {
-    return this.nextUntil(this.isColon, [VarType.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isColon, [VarType.isOnSetFirst])
   }
 
   static getSetFirst() {

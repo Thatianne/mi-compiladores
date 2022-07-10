@@ -3,6 +3,7 @@ const RegisterList = require('./registerList');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const IdentifierNotFound = require('../errors/identifierNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <RegisterStatement> ::= 'register' Identifier '{' <RegisterList>
 class RegisterStatement extends BaseClass {
@@ -44,25 +45,25 @@ class RegisterStatement extends BaseClass {
 
   nextUntilRegisterReservedWord() {
     return this.nextUntil(
-      this.isRegisterReservedWord, [
-        this.isIdentifier,
-        this.isOpenCurlyBrackets,
+      TokenHelper.isRegisterReservedWord, [
+        TokenHelper.isIdentifier,
+        TokenHelper.isOpenCurlyBrackets,
         RegisterList.isOnSetFirst
     ]);
   }
 
   nextUntilIdentifier() {
     return this.nextUntil(
-      this.isIdentifier, [
-        this.isOpenCurlyBrackets,
+      TokenHelper.isIdentifier, [
+        TokenHelper.isOpenCurlyBrackets,
         RegisterList.isOnSetFirst
     ]);
   }
 
   nextUntilOpenCurlyBrackets() {
     return this.nextUntil(
-      this.isOpenCurlyBrackets, [
-        this.isIdentifier,
+      TokenHelper.isOpenCurlyBrackets, [
+        TokenHelper.isIdentifier,
         RegisterList.isOnSetFirst
     ]);
   }

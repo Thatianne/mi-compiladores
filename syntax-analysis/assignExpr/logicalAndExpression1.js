@@ -1,12 +1,13 @@
 const BaseClass = require('../baseClass');
 const Condition = require('../condition/condition');
+const TokenHelper = require('../tokenHelper');
 
 // <LogicalAndExpression1> ::= '&&' <Condition> <LogicalAndExpression1> |
 
 const OPERATORS = ['&&'];
 class LogicalAndExpression1 extends BaseClass {
   exec() {
-    if (!this.isCloseBrackets(this.currentToken) || this.isAnd(this.currentToken)) {
+    if (!TokenHelper.isCloseBrackets(this.currentToken) || TokenHelper.isAnd(this.currentToken)) {
       const [foundAnd, endedTokens] = this.nextUntilAndOperator();
 
       if (foundAnd) {
@@ -23,7 +24,7 @@ class LogicalAndExpression1 extends BaseClass {
   }
 
   nextUntilAndOperator() {
-    return this.nextUntil(this.isAnd, [Condition.isOnSetFirst, LogicalAndExpression1.isOnSetFirst, BaseClass.isDelimiter]);
+    return this.nextUntil(TokenHelper.isAnd, [Condition.isOnSetFirst, LogicalAndExpression1.isOnSetFirst, TokenHelper.isDelimiter]);
   }
 
   static getSetFirst() {

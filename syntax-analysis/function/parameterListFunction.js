@@ -1,5 +1,6 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
+const TokenHelper = require('../tokenHelper');
 const VarType = require('../variable/varType');
 
 // <ParameterListFunction> ::= ',' <ParameterFunction> |  ')' ':' <VarType>
@@ -22,7 +23,7 @@ class ParameterListFunction extends BaseClass {
         this.currentIndex = varType.exec();
       }
     } else {
-      if (this.isComma(this.currentToken)) {
+      if (TokenHelper.isComma(this.currentToken)) {
         this.next();
       } else {
         this.addError(new DelimiterNotFound(',', this.currentIndex, this.currentToken));
@@ -40,15 +41,15 @@ class ParameterListFunction extends BaseClass {
 
   nextUntilCloseBrackets() {
     const ParameterFunction = require('./parameterFunction');
-    return this.nextUntil(this.isCloseBrackets, [this.isComma, ParameterFunction.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isCloseBrackets, [TokenHelper.isComma, ParameterFunction.isOnSetFirst])
   }
 
   nextUntilColon() {
-    return this.nextUntil(this.isColon, [VarType.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isColon, [VarType.isOnSetFirst])
   }
 
   nextUntilIdentifier() {
-    return this.nextUntil(this.isIdentifier, [])
+    return this.nextUntil(TokenHelper.isIdentifier, [])
   }
 
   static getSetFirst() {

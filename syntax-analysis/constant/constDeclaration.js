@@ -3,6 +3,7 @@ const ConstType = require('./constType');
 const ConstDeclaration1 = require('./constDeclaration1');
 const IdentifierNotFound = require('../errors/identifierNotFound');
 const Value = require('../value/value');
+const TokenHelper = require('../tokenHelper');
 
 // <ConstDeclaration> ::= <ConstType> Identifier '=' <Value> <ConstDeclaration1>
 class ConstDeclaration extends BaseClass {
@@ -17,7 +18,7 @@ class ConstDeclaration extends BaseClass {
       this.addError(new IdentifierNotFound(this.currentIndex, this.currentToken));
     }
 
-    if (!endedTokens && this.isEquals(this.currentToken)) {
+    if (!endedTokens && TokenHelper.isEquals(this.currentToken)) {
       this.next();
       const value = new Value(this.tokens, this.currentIndex, this.errors);
       this.currentIndex = value.exec();
@@ -31,7 +32,7 @@ class ConstDeclaration extends BaseClass {
 
   nextUntilIdentifier() {
     return this.nextUntil(
-      this.isIdentifier, [
+      TokenHelper.isIdentifier, [
         ConstDeclaration1.isOnSetFirst,
     ]);
   }

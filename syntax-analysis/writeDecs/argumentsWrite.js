@@ -1,4 +1,5 @@
 const BaseClass = require('../baseClass');
+const TokenHelper = require('../tokenHelper');
 const ListArgumentsWrite = require('./listArgumentsWrite');
 const RegisterWrite = require('./registerWrite');
 const WriteContent = require('./writeContent');
@@ -10,7 +11,7 @@ class ArgumentsWrite extends BaseClass {
       let [found, endedTokens] = this.nextUntilIdentifierWriteContentFirst();
 
       if (found) {
-        if (this.isIdentifier(this.currentToken)) {
+        if (TokenHelper.isIdentifier(this.currentToken)) {
           this.next();
 
           if (RegisterWrite.isOnSetFirst(this.currentToken)) { // trata produção vazia de RegisterWrite
@@ -33,11 +34,11 @@ class ArgumentsWrite extends BaseClass {
   }
 
   nextUntilIdentifierWriteContentFirst() {
-    return this.nextUntil((token) => this.isIdentifier(token) || WriteContent.isOnSetFirst(token), [RegisterWrite.isOnSetFirst, ListArgumentsWrite.isOnSetFirst])
+    return this.nextUntil((token) => TokenHelper.isIdentifier(token) || WriteContent.isOnSetFirst(token), [RegisterWrite.isOnSetFirst, ListArgumentsWrite.isOnSetFirst])
   }
 
   static getSetFirst() {
-    return [BaseClass.isIdentifier];
+    return [TokenHelper.isIdentifier];
   }
 
   static isOnSetFirst(token) {

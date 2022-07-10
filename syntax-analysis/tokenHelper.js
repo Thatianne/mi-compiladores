@@ -58,10 +58,6 @@ class TokenHelper {
     return TokenHelper.isDelimiter(token) && token.lexema === '.';
   }
 
-  static isDot(token) {
-    return TokenHelper.isDelimiter(token) && token.lexema === '.';
-  }
-
   static isOpenBrackets(token) {
     return TokenHelper.isDelimiter(token) && token.lexema === '(';
   }
@@ -94,26 +90,6 @@ class TokenHelper {
     return ['true', 'false'].includes(token.lexema.toLowerCase());
   }
 
-  static isDecimal(token) {
-    return /[0-9]+/.test(token.lexema);
-  }
-
-  static isReal(token) {
-    return /[0-9]+\.[0-9]+/.test(token.lexema);
-  }
-
-  static isString(token) {
-    return /".+"/.test(token.lexema);
-  }
-
-  static isChar(token) {
-    return /'.'/.test(token.lexema);
-  }
-
-  static isBoolean(token) {
-    return ['true', 'false'].includes(token.lexema.toLowerCase());
-  }
-
   static isOr(token) {
     return token.lexema === '||';
   }
@@ -121,7 +97,6 @@ class TokenHelper {
   static isAnd(token) {
     return token.lexema === '&&';
   }
-
 }
 
 module.exports = TokenHelper;

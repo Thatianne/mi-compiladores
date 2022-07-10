@@ -1,4 +1,5 @@
 const BaseClass = require('../baseClass');
+const TokenHelper = require('../tokenHelper');
 const LogicalAndExpression = require('./logicalAndExpression');
 
 // <LogicalOrExpression1> ::= '||' <LogicalAndExpression> <LogicalOrExpression1> |
@@ -6,7 +7,7 @@ const LogicalAndExpression = require('./logicalAndExpression');
 const OPERATORS = ['||'];
 class LogicalOrExpression1 extends BaseClass {
   exec() {
-    if (!this.isCloseBrackets(this.currentToken)) {
+    if (!TokenHelper.isCloseBrackets(this.currentToken)) {
       const [foundAnd, endedTokens] = this.nextUntilOrOperator();
 
       if (foundAnd) {
@@ -22,7 +23,7 @@ class LogicalOrExpression1 extends BaseClass {
   }
 
   nextUntilOrOperator() {
-    return this.nextUntil(this.isOr, [LogicalAndExpression.isOnSetFirst, LogicalOrExpression1.isOnSetFirst, BaseClass.isDelimiter]);
+    return this.nextUntil(this.isOr, [LogicalAndExpression.isOnSetFirst, LogicalOrExpression1.isOnSetFirst, TokenHelper.isDelimiter]);
   }
 
   static getSetFirst() {

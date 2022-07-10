@@ -3,6 +3,7 @@ const GlobalStatement = require('./global/globalStatement');
 const ReservedWordNotFound = require('./errors/reservedWordNotFound');
 const IdentifierNotFound = require('./errors/identifierNotFound');
 const DelimiterNotFound = require('./errors/delimiterNotFound');
+const TokenHelper = require('./tokenHelper');
 
 const PROGRAM = 'program';
 
@@ -44,29 +45,29 @@ class Start extends BaseClass {
   }
 
   isProgramReservedWord(token) {
-    return this.isReservedWord(token) && token.lexema === PROGRAM;
+    return TokenHelper.isReservedWord(token) && token.lexema === PROGRAM;
   }
 
   nextUntilProgramReservedWord() {
     return this.nextUntil(
       this.isProgramReservedWord, [
-        this.isIdentifier,
-        this.isSemicolon,
+        TokenHelper.isIdentifier,
+        TokenHelper.isSemicolon,
         GlobalStatement.isOnSetFirst,
     ]);
   }
 
   nextUntilIdentifier() {
     return this.nextUntil(
-      this.isIdentifier, [
-        this.isSemicolon,
+      TokenHelper.isIdentifier, [
+        TokenHelper.isSemicolon,
         GlobalStatement.isOnSetFirst,
     ]);
   }
 
   nextUntilSemicolon() {
     return this.nextUntil(
-      this.isSemicolon, [
+      TokenHelper.isSemicolon, [
         GlobalStatement.isOnSetFirst,
     ]);
   }

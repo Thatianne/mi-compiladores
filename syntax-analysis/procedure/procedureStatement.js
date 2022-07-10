@@ -4,6 +4,7 @@ const IdentifierNotFound = require('../errors/identifierNotFound');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
 const FunctionStatement = require('../function/functionStatement');
 const LocalStatement = require('../localStatement/localStatement');
+const TokenHelper = require('../tokenHelper');
 const ParameterProcedure = require('./parameterProcedure');
 const ProcedureStatement1 = require('./procedureStatement1');
 
@@ -67,19 +68,19 @@ class ProcedureStatement extends BaseClass {
   }
 
   nextUntilOpenCurlyBrackets() {
-    return this.nextUntil(this.isOpenCurlyBrackets, [ProcedureStatement1.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isOpenCurlyBrackets, [ProcedureStatement1.isOnSetFirst])
   }
 
   nextUntilOpenBrackets() {
-    return this.nextUntil(this.isOpenBrackets, [ParameterProcedure.isOnSetFirst, this.isOpenCurlyBrackets, ProcedureStatement1.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isOpenBrackets, [ParameterProcedure.isOnSetFirst, TokenHelper.isOpenCurlyBrackets, ProcedureStatement1.isOnSetFirst])
   }
 
   nextUntilIdentifier() {
-    return this.nextUntil(this.isIdentifier, [this.isOpenBrackets, ParameterProcedure.isOnSetFirst, this.isOpenCurlyBrackets, ProcedureStatement1.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isIdentifier, [TokenHelper.isOpenBrackets, ParameterProcedure.isOnSetFirst, TokenHelper.isOpenCurlyBrackets, ProcedureStatement1.isOnSetFirst])
   }
 
   nextUntilProcedure() {
-    return this.nextUntil(this.isProcedureReservedWord, [FunctionStatement.isOnSetFirst, this.isIdentifier, this.isOpenBrackets, ParameterProcedure.isOnSetFirst, this.isOpenCurlyBrackets, ProcedureStatement1.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isProcedureReservedWord, [FunctionStatement.isOnSetFirst, TokenHelper.isIdentifier, TokenHelper.isOpenBrackets, ParameterProcedure.isOnSetFirst, TokenHelper.isOpenCurlyBrackets, ProcedureStatement1.isOnSetFirst])
   }
 
   static getSetFirst() {

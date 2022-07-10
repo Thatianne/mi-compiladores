@@ -5,6 +5,7 @@ const ReservedWordNotFound = require('../errors/reservedWordNotFound');
 const ParameterFunction = require('./parameterFunction');
 const FunctionStatement1 = require('./functionStatement1');
 const Value = require('../value/value');
+const TokenHelper = require('../tokenHelper');
 
 // <FunctionStatement>::= 'function' Identifier '(' <ParameterFunction> '{' <LocalStatement> 'return' <Value>';' <FunctionStatement1> |
 class FunctionStatement extends BaseClass {
@@ -90,64 +91,64 @@ class FunctionStatement extends BaseClass {
   }
 
   nextUntilSemicolon() {
-    return this.nextUntil(this.isSemicolon, [FunctionStatement1.isOnSetFirst]);
+    return this.nextUntil(TokenHelper.isSemicolon, [FunctionStatement1.isOnSetFirst]);
   }
 
   nextUntilReturn() {
     return this.nextUntil(this.isReturnReservedWord, [
       Value.isOnSetFirst,
-      this.isSemicolon,
+      TokenHelper.isSemicolon,
       FunctionStatement1.isOnSetFirst
     ]);
   }
 
   nextUntilOpenCurlyBrackets() {
-    return this.nextUntil(this.isOpenCurlyBrackets, [
+    return this.nextUntil(TokenHelper.isOpenCurlyBrackets, [
       this.isReturnReservedWord,
       Value.isOnSetFirst,
-      this.isSemicolon,
+      TokenHelper.isSemicolon,
       FunctionStatement1.isOnSetFirst
     ]);
   }
 
   nextUntilOpenBrackets() {
-    return this.nextUntil(this.isOpenBrackets, [
+    return this.nextUntil(TokenHelper.isOpenBrackets, [
       ParameterFunction.isOnSetFirst,
-      this.isOpenCurlyBrackets,
+      TokenHelper.isOpenCurlyBrackets,
       this.isReturnReservedWord,
       Value.isOnSetFirst,
-      this.isSemicolon,
+      TokenHelper.isSemicolon,
       FunctionStatement1.isOnSetFirst
     ]);
   }
 
   nextUntilIdentifier() {
-    return this.nextUntil(this.isIdentifier, [
-      this.isOpenBrackets,
+    return this.nextUntil(TokenHelper.isIdentifier, [
+      TokenHelper.isOpenBrackets,
       ParameterFunction.isOnSetFirst,
-      this.isOpenCurlyBrackets,
+      TokenHelper.isOpenCurlyBrackets,
       this.isReturnReservedWord,
       Value.isOnSetFirst,
-      this.isSemicolon,
+      TokenHelper.isSemicolon,
       FunctionStatement1.isOnSetFirst
     ]);
   }
 
   nextUntilFunction() {
-    return this.nextUntil(this.isFunctionReservedWord, [
-      this.isIdentifier,
-      this.isOpenBrackets,
+    return this.nextUntil(TokenHelper.isFunctionReservedWord, [
+      TokenHelper.isIdentifier,
+      TokenHelper.isOpenBrackets,
       ParameterFunction.isOnSetFirst,
-      this.isOpenCurlyBrackets,
+      TokenHelper.isOpenCurlyBrackets,
       this.isReturnReservedWord,
       Value.isOnSetFirst,
-      this.isSemicolon,
+      TokenHelper.isSemicolon,
       FunctionStatement1.isOnSetFirst
     ]);
   }
 
   isReturnReservedWord(token) {
-    return this.isReservedWord(token) && token.lexema === 'return';
+    return TokenHelper.isReservedWord(token) && token.lexema === 'return';
   }
 
   static getSetFirst() {

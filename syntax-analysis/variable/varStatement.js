@@ -2,6 +2,7 @@ const BaseClass = require('../baseClass');
 const VarList = require('./varList');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
+const TokenHelper = require('../tokenHelper');
 
 // <VarStatement>::= 'var' '{' <VarList>
 class VarStatement extends BaseClass {
@@ -32,17 +33,17 @@ class VarStatement extends BaseClass {
 
   nextUntilVarReservedWord() {
     return this.nextUntil(
-      this.isVarReservedWord, [
-        this.isOpenCurlyBrackets,
-        this.isCloseCurlyBrackets,
+      TokenHelper.isVarReservedWord, [
+        TokenHelper.isOpenCurlyBrackets,
+        TokenHelper.isCloseCurlyBrackets,
         VarList.isOnSetFirst
     ]);
   }
 
   nextUntilOpenCurlyBrackets() {
     return this.nextUntil(
-      this.isOpenCurlyBrackets, [
-        this.isCloseCurlyBrackets,
+      TokenHelper.isOpenCurlyBrackets, [
+        TokenHelper.isCloseCurlyBrackets,
         VarList.isOnSetFirst
     ]);
   }
