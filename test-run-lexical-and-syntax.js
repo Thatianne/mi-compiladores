@@ -1,7 +1,6 @@
 const LexicalProcess = require('./lexical-analysis/process');
 const SyntaxProcess = require('./syntax-analysis/process');
 
-// Ex.: npm run analyze program/errorNoIdentifier
 const files = process.argv.slice(2);
 
 if (files.length < 1) {
@@ -10,7 +9,7 @@ if (files.length < 1) {
   const file = files[files.length - 1];
   LexicalProcess.init(`syntax-analysis/tests/${file}.txt`, `syntax-analysis/input/${file}.txt`);
 
-  SyntaxProcess.run(`syntax-analysis/input/${file}.txt`, `syntax-analysis/output/${file}.txt`);
+  SyntaxProcess.run(`syntax-analysis/input/${file}.txt`);
 }
 
 

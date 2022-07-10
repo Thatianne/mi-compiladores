@@ -1,4 +1,0 @@
-1 program ReservedWord
-1 Test Identifier
-1 ; Delimiter
-Success!

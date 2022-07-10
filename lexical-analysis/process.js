@@ -49,7 +49,7 @@ class Process {
           hasError = true;
         }
 
-        console.log(`${lineCounter} ${lexeme} ${state.name}`);
+        // console.log(`${lineCounter} ${lexeme} ${state.name}`);
         outputArray.push(`${lineCounter} ${lexeme} ${state.name}`);
 
         lexemeArray = [];
@@ -62,7 +62,14 @@ class Process {
     }
 
     if (!hasError) {
-      console.log('Success!');
+      console.log('Lexical - Success!');
+    }
+
+    const index = outputFile.lastIndexOf('/');
+    const dir = outputFile.substring(0, index);
+
+    if (!fs.existsSync(dir)){
+      fs.mkdirSync(dir);
     }
 
     fs.writeFileSync(outputFile, outputArray.join('\n').concat(!hasError ? '\nSuccess!' : ''), { flag: 'w+' });

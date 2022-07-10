@@ -1,6 +1,0 @@
-1 program ReservedWord
-1 Test Identifier
-3 var ReservedWord
-3 { Delimiter
-3 } Delimiter
-Success!
