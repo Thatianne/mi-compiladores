@@ -88,7 +88,7 @@ class ProcedureStatement extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ProcedureStatement.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ProcedureStatement.getSetFirst());
   }
 }
 

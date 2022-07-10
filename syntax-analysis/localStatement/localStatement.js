@@ -23,7 +23,7 @@ class LocalStatement extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return LocalStatement.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, LocalStatement.getSetFirst());
   }
 }
 

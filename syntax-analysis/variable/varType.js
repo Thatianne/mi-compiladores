@@ -24,7 +24,7 @@ class VarType extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return VarType.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, VarType.getSetFirst());
   }
 
   nextUntilType() {

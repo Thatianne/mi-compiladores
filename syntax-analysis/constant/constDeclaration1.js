@@ -88,7 +88,7 @@ class ConstDeclaration1 extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ConstDeclaration1.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ConstDeclaration1.getSetFirst());
   }
 }
 

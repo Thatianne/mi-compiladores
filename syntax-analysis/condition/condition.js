@@ -19,13 +19,7 @@ class Condition extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    const set = Condition.getSetFirst();
-    const functions = Condition.getSetFirst().filter(tokenType => typeof tokenType === 'function');
-    const notFunctions = Condition.getSetFirst().filter(tokenType => typeof tokenType !== 'function');
-
-    const result = functions.some(func => func.call(this, token));
-
-    return result || notFunctions.includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, Condition.getSetFirst());
   }
 }
 

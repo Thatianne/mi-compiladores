@@ -156,7 +156,7 @@ class FunctionStatement extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return FunctionStatement.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, FunctionStatement.getSetFirst());
   }
 }
 

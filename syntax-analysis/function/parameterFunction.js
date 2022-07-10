@@ -66,7 +66,7 @@ class ParameterFunction extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ParameterFunction.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ParameterFunction.getSetFirst());
   }
 
   static getSetFirst() {
@@ -74,7 +74,7 @@ class ParameterFunction extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ParameterFunction.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ParameterFunction.getSetFirst());
   }
 }
 

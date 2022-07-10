@@ -31,7 +31,7 @@ class ListArgumentsWrite extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ListArgumentsWrite.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ListArgumentsWrite.getSetFirst());
   }
 }
 

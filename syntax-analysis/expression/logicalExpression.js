@@ -26,7 +26,7 @@ class LogicalExpression extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return LogicalExpression.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, LogicalExpression.getSetFirst());
   }
 }
 

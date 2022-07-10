@@ -25,7 +25,7 @@ class ConditionContin extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ConditionContin.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ConditionContin.getSetFirst());
   }
 }
 

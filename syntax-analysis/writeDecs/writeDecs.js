@@ -52,7 +52,7 @@ class WriteDecs extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return WriteDecs.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, WriteDecs.getSetFirst());
   }
 }
 

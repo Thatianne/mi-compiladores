@@ -36,7 +36,7 @@ class ParameterListProcedure extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ParameterListProcedure.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ParameterListProcedure.getSetFirst());
   }
 }
 

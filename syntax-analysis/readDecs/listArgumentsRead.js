@@ -39,7 +39,7 @@ class ListArgumentsRead extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ListArgumentsRead.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ListArgumentsRead.getSetFirst());
   }
 }
 

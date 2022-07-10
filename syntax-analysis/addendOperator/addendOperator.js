@@ -25,7 +25,7 @@ class AddendOperator extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return AddendOperator.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, AddendOperator.getSetFirst());
   }
 }
 

@@ -70,7 +70,7 @@ class WhileDecs extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return WhileDecs.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, WhileDecs.getSetFirst());
   }
 
   isWhileReservedWord(token) {

@@ -75,7 +75,7 @@ class RegisterStatement extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return RegisterStatement.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, RegisterStatement.getSetFirst());
   }
 }
 

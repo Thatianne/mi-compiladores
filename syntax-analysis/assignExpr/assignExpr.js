@@ -17,7 +17,7 @@ class AssignExpr extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return AssignExpr.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, AssignExpr.getSetFirst());
   }
 }
 

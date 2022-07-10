@@ -20,7 +20,7 @@ class LogicalAndExpression extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return Condition.isOnSetFirst(token);
+    return BaseClass.processIsOnSetFirst(token, Condition.getSetFirst());
   }
 }
 

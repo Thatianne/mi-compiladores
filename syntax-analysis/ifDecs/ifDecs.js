@@ -74,7 +74,7 @@ class IfDecs extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return IfDecs.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, IfDecs.getSetFirst());
   }
 
   isIfReservedWord(token) {

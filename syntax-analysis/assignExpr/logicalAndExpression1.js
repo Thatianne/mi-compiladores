@@ -32,7 +32,7 @@ class LogicalAndExpression1 extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return LogicalAndExpression1.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, LogicalAndExpression1.getSetFirst());
   }
 }
 

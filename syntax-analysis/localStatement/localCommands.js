@@ -49,7 +49,7 @@ class LocalCommands extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return LocalCommands.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, LocalCommands.getSetFirst());
   }
 }
 

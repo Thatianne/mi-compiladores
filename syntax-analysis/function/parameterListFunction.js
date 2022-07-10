@@ -57,7 +57,7 @@ class ParameterListFunction extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ParameterListFunction.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ParameterListFunction.getSetFirst());
   }
 }
 

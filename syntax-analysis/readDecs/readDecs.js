@@ -52,7 +52,7 @@ class ReadDecs extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ReadDecs.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ReadDecs.getSetFirst());
   }
 }
 

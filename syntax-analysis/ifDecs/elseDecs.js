@@ -48,7 +48,7 @@ class ElseDecs extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ElseDecs.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, ElseDecs.getSetFirst());
   }
 
   isElseReservedWord(token) {

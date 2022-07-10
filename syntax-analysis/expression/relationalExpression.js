@@ -63,7 +63,7 @@ class RelationalExpression extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return RelationalExpression.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, RelationalExpression.getSetFirst());
   }
 }
 
