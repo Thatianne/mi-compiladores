@@ -23,7 +23,7 @@ procedure test(integer a, string b) {
     integer a, b;
     string e;
   }
-  if (cont && true || a < b) {
+  if (cont && true) {
 
   } else {
 
@@ -33,4 +33,5 @@ procedure test(integer a, string b) {
 
 procedure test() {
   var {}
+  write("Digite o nome da pessoa:");
 }

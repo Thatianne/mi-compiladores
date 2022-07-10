@@ -1,9 +1,9 @@
 const parseTokenStringToObject = (token) => {
-  const tokenSplited = token.split(' ');
+  const tokenSplited = token.split(/([0-9]+)\s(.*)\s(.*)/);
   return {
-    line: tokenSplited[0],
-    lexema: tokenSplited[1],
-    class: tokenSplited[2]
+    line: tokenSplited[1],
+    lexema: tokenSplited[2],
+    class: tokenSplited[3]
   }
 }
 

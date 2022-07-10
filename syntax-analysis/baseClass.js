@@ -42,7 +42,7 @@ class BaseClass {
     return token.class.toLowerCase() === Constants.RESERVED_WORD.toLowerCase();
   }
 
-  isIdentifier(token) {
+  isIdentifier(token) { // TODO melhorar metodos duplicados
     return token.class.toLowerCase() === Constants.IDENTIFIER.toLowerCase();
   }
 
@@ -51,6 +51,10 @@ class BaseClass {
   }
 
   isDelimiter(token) {
+    return token.class.toLowerCase() === Constants.DELIMITER.toLowerCase();
+  }
+
+  static isDelimiter(token) {
     return token.class.toLowerCase() === Constants.DELIMITER.toLowerCase();
   }
 
@@ -96,6 +100,10 @@ class BaseClass {
 
   isDot(token) {
     return this.isDelimiter(token) && token.lexema === '.';
+  }
+
+  static isDot(token) {
+    return BaseClass.isDelimiter(token) && token.lexema === '.';
   }
 
   isOpenBrackets(token) {
@@ -174,8 +182,13 @@ class BaseClass {
     return [];
   }
 
-  static isOnSetFirst(token) {
-    return BaseClass.getSetFirst().includes(token.lexema);
+  static processIsOnSetFirst(token, set) {
+    const functions = set.filter(tokenType => typeof tokenType === 'function');
+    const notFunctions = set.filter(tokenType => typeof tokenType !== 'function');
+
+    const result = functions.some(func => func.call(this, token));
+
+    return result || notFunctions.includes(token.lexema);
   }
 
   nextUntil(funcSearchUntil, funcsStopSearch) {
