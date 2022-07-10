@@ -1,6 +1,5 @@
 const BaseClass = require('../baseClass');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
-const ArgumentsWrite = require('./argumentsWrite');
 
 // <ListArgumentsWrite> ::= ',' <ArgumentsWrite> | ')' ';'
 class ListArgumentsWrite extends BaseClass {
@@ -8,6 +7,7 @@ class ListArgumentsWrite extends BaseClass {
     if (this.isComma(this.currentToken)) {
       this.next();
 
+      const ArgumentsWrite = require('./argumentsWrite');
       const argumentsWrite = new ArgumentsWrite(this.tokens, this.currentIndex, this.errors);
       this.currentIndex = argumentsWrite.exec();
 

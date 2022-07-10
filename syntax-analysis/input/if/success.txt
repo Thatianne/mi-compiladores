@@ -112,5 +112,18 @@
 36 "Digite o nome da pessoa:" StringEndDoubleQuotes
 36 ) Delimiter
 36 ; Delimiter
-37 } Delimiter
+37 write ReservedWord
+37 ( Delimiter
+37 "A quantidade de pessoas que puderam doar sangue foi de " StringEndDoubleQuotes
+37 , Delimiter
+37 qtd Identifier
+37 , Delimiter
+37 " de um total de " StringEndDoubleQuotes
+37 , Delimiter
+37 cont Identifier
+37 , Delimiter
+37 " pessoas." StringEndDoubleQuotes
+37 ) Delimiter
+37 ; Delimiter
+38 } Delimiter
 Success!

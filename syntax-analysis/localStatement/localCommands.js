@@ -1,6 +1,6 @@
 const BaseClass = require('../baseClass');
 const IfDecs = require('../ifDecs/ifDecs');
-const WriteDecs = require('../witeDecs/writeDecs');
+const WriteDecs = require('../writeDecs/writeDecs');
 
 /*
 <LocalCommands> ::= <IfDecs> <LocalCommands>
@@ -11,7 +11,6 @@ const WriteDecs = require('../witeDecs/writeDecs');
                   | <FunctionCall> <LocalCommands>
                   | <ProcedureCall> <LocalCommands>
                   |
-
 */
 class LocalCommands extends BaseClass {
   exec() {

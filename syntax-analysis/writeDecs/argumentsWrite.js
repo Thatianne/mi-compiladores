@@ -13,7 +13,7 @@ class ArgumentsWrite extends BaseClass {
         if (this.isIdentifier(this.currentToken)) {
           this.next();
 
-          if (RegisterWrite.isOnSetFirst(this.current)) { // trata produção vazia de RegisterWrite
+          if (RegisterWrite.isOnSetFirst(this.currentToken)) { // trata produção vazia de RegisterWrite
             const registerWrite = new RegisterWrite(this.tokens, this.currentIndex, this.errors);
             this.currentIndex = registerWrite.exec();
           }
