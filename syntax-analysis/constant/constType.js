@@ -22,14 +22,28 @@ class ConstType extends BaseClass {
   }
 
   getTypes() {
-    return ['integer', 'string', 'real', 'boolean', 'char'];
+    return ACCEPTED_TYPES;
   }
 
   nextUntilType() {
     return this.nextUntil(
-      (token) => this.getTypes().includes(token.lexema), [
+      ConstType.isOnSetFirst, [
         TokenHelper.isIdentifier
     ]);
+  }
+
+  static getSetFirst() {
+    return [
+      TokenHelper.isIntegerReservedWord,
+      TokenHelper.isStringReservedWord,
+      TokenHelper.isRealReservedWord,
+      TokenHelper.isBooleanReservedWord,
+      TokenHelper.isCharReservedWord
+    ];
+  }
+
+  static isOnSetFirst(token) {
+    return BaseClass.processIsOnSetFirst(token, ConstType.getSetFirst());
   }
 }
 
