@@ -125,5 +125,17 @@
 37 " pessoas." StringEndDoubleQuotes
 37 ) Delimiter
 37 ; Delimiter
-38 } Delimiter
+39 read ReservedWord
+39 ( Delimiter
+39 p Identifier
+39 . Delimiter
+39 idade Identifier
+39 ) Delimiter
+39 ; Delimiter
+40 read ReservedWord
+40 ( Delimiter
+40 idade Identifier
+40 ) Delimiter
+40 ; Delimiter
+41 } Delimiter
 Success!

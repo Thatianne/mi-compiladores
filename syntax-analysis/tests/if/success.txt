@@ -35,4 +35,7 @@ procedure test() {
   var {}
   write("Digite o nome da pessoa:");
   write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
+
+  read(p.idade);
+  read(idade);
 }
