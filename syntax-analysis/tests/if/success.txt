@@ -18,7 +18,12 @@ register Pessoa {
 }
 
 procedure test(integer a, string b) {
-  if (resposta >= 3) {
+  var {
+    boolean c, d;
+    integer a, b;
+    string e;
+  }
+  if (cont && true || a < b) {
 
   } else {
 
@@ -27,5 +32,5 @@ procedure test(integer a, string b) {
 }
 
 procedure test() {
-
+  var {}
 }

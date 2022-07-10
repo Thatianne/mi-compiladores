@@ -34,6 +34,7 @@ class VarStatement extends BaseClass {
     return this.nextUntil(
       this.isVarReservedWord, [
         this.isOpenCurlyBrackets,
+        this.isCloseCurlyBrackets,
         VarList.isOnSetFirst
     ]);
   }
@@ -41,6 +42,7 @@ class VarStatement extends BaseClass {
   nextUntilOpenCurlyBrackets() {
     return this.nextUntil(
       this.isOpenCurlyBrackets, [
+        this.isCloseCurlyBrackets,
         VarList.isOnSetFirst
     ]);
   }

@@ -6,7 +6,7 @@ const Condition = require('../condition/condition');
 const OPERATORS = ['&&'];
 class LogicalAndExpression1 extends BaseClass {
   exec() {
-    if (!this.isCloseBrackets(this.currentToken)) {
+    if (!this.isCloseBrackets(this.currentToken) || this.isAnd(this.currentToken)) {
       const [foundAnd, endedTokens] = this.nextUntilAndOperator();
 
       if (foundAnd) {

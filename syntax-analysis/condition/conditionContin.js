@@ -6,7 +6,6 @@ const OperatorNotFound = require('../errors/operatorNotFound');
 // <ConditionContin> ::= <RelationalExpression> | <LogicalExpression>
 class ConditionContin extends BaseClass {
   exec() {
-    // TODO deve tentar seguir algum caminho mesmo q tenha erro no primeiro token?
     if (RelationalExpression.isOnSetFirst(this.currentToken)) {
       const relationalExpression = new RelationalExpression(this.tokens, this.currentIndex, this.errors);
       this.currentIndex = relationalExpression.exec();
