@@ -1,0 +1,71 @@
+program Test;
+
+var {
+  boolean c, d;
+  integer a, b;
+  string e;
+}
+
+const {
+  boolean c = 10, d = "abc";
+  integer a = e, a = j.k, b = true;
+  string e = 'b';
+}
+
+register Pessoa {
+  string nome, sobrenome;
+  integer ano;
+}
+
+procedure test(integer a, string b) {
+  var {
+    boolean c, d;
+    integer a, b;
+    string e;
+  }
+  if (cont && true) {
+    write("Digite o nome da pessoa:");
+  } else {
+    write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
+  }
+
+  while (a > 3) {
+    write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
+  }
+}
+
+procedure test(integer a, string b) {
+  var {
+    boolean c, d;
+    integer a, b;
+    string e;
+  }
+  if (cont && true) {
+    write("Digite o nome da pessoa:");
+  } else {
+    write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
+  }
+
+  while (a > 3) {
+    write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
+  }
+}
+
+function test(): boolean {
+  var {}
+  write("Digite o nome da pessoa:");
+  read(idade);
+
+  return 4.4;
+}
+
+function test(): boolean {
+  var {}
+  write("Digite o nome da pessoa:");
+  write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
+
+  read(p.idade);
+  read(idade);
+
+  return true;
+}
