@@ -41,21 +41,31 @@ procedure test(integer a, string b) {
     string e;
   }
   if (cont && true) {
+    write("Digite o nome da pessoa:");
   } else {
+    write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
   }
 
   while (a > 3) {
+    write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
   }
 }
 
 function test(): boolean {
   var {}
+  write("Digite o nome da pessoa:");
+  read(idade);
 
-  return 4;
+  return 4.4;
 }
 
 function test(): boolean {
   var {}
+  write("Digite o nome da pessoa:");
+  write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
+
+  read(p.idade);
+  read(idade);
 
   return true;
 }

@@ -45,7 +45,8 @@ class Value extends BaseClass {
         this.isRegisterStart(token)
       }, [
         TokenHelper.isComma,
-        TokenHelper.isSemicolon
+        TokenHelper.isSemicolon,
+        TokenHelper.isCloseCurlyBrackets
       ]
     )
   }

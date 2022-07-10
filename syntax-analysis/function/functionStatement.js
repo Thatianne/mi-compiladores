@@ -6,6 +6,7 @@ const ParameterFunction = require('./parameterFunction');
 const FunctionStatement1 = require('./functionStatement1');
 const Value = require('../value/value');
 const TokenHelper = require('../tokenHelper');
+const LocalStatement = require('../localStatement/localStatement');
 
 // <FunctionStatement>::= 'function' Identifier '(' <ParameterFunction> '{' <LocalStatement> 'return' <Value>';' <FunctionStatement1> |
 class FunctionStatement extends BaseClass {
@@ -54,7 +55,8 @@ class FunctionStatement extends BaseClass {
           }
 
           if (!endedTokens) {
-            // TODO adicionar localStatement
+            const localStatement = new LocalStatement(this.tokens, this.currentIndex, this.errors);
+            this.currentIndex = localStatement.exec();
 
             let [foundReturn, endedTokens] = this.nextUntilReturn();
 
@@ -91,14 +93,15 @@ class FunctionStatement extends BaseClass {
   }
 
   nextUntilSemicolon() {
-    return this.nextUntil(TokenHelper.isSemicolon, [FunctionStatement1.isOnSetFirst]);
+    return this.nextUntil(TokenHelper.isSemicolon, [FunctionStatement1.isOnSetFirst, TokenHelper.isCloseCurlyBrackets]);
   }
 
   nextUntilReturn() {
     return this.nextUntil(this.isReturnReservedWord, [
       Value.isOnSetFirst,
       TokenHelper.isSemicolon,
-      FunctionStatement1.isOnSetFirst
+      FunctionStatement1.isOnSetFirst,
+      TokenHelper.isCloseCurlyBrackets
     ]);
   }
 
