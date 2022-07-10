@@ -24,12 +24,12 @@ class RegisterList1 extends BaseClass {
 
   static getSetFirst() {
     return [
-      '}'
-    ].concat(VarDeclaration.getSetFirst());
+      TokenHelper.isCloseCurlyBrackets
+    ].concat(RegisterDeclaration.getSetFirst());
   }
 
   static isOnSetFirst(token) {
-    return VarList1.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, RegisterList1.getSetFirst());
   }
 }
 

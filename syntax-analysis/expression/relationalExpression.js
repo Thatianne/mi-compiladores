@@ -1,6 +1,7 @@
 const AddendOperator = require('../addendOperator/addendOperator');
 const BaseClass = require('../baseClass');
 const OperatorNotFound = require('../errors/operatorNotFound');
+const TokenHelper = require('../tokenHelper');
 
 /*
  <RelationalExpression> ::= '<' <AddendOperator>
@@ -13,11 +14,11 @@ const OperatorNotFound = require('../errors/operatorNotFound');
 const OPERATORS = ['<', '>', '!=', '<=', '>=', '=='];
 class RelationalExpression extends BaseClass {
   exec() {
-    if (this.isLessThen(this.currentToken) ||
-      this.isBiggerThen(this.currentToken) ||
-      this.isDifferent(this.currentToken) ||
-      this.isLessOrEquals(this.currentToken) ||
-      this.isBiggerOrEquals(this.currentToken) ||
+    if (TokenHelper.isLessThen(this.currentToken) ||
+      TokenHelper.isBiggerThen(this.currentToken) ||
+      TokenHelper.isDifferent(this.currentToken) ||
+      TokenHelper.isLessOrEquals(this.currentToken) ||
+      TokenHelper.isBiggerOrEquals(this.currentToken) ||
       TokenHelper.isEqualsTo(this.currentToken)
     ) {
       let endedTokens = this.next();
@@ -33,33 +34,15 @@ class RelationalExpression extends BaseClass {
     return this.currentIndex;
   }
 
-  isLessThen(token) {
-    return token.lexema === '<';
-  }
-
-  isBiggerThen(token) {
-    return token.lexema === '>';
-  }
-
-  isDifferent(token) {
-    return token.lexema === '!=';
-  }
-
-  isLessOrEquals(token) {
-    return token.lexema === '<=';
-  }
-
-  isBiggerOrEquals(token) {
-    return token.lexema === '>=';
-  }
-
-  isEqualsTo(token) {
-    return token.lexema === '==';
-  }
-
-
   static getSetFirst() {
-    return OPERATORS;
+    return [
+      TokenHelper.isLessThen,
+      TokenHelper.isBiggerThen,
+      TokenHelper.isDifferent,
+      TokenHelper.isLessOrEquals,
+      TokenHelper.isBiggerOrEquals,
+      TokenHelper.isEqualsTo
+    ]
   }
 
   static isOnSetFirst(token) {

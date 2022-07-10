@@ -22,7 +22,7 @@ class LogicalExpression extends BaseClass {
   }
 
   static getSetFirst() {
-    return OPERATORS;
+    return [TokenHelper.isOr, TokenHelper.isAnd];
   }
 
   static isOnSetFirst(token) {

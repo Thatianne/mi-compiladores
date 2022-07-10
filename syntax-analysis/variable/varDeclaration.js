@@ -33,6 +33,14 @@ class VarDeclaration extends BaseClass {
         VarDeclaration1.isOnSetFirst,
     ]);
   }
+
+  static getSetFirst() {
+    return VarType.getSetFirst;
+  }
+
+  static isOnSetFirst(token) {
+    return BaseClass.processIsOnSetFirst(token, VarDeclaration.getSetFirst());
+  }
 }
 
 module.exports = VarDeclaration;

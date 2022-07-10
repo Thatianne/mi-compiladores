@@ -17,6 +17,14 @@ class RegisterList extends BaseClass {
 
     return this.currentIndex;
   }
+
+  static getSetFirst() {
+    return RegisterDeclaration.getSetFirst();
+  }
+
+  static isOnSetFirst(token) {
+    return BaseClass.processIsOnSetFirst(token, RegisterDeclaration.getSetFirst());
+  }
 }
 
 module.exports = RegisterList;

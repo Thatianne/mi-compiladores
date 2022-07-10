@@ -47,9 +47,7 @@ class ConstStatement extends BaseClass {
   }
 
   static getSetFirst() {
-    return [
-      'const'
-    ];
+    return [TokenHelper.isConstReservedWord]
   }
 
   static isOnSetFirst(token) {

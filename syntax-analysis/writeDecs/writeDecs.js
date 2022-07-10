@@ -35,12 +35,8 @@ class WriteDecs extends BaseClass {
     return this.currentIndex;
   }
 
-  isWriteReservedWord(token) {
-    return TokenHelper.isReservedWord(token) && token.lexema === 'write';
-  }
-
   nextUntilWrite() {
-    return this.nextUntil(this.isWriteReservedWord, [TokenHelper.isOpenBrackets, ArgumentsWrite.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isWriteReservedWord, [TokenHelper.isOpenBrackets, ArgumentsWrite.isOnSetFirst])
   }
 
   nextUntilOpenBrackets() {
@@ -48,7 +44,7 @@ class WriteDecs extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['write'];
+    return [TokenHelper.isWriteReservedWord];
   }
 
   static isOnSetFirst(token) {

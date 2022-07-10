@@ -62,15 +62,7 @@ class ParameterFunction extends BaseClass {
   }
 
   static getSetFirst() {
-    return VarType.getSetFirst().concat([')']);
-  }
-
-  static isOnSetFirst(token) {
-    return BaseClass.processIsOnSetFirst(token, ParameterFunction.getSetFirst());
-  }
-
-  static getSetFirst() {
-    return VarType.getSetFirst().concat([')']);
+    return [TokenHelper.isCloseBrackets].concat(VarType.getSetFirst())
   }
 
   static isOnSetFirst(token) {

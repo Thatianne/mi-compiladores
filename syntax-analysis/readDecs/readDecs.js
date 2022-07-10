@@ -35,12 +35,8 @@ class ReadDecs extends BaseClass {
     return this.currentIndex;
   }
 
-  isReadReservedWord(token) {
-    return TokenHelper.isReservedWord(token) && token.lexema === 'read';
-  }
-
   nextUntilRead() {
-    return this.nextUntil(this.isReadReservedWord, [TokenHelper.isOpenBrackets, ArgumentsRead.isOnSetFirst])
+    return this.nextUntil(TokenHelper.isReadReservedWord, [TokenHelper.isOpenBrackets, ArgumentsRead.isOnSetFirst])
   }
 
   nextUntilOpenBrackets() {
@@ -48,7 +44,7 @@ class ReadDecs extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['read'];
+    return [TokenHelper.isReadReservedWord];
   }
 
   static isOnSetFirst(token) {

@@ -84,7 +84,7 @@ class ProcedureStatement extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['procedure'];
+    return [TokenHelper.isProcedureReservedWord];
   }
 
   static isOnSetFirst(token) {

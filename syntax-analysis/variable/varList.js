@@ -20,6 +20,14 @@ class VarList extends BaseClass {
 
     return this.currentIndex;
   }
+
+  static getSetFirst() {
+    return VarDeclaration.getSetFirst;
+  }
+
+  static isOnSetFirst(token) {
+    return BaseClass.processIsOnSetFirst(token, VarList.getSetFirst());
+  }
 }
 
 module.exports = VarList;

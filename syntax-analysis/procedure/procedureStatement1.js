@@ -28,7 +28,7 @@ class ProcedureStatement1 extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['}'];
+    return [TokenHelper.isCloseCurlyBrackets];
   }
 
   static isOnSetFirst(token) {

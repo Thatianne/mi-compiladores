@@ -35,7 +35,7 @@ class ListArgumentsRead extends BaseClass {
   }
 
   static getSetFirst() {
-    return [',', ')'];
+    return [TokenHelper.isComma, TokenHelper.isCloseBrackets];
   }
 
   static isOnSetFirst(token) {

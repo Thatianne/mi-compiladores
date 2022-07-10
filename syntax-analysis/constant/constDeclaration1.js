@@ -81,10 +81,7 @@ class ConstDeclaration1 extends BaseClass {
   }
 
   static getSetFirst() {
-    return [
-      ',',
-      ';'
-    ];
+    return [TokenHelper.isComma, TokenHelper.isSemicolon]
   }
 
   static isOnSetFirst(token) {

@@ -4,11 +4,11 @@ const TokenHelper = require('../tokenHelper');
 
 // TODO validar os tipos aceitos
 // <AddendOperator> ::= Identifier | Decimal | RealNumber | Boolean
-const ACCEPTED_TYPES = ['identifier', 'decimal', 'real', 'boolean'];
+const ACCEPTED_TYPES = ['identifier', 'integer', 'real', 'boolean'];
 class AddendOperator extends BaseClass {
   exec() {
     if (TokenHelper.isIdentifier(this.currentToken) ||
-      TokenHelper.isDecimal(this.currentToken) ||
+      TokenHelper.isInteger(this.currentToken) ||
       TokenHelper.isReal(this.currentToken) ||
       TokenHelper.isBoolean(this.currentToken)
     ) {
@@ -21,7 +21,7 @@ class AddendOperator extends BaseClass {
   }
 
   static getSetFirst() {
-    return [TokenHelper.isIdentifier, TokenHelper.isDecimal, TokenHelper.isReal, TokenHelper.isBoolean];
+    return [TokenHelper.isIdentifier, TokenHelper.isInteger, TokenHelper.isReal, TokenHelper.isBoolean];
   }
 
   static isOnSetFirst(token) {

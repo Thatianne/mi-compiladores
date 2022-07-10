@@ -69,9 +69,7 @@ class RegisterStatement extends BaseClass {
   }
 
   static getSetFirst() {
-    return [
-      'register'
-    ];
+    return [TokenHelper.isRegisterReservedWord];
   }
 
   static isOnSetFirst(token) {

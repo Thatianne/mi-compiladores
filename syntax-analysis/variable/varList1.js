@@ -21,7 +21,7 @@ class VarList1 extends BaseClass {
 
   static getSetFirst() {
     return [
-      '}'
+      TokenHelper.isCloseCurlyBrackets
     ].concat(VarDeclaration.getSetFirst());
   }
 

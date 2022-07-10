@@ -70,19 +70,15 @@ class IfDecs extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['if'];
+    return [TokenHelper.isIfReservedWord];
   }
 
   static isOnSetFirst(token) {
     return BaseClass.processIsOnSetFirst(token, IfDecs.getSetFirst());
   }
 
-  isIfReservedWord(token) {
-    return TokenHelper.isReservedWord(token) && token.lexema === 'if';
-  }
-
   nextUntilIf() {
-    return this.nextUntil(this.isIfReservedWord, [
+    return this.nextUntil(TokenHelper.isIfReservedWord, [
       TokenHelper.isOpenBrackets,
       // AssignExpr.isOnSetFirst,
       TokenHelper.isCloseBrackets,

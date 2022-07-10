@@ -50,7 +50,7 @@ class VarStatement extends BaseClass {
 
   static getSetFirst() {
     return [
-      'var'
+      TokenHelper.isVarReservedWord
     ];
   }
 

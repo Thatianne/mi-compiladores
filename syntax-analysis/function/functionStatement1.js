@@ -1,4 +1,5 @@
 const BaseClass = require('../baseClass');
+const TokenHelper = require('../tokenHelper');
 
 // <FunctionStatement1>::= '}' <FunctionStatement>
 class ProcedureStatement1 extends BaseClass {
@@ -26,7 +27,7 @@ class ProcedureStatement1 extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['}'];
+    return [TokenHelper.isCloseCurlyBrackets];
   }
 
   static isOnSetFirst(token) {

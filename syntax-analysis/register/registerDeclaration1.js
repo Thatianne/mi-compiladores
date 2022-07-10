@@ -51,14 +51,11 @@ class RegisterDeclaration1 extends BaseClass {
   }
 
   static getSetFirst() {
-    return [
-      ',',
-      ';'
-    ];
+    return [TokenHelper.isComma, TokenHelper.isSemicolon];
   }
 
   static isOnSetFirst(token) {
-    return RegisterDeclaration1.getSetFirst().includes(token.lexema);
+    return BaseClass.processIsOnSetFirst(token, RegisterDeclaration1.getSetFirst());
   }
 }
 

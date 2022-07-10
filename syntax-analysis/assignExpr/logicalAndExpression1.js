@@ -28,7 +28,7 @@ class LogicalAndExpression1 extends BaseClass {
   }
 
   static getSetFirst() {
-    return OPERATORS;
+    return [TokenHelper.isAnd];
   }
 
   static isOnSetFirst(token) {

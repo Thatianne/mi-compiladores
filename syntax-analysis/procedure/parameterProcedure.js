@@ -46,7 +46,7 @@ class ParameterProcedure extends BaseClass {
   }
 
   static getSetFirst() {
-    return VarType.getSetFirst().concat([')']);
+    return [TokenHelper.isCloseBrackets].concat(VarType.getSetFirst());
   }
 
   static isOnSetFirst(token) {

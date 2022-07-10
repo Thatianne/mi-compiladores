@@ -2,6 +2,14 @@ const BaseClass = require('../baseClass');
 const TypeNotFound = require('../errors/typeNotFound');
 const TokenHelper = require('../tokenHelper');
 
+/*
+<VarType>::= 'integer'
+          | 'string'
+          | 'real'
+          | 'boolean'
+          | 'char'
+          | Identifier
+*/
 const ACCEPTED_TYPES = ['integer', 'string', 'real', 'boolean', 'char']
 class VarType extends BaseClass {
   exec() {
@@ -20,7 +28,13 @@ class VarType extends BaseClass {
   }
 
   static getSetFirst() {
-    return ACCEPTED_TYPES;
+    return [
+      TokenHelper.isIntegerReservedWord,
+      TokenHelper.isStringReservedWord,
+      TokenHelper.isRealReservedWord,
+      TokenHelper.isBooleanReservedWord,
+      TokenHelper.isCharReservedWord
+    ];
   }
 
   static isOnSetFirst(token) {

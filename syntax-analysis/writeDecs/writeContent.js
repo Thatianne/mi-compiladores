@@ -3,10 +3,10 @@ const TypeNotFound = require('../errors/typeNotFound');
 const TokenHelper = require('../tokenHelper');
 
 // <WriteContent> ::= Decimal | RealNumber | StringLiteral
-const ACCEPTED_TYPES = ['decimal', 'real', 'string'];
+const ACCEPTED_TYPES = ['integer', 'real', 'string'];
 class WriteContent extends BaseClass {
   exec() {
-    if (TokenHelper.isDecimal(this.currentToken) || TokenHelper.isReal(TokenHelper.isReal) || TokenHelper.isString(this.currentToken)) {
+    if (TokenHelper.isInteger(this.currentToken) || TokenHelper.isReal(TokenHelper.isReal) || TokenHelper.isString(this.currentToken)) {
       this.next();
     } else {
       this.addError(new TypeNotFound(this.currentIndex, this.currentToken, ACCEPTED_TYPES));
@@ -16,7 +16,7 @@ class WriteContent extends BaseClass {
   }
 
   static getSetFirst() {
-    return [TokenHelper.isDecimal, TokenHelper.isReal, TokenHelper.isString];
+    return [TokenHelper.isInteger, TokenHelper.isReal, TokenHelper.isString];
   }
 
   static isOnSetFirst(token) {

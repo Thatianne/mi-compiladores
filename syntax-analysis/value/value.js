@@ -37,7 +37,7 @@ class Value extends BaseClass {
   nextUntilTypes() {
     return this.nextUntil(
       (token) => {
-        return TokenHelper.isDecimal(token) ||
+        return TokenHelper.isInteger(token) ||
         TokenHelper.isReal(token) ||
         TokenHelper.isString(token) ||
         TokenHelper.isChar(token) ||
@@ -52,6 +52,20 @@ class Value extends BaseClass {
 
   isRegisterStart(token) {
     return TokenHelper.isIdentifier(token);
+  }
+
+  static getSetFirst() {
+    return [
+      TokenHelper.isInteger,
+      TokenHelper.isReal,
+      TokenHelper.isString,
+      TokenHelper.isChar,
+      TokenHelper.isBoolean
+    ]
+  }
+
+  static isOnSetFirst(token) {
+    return BaseClass.processIsOnSetFirst(token, Value.getSetFirst());
   }
 
 }

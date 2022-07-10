@@ -1,6 +1,7 @@
 const BaseClass = require('../baseClass');
 const IfDecs = require('../ifDecs/ifDecs');
 const ReadDecs = require('../readDecs/readDecs');
+const TokenHelper = require('../tokenHelper');
 const WhileDecs = require('../whileDecs/whileDecs');
 const WriteDecs = require('../writeDecs/writeDecs');
 
@@ -45,7 +46,7 @@ class LocalCommands extends BaseClass {
   }
 
   static getSetFirst() {
-    return IfDecs.getSetFirst().concat(['}', 'return']); // TODO ver como melhorar pra não deixar fixo, } relacionado a procedure e return pra function
+    return [TokenHelper.isCloseCurlyBrackets, TokenHelper.isReturnReservedWord].concat(IfDecs.getSetFirst());
   }
 
   static isOnSetFirst(token) {

@@ -152,7 +152,7 @@ class FunctionStatement extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['function'];
+    return [TokenHelper.isFunctionReservedWord];
   }
 
   static isOnSetFirst(token) {

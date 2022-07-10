@@ -70,7 +70,7 @@ class TokenHelper {
     return token.lexema === '=';
   }
 
-  static isDecimal(token) {
+  static isInteger(token) {
     return /[0-9]+/.test(token.lexema);
   }
 
@@ -96,6 +96,74 @@ class TokenHelper {
 
   static isAnd(token) {
     return token.lexema === '&&';
+  }
+
+  static isLessThen(token) {
+    return token.lexema === '<';
+  }
+
+  static isBiggerThen(token) {
+    return token.lexema === '>';
+  }
+
+  static isDifferent(token) {
+    return token.lexema === '!=';
+  }
+
+  static isLessOrEquals(token) {
+    return token.lexema === '<=';
+  }
+
+  static isBiggerOrEquals(token) {
+    return token.lexema === '>=';
+  }
+
+  static isEqualsTo(token) {
+    return token.lexema === '==';
+  }
+
+  static isIfReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'if';
+  }
+
+  static isElseReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'else';
+  }
+
+  static isReturnReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'return';
+  }
+
+  static isReadReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'read';
+  }
+
+  static isWhileReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'while';
+  }
+
+  static isWriteReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'write';
+  }
+
+  static isIntegerReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'integer';
+  }
+
+  static isRealReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'real';
+  }
+
+  static isStringReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'string';
+  }
+
+  static isCharReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'char';
+  }
+
+  static isBooleanReservedWord(token) {
+    return TokenHelper.isReservedWord(token) && token.lexema === 'boolean';
   }
 }
 

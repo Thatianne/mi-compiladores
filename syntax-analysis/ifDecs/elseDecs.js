@@ -44,21 +44,17 @@ class ElseDecs extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['else'];
+    return [TokenHelper.isElseReservedWord];
   }
 
   static isOnSetFirst(token) {
     return BaseClass.processIsOnSetFirst(token, ElseDecs.getSetFirst());
   }
 
-  isElseReservedWord(token) {
-    return TokenHelper.isReservedWord(token) && token.lexema === 'else';
-  }
-
   nextUntilElse() {
     const LocalCommands = require('../localStatement/localCommands');
 
-    return this.nextUntil(this.isElseReservedWord, [
+    return this.nextUntil(TokenHelper.isElseReservedWord, [
       LocalCommands.isOnSetFirst,
       TokenHelper.isOpenCurlyBrackets,
       TokenHelper.isCloseCurlyBrackets,

@@ -54,8 +54,8 @@ class VarDeclaration1 extends BaseClass {
 
   static getSetFirst() {
     return [
-      ',',
-      ';'
+      TokenHelper.isComma,
+      TokenHelper.isSemicolon,
     ];
   }
 

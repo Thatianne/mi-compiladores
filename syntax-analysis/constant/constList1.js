@@ -20,9 +20,7 @@ class ConstList1 extends BaseClass {
   }
 
   static getSetFirst() {
-    return [
-      '}'
-    ].concat(ConstDeclaration.getSetFirst());
+    return [TokenHelper.isCloseCurlyBrackets].concat(ConstDeclaration.getSetFirst())
   }
 
   static isOnSetFirst(token) {

@@ -23,11 +23,11 @@ class LogicalOrExpression1 extends BaseClass {
   }
 
   nextUntilOrOperator() {
-    return this.nextUntil(this.isOr, [LogicalAndExpression.isOnSetFirst, LogicalOrExpression1.isOnSetFirst, TokenHelper.isDelimiter]);
+    return this.nextUntil(TokenHelper.isOr, [LogicalAndExpression.isOnSetFirst, LogicalOrExpression1.isOnSetFirst, TokenHelper.isDelimiter]);
   }
 
   static getSetFirst() {
-    return OPERATORS;
+    return [TokenHelper.isOr];
   }
 
   static isOnSetFirst(token) {

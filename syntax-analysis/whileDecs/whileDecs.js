@@ -66,19 +66,15 @@ class WhileDecs extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['while'];
+    return [TokenHelper.isWhileReservedWord];
   }
 
   static isOnSetFirst(token) {
     return BaseClass.processIsOnSetFirst(token, WhileDecs.getSetFirst());
   }
 
-  isWhileReservedWord(token) {
-    return TokenHelper.isReservedWord(token) && token.lexema === 'while';
-  }
-
   nextUntilWhile() {
-    return this.nextUntil(this.isWhileReservedWord, [
+    return this.nextUntil(TokenHelper.isWhileReservedWord, [
       TokenHelper.isOpenBrackets,
       AssignExpr.isOnSetFirst,
       TokenHelper.isCloseBrackets,
