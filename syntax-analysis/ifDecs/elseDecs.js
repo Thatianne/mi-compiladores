@@ -8,10 +8,11 @@ class ElseDecs extends BaseClass {
     let [foundElse, endedTokens] = this.nextUntilElse();
     let useEmptyProduction = false;
 
+    const LocalCommands = require('../localStatement/localCommands');
+
     if (foundElse) {
       endedTokens = this.next();
     } else {
-      const LocalCommands = require('../localStatement/localCommands');
       if (LocalCommands.isOnSetFirst(this.currentToken)) {
         useEmptyProduction = true;
       } else {
@@ -28,7 +29,8 @@ class ElseDecs extends BaseClass {
       }
 
       if (!endedTokens) {
-        // TODO executar LocalCommands
+        const localCommands = new LocalCommands(this.tokens, this.currentIndex, this.errors);
+        this.currentIndex = localCommands.exec();
 
         if (this.isCloseCurlyBrackets(this.currentToken)) {
           endedTokens = this.next();

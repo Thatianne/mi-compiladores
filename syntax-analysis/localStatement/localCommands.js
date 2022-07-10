@@ -1,6 +1,7 @@
 const BaseClass = require('../baseClass');
 const IfDecs = require('../ifDecs/ifDecs');
 const ReadDecs = require('../readDecs/readDecs');
+const WhileDecs = require('../whileDecs/whileDecs');
 const WriteDecs = require('../writeDecs/writeDecs');
 
 /*
@@ -28,6 +29,10 @@ class LocalCommands extends BaseClass {
     } else if (ReadDecs.isOnSetFirst(this.currentToken)){
       const readDecs = new ReadDecs(this.tokens, this.currentIndex, this.errors);
       this.currentIndex = readDecs.exec();
+      useRecursiveLocalCommands = true;
+    } else if (WhileDecs.isOnSetFirst(this.currentToken)){
+      const whileDecs = new WhileDecs(this.tokens, this.currentIndex, this.errors);
+      this.currentIndex = whileDecs.exec();
       useRecursiveLocalCommands = true;
     }
 

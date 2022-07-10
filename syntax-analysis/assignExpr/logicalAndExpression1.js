@@ -23,7 +23,7 @@ class LogicalAndExpression1 extends BaseClass {
   }
 
   nextUntilAndOperator() {
-    return this.nextUntil(this.isAnd, [Condition.isOnSetFirst, LogicalAndExpression1.isOnSetFirst]);
+    return this.nextUntil(this.isAnd, [Condition.isOnSetFirst, LogicalAndExpression1.isOnSetFirst, BaseClass.isDelimiter]);
   }
 
   static getSetFirst() {

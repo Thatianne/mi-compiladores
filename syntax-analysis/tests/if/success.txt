@@ -24,11 +24,14 @@ procedure test(integer a, string b) {
     string e;
   }
   if (cont && true) {
-
+    write("Digite o nome da pessoa:");
   } else {
-
+    write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
   }
 
+  while (a > 3) {
+    write ("A quantidade de pessoas que puderam doar sangue foi de ", qtd, " de um total de ", cont, " pessoas.");
+  }
 }
 
 procedure test() {

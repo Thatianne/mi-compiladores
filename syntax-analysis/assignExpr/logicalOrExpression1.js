@@ -22,7 +22,7 @@ class LogicalOrExpression1 extends BaseClass {
   }
 
   nextUntilOrOperator() {
-    return this.nextUntil(this.isOr, [LogicalAndExpression.isOnSetFirst, LogicalOrExpression1.isOnSetFirst]);
+    return this.nextUntil(this.isOr, [LogicalAndExpression.isOnSetFirst, LogicalOrExpression1.isOnSetFirst, BaseClass.isDelimiter]);
   }
 
   static getSetFirst() {

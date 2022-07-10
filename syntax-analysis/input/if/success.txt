@@ -94,48 +94,87 @@
 26 true ReservedWord
 26 ) Delimiter
 26 { Delimiter
+27 write ReservedWord
+27 ( Delimiter
+27 "Digite o nome da pessoa:" StringEndDoubleQuotes
+27 ) Delimiter
+27 ; Delimiter
 28 } Delimiter
 28 else ReservedWord
 28 { Delimiter
+29 write ReservedWord
+29 ( Delimiter
+29 "A quantidade de pessoas que puderam doar sangue foi de " StringEndDoubleQuotes
+29 , Delimiter
+29 qtd Identifier
+29 , Delimiter
+29 " de um total de " StringEndDoubleQuotes
+29 , Delimiter
+29 cont Identifier
+29 , Delimiter
+29 " pessoas." StringEndDoubleQuotes
+29 ) Delimiter
+29 ; Delimiter
 30 } Delimiter
-32 } Delimiter
-34 procedure ReservedWord
-34 test Identifier
-34 ( Delimiter
-34 ) Delimiter
-34 { Delimiter
-35 var ReservedWord
-35 { Delimiter
+32 while ReservedWord
+32 ( Delimiter
+32 a Identifier
+32 > RelationalOperatorBigger
+32 3 Number
+32 ) Delimiter
+32 { Delimiter
+33 write ReservedWord
+33 ( Delimiter
+33 "A quantidade de pessoas que puderam doar sangue foi de " StringEndDoubleQuotes
+33 , Delimiter
+33 qtd Identifier
+33 , Delimiter
+33 " de um total de " StringEndDoubleQuotes
+33 , Delimiter
+33 cont Identifier
+33 , Delimiter
+33 " pessoas." StringEndDoubleQuotes
+33 ) Delimiter
+33 ; Delimiter
+34 } Delimiter
 35 } Delimiter
-36 write ReservedWord
-36 ( Delimiter
-36 "Digite o nome da pessoa:" StringEndDoubleQuotes
-36 ) Delimiter
-36 ; Delimiter
-37 write ReservedWord
+37 procedure ReservedWord
+37 test Identifier
 37 ( Delimiter
-37 "A quantidade de pessoas que puderam doar sangue foi de " StringEndDoubleQuotes
-37 , Delimiter
-37 qtd Identifier
-37 , Delimiter
-37 " de um total de " StringEndDoubleQuotes
-37 , Delimiter
-37 cont Identifier
-37 , Delimiter
-37 " pessoas." StringEndDoubleQuotes
 37 ) Delimiter
-37 ; Delimiter
-39 read ReservedWord
+37 { Delimiter
+38 var ReservedWord
+38 { Delimiter
+38 } Delimiter
+39 write ReservedWord
 39 ( Delimiter
-39 p Identifier
-39 . Delimiter
-39 idade Identifier
+39 "Digite o nome da pessoa:" StringEndDoubleQuotes
 39 ) Delimiter
 39 ; Delimiter
-40 read ReservedWord
+40 write ReservedWord
 40 ( Delimiter
-40 idade Identifier
+40 "A quantidade de pessoas que puderam doar sangue foi de " StringEndDoubleQuotes
+40 , Delimiter
+40 qtd Identifier
+40 , Delimiter
+40 " de um total de " StringEndDoubleQuotes
+40 , Delimiter
+40 cont Identifier
+40 , Delimiter
+40 " pessoas." StringEndDoubleQuotes
 40 ) Delimiter
 40 ; Delimiter
-41 } Delimiter
+42 read ReservedWord
+42 ( Delimiter
+42 p Identifier
+42 . Delimiter
+42 idade Identifier
+42 ) Delimiter
+42 ; Delimiter
+43 read ReservedWord
+43 ( Delimiter
+43 idade Identifier
+43 ) Delimiter
+43 ; Delimiter
+44 } Delimiter
 Success!

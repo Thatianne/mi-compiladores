@@ -1,15 +1,14 @@
 const BaseClass = require('../baseClass');
-const ElseDecs = require('./elseDecs');
 const DelimiterNotFound = require('../errors/delimiterNotFound');
 const ReservedWordNotFound = require('../errors/reservedWordNotFound');
 const AssignExpr = require('../assignExpr/assignExpr');
 
-// <IfDecs> ::= 'if' '(' <AssignExpr> ')' '{' <LocalCommands> '}' <ElseDecs>
-class IfDecs extends BaseClass {
+// <WhileDecs>::= 'while' '('<AssignExpr>')' '{' <LocalCommands> '}'
+class WhileDecs extends BaseClass {
   exec() {
-    let [foundIf, endedTokens] = this.nextUntilIf();
+    let [foundWhile, endedTokens] = this.nextUntilWhile();
 
-    if (foundIf) {
+    if (foundWhile) {
       endedTokens = this.next();
     } else {
       this.addError(new ReservedWordNotFound('if', this.currentIndex, this.currentToken));
@@ -57,9 +56,6 @@ class IfDecs extends BaseClass {
             } else {
               this.addError(new DelimiterNotFound('}', this.currentIndex, this.currentToken));
             }
-
-            const elseDecs = new ElseDecs(this.tokens, this.currentIndex, this.errors);
-            this.currentIndex = elseDecs.exec();
           }
         }
       }
@@ -69,35 +65,33 @@ class IfDecs extends BaseClass {
   }
 
   static getSetFirst() {
-    return ['if'];
+    return ['while'];
   }
 
   static isOnSetFirst(token) {
-    return IfDecs.getSetFirst().includes(token.lexema);
+    return WhileDecs.getSetFirst().includes(token.lexema);
   }
 
-  isIfReservedWord(token) {
-    return this.isReservedWord(token) && token.lexema === 'if';
+  isWhileReservedWord(token) {
+    return this.isReservedWord(token) && token.lexema === 'while';
   }
 
-  nextUntilIf() {
-    return this.nextUntil(this.isIfReservedWord, [
+  nextUntilWhile() {
+    return this.nextUntil(this.isWhileReservedWord, [
       this.isOpenBrackets,
-      // AssignExpr.isOnSetFirst,
+      AssignExpr.isOnSetFirst,
       this.isCloseBrackets,
       this.isOpenCurlyBrackets,
       this.isCloseCurlyBrackets,
-      ElseDecs.isOnSetFirst
     ]);
   }
 
   nextUntilOpenBrackets() {
     return this.nextUntil(this.isOpenBrackets, [
-      // AssignExpr.isOnSetFirst,
+      AssignExpr.isOnSetFirst,
       this.isCloseBrackets,
       this.isOpenCurlyBrackets,
       this.isCloseCurlyBrackets,
-      ElseDecs.isOnSetFirst
     ]);
   }
 
@@ -105,22 +99,19 @@ class IfDecs extends BaseClass {
     return this.nextUntil(this.isCloseBrackets, [
       this.isOpenCurlyBrackets,
       this.isCloseCurlyBrackets,
-      ElseDecs.isOnSetFirst
     ]);
   }
 
   nextUntilOpenCurlyBrackets() {
     return this.nextUntil(this.isOpenCurlyBrackets, [
       this.isCloseCurlyBrackets,
-      ElseDecs.isOnSetFirst
     ]);
   }
 
   nextUntilCloseCurlyBrackets() {
     return this.nextUntil(this.isCloseCurlyBrackets, [
-      ElseDecs.isOnSetFirst
     ]);
   }
 }
 
-module.exports = IfDecs;
+module.exports = WhileDecs;
