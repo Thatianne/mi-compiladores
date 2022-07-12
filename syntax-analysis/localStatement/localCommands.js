@@ -1,3 +1,4 @@
+const Assignment = require('../assigment/assigment');
 const BaseClass = require('../baseClass');
 const IfDecs = require('../ifDecs/ifDecs');
 const ReadDecs = require('../readDecs/readDecs');
@@ -34,6 +35,10 @@ class LocalCommands extends BaseClass {
     } else if (WhileDecs.isOnSetFirst(this.currentToken)){
       const whileDecs = new WhileDecs(this.tokens, this.currentIndex, this.errors);
       this.currentIndex = whileDecs.exec();
+      useRecursiveLocalCommands = true;
+    } else if (Assignment.isOnSetFirst(this.currentToken)){
+      const assignment = new Assignment(this.tokens, this.currentIndex, this.errors);
+      this.currentIndex = assignment.exec();
       useRecursiveLocalCommands = true;
     }
 

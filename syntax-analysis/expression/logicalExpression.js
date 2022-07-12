@@ -21,6 +21,10 @@ class LogicalExpression extends BaseClass {
     return this.currentIndex;
   }
 
+  static getOperators() {
+    return OPERATORS;
+  }
+
   static getSetFirst() {
     return [TokenHelper.isOr, TokenHelper.isAnd];
   }

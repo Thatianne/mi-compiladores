@@ -67,5 +67,30 @@ function test(): boolean {
   read(p.idade);
   read(idade);
 
+  j_ = 2;
+	k_aa = 1 + 2;
+	a = b + 4;
+	e = 3 + c;
+	e = c + c;
+	e = c++;
+	e = 3 - c;
+	e = 3 * 6;
+	e = 3 / 3;
+	q = 2 > 1;
+	q = 2 >= 1;
+	q = 2 < 1;
+	q = 2 <= 1;
+	q = 2 != 1;
+	q = !true;
+	q = !a;
+
+  q = true && false;
+	q = a && true;
+	q = true || false;
+	a = false || bc;
+	a = "testeee";
+	a = 'a';
+	a.c = 2;
+
   return true;
 }

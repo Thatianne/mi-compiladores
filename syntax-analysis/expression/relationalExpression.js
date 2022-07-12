@@ -14,13 +14,7 @@ const TokenHelper = require('../tokenHelper');
 const OPERATORS = ['<', '>', '!=', '<=', '>=', '=='];
 class RelationalExpression extends BaseClass {
   exec() {
-    if (TokenHelper.isLessThen(this.currentToken) ||
-      TokenHelper.isBiggerThen(this.currentToken) ||
-      TokenHelper.isDifferent(this.currentToken) ||
-      TokenHelper.isLessOrEquals(this.currentToken) ||
-      TokenHelper.isBiggerOrEquals(this.currentToken) ||
-      TokenHelper.isEqualsTo(this.currentToken)
-    ) {
+    if (RelationalExpression.isOnSetFirst(this.currentToken)) {
       let endedTokens = this.next();
 
       if (!endedTokens) {
@@ -32,6 +26,10 @@ class RelationalExpression extends BaseClass {
     }
 
     return this.currentIndex;
+  }
+
+  static getOperators() {
+    return OPERATORS;
   }
 
   static getSetFirst() {

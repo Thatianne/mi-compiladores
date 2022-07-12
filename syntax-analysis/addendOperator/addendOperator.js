@@ -7,11 +7,7 @@ const TokenHelper = require('../tokenHelper');
 const ACCEPTED_TYPES = ['identifier', 'integer', 'real', 'boolean'];
 class AddendOperator extends BaseClass {
   exec() {
-    if (TokenHelper.isIdentifier(this.currentToken) ||
-      TokenHelper.isInteger(this.currentToken) ||
-      TokenHelper.isReal(this.currentToken) ||
-      TokenHelper.isBoolean(this.currentToken)
-    ) {
+    if (AddendOperator.isOnSetFirst(this.currentToken)) {
       this.next();
     } else {
       this.addError(new TypeNotFound(this.currentIndex, this.currentToken, ACCEPTED_TYPES));

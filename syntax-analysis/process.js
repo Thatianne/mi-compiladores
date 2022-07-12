@@ -29,7 +29,7 @@ class Process {
       fs.writeFileSync(outputFile, 'Success!', { flag: 'w+' });
     } else {
       const errorMessages = errors.map((error) => error.message);
-      console.log(errorMessages);
+      errorMessages.forEach((message) => {console.log(message)})
       fs.writeFileSync(outputFile, errorMessages.join('\n'), { flag: 'w+' });
     }
 

@@ -2,7 +2,7 @@ const BaseClass = require('../baseClass');
 const TokenHelper = require('../tokenHelper');
 
 // <FunctionStatement1>::= '}' <FunctionStatement>
-class ProcedureStatement1 extends BaseClass {
+class FunctionStatement1 extends BaseClass {
   exec() {
     let [foundCloseCurlyBrackets, endedTokens] = this.nextUntilCloseCurlyBrackets();
 
@@ -22,8 +22,8 @@ class ProcedureStatement1 extends BaseClass {
   }
 
   nextUntilCloseCurlyBrackets() {
-    const ProcedureStatement = require('./functionStatement');
-    return this.nextUntil(TokenHelper.isCloseCurlyBrackets, [ProcedureStatement.isOnSetFirst])
+    const FunctionStatement = require('./functionStatement');
+    return this.nextUntil(TokenHelper.isCloseCurlyBrackets, [FunctionStatement.isOnSetFirst])
   }
 
   static getSetFirst() {
@@ -31,8 +31,8 @@ class ProcedureStatement1 extends BaseClass {
   }
 
   static isOnSetFirst(token) {
-    return ProcedureStatement1.getSetFirst().includes(token.lexema);
+    return FunctionStatement1.getSetFirst().includes(token.lexema);
   }
 }
 
-module.exports = ProcedureStatement1;
+module.exports = FunctionStatement1;

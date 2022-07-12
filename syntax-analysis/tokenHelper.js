@@ -110,6 +110,10 @@ class TokenHelper {
     return token.lexema === '!=';
   }
 
+  static isNot(token) {
+    return token.lexema === '!';
+  }
+
   static isLessOrEquals(token) {
     return token.lexema === '<=';
   }
@@ -120,6 +124,30 @@ class TokenHelper {
 
   static isEqualsTo(token) {
     return token.lexema === '==';
+  }
+
+  static isIncrement(token) {
+    return token.lexema === '++';
+  }
+
+  static isDecrement(token) {
+    return token.lexema === '--';
+  }
+
+  static isPlus(token) {
+    return token.lexema === '+';
+  }
+
+  static isLess(token) {
+    return token.lexema === '-';
+  }
+
+  static isDivision(token) {
+    return token.lexema === '/';
+  }
+
+  static isMultiplication(token) {
+    return token.lexema === '*';
   }
 
   static isIfReservedWord(token) {
